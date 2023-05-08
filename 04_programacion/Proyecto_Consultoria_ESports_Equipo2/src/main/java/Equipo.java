@@ -47,6 +47,9 @@ public class Equipo {
         this.duenyo = duenyo;
     }
 
+    public void addPlayer(Jugador jugador, int posicion){
+        this.jugadores[posicion] = jugador;
+    }
     public Jugador[] getJugadores() {
         return jugadores;
     }

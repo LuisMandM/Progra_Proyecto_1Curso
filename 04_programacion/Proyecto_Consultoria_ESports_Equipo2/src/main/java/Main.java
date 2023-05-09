@@ -20,7 +20,7 @@ public class Main {
         connection = Gestor_BD.Conectar_BD();
         List<Jugador> jugadores = new ArrayList<>();
         Cargar_Equipos();
-
+        /*
         try {
             Statement statement = connection.createStatement();
             ResultSet result_Jugadores = statement.executeQuery("SELECT * FROM JUGADOR");
@@ -39,7 +39,7 @@ public class Main {
 
         for (Jugador jugador:jugadores) {
             System.out.println(jugador);
-        }
+        }*/
 
 
     }
@@ -54,8 +54,8 @@ public class Main {
 
             while (resultDuenios.next()){
 
-                Duenyo actual = new Duenyo(resultDuenios.getInt("ID_DUEÑO"),resultDuenios.getString("CONTRASEÑA"),
-                        resultDuenios.getString("USUARIO"),resultDuenios.getString("NOMBRE"));
+                Duenyo actual = new Duenyo(resultDuenios.getInt("ID_DUEÑO"),resultDuenios.getString("NOMBRE"),
+                        resultDuenios.getString("USUARIO"),resultDuenios.getString("CONTRASEÑA"));
 
                 Statement statement_equi = connection.createStatement();
                 ResultSet result_Equi = statement_equi.executeQuery("SELECT * FROM EQUIPO WHERE ID_DUENIO = "
@@ -66,14 +66,15 @@ public class Main {
                             result_Equi.getInt("SALARIO_TOTAL"),actual);
 
                     Statement statement_player = connection.createStatement();
-                    ResultSet result_Play = statement_equi.executeQuery("SELECT * FROM JUGADOR NATURAL JOIN JUGADOR_EQUIPO T WHERE T.ID_EQUIPO = "
+                    ResultSet result_Play = statement_player.executeQuery("SELECT * FROM JUGADOR NATURAL JOIN JUGADOR_EQUIPO T WHERE T.ID_EQUIPO = "
                             + equipo.getId_equipo());
                     int indice = 0;
 
-                    while (result_Play.next()){
+                    while (result_Play.next() && indice<6){
                         Jugador player = new Jugador(result_Play.getInt("ID_JUGADOR"),result_Play.getString("NOMBRE"),
                                 result_Play.getString("NICKNAME"),result_Play.getInt("SUELDO"),equipo);
-                        equipo.addPlayer(player,0);
+                        equipo.addPlayer(player,indice);
+                        indice++;
                     }
 
                     equipos.add(equipo);

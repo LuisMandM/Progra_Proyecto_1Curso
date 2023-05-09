@@ -1,8 +1,8 @@
 public class Duenyo extends Usuario {
     private String nombre;
 
-    public Duenyo(int id_dueño, String nombre, String usuario, String string) {
-        super();
+    public Duenyo(int id_duenio, String nombre, String usuario, String contrasenia) {
+        super(id_duenio,contrasenia,usuario);
         this.nombre = nombre;
     }
 

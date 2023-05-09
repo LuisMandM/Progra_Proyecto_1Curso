@@ -61,7 +61,6 @@ public class Equipo {
                 ", nombre='" + nombre + '\'' +
                 ", salario_total=" + salario_total +
                 ", duenyo=" + duenyo +
-                ", jugadores=" + Arrays.toString(jugadores) +
                 '}';
     }
 }

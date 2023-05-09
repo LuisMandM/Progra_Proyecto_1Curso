@@ -1,3 +1,5 @@
+package Clases_Base;
+
 public class Duenyo extends Usuario {
     private String nombre;
 
@@ -15,7 +17,7 @@ public class Duenyo extends Usuario {
     }
     @Override
     public String toString() {
-        return "Duenyo{" +
+        return "Clases_Base.Duenyo{" +
                 "nombre='" + nombre + '\'' +
                 '}';
     }

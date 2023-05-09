@@ -1,4 +1,6 @@
-import java.util.Arrays;
+package Clases_Base;
+
+import Clases_Base.Duenyo;
 
 public class Equipo {
 
@@ -56,7 +58,7 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Equipo{" +
+        return "Clases_Base.Equipo{" +
                 "id_equipo=" + id_equipo +
                 ", nombre='" + nombre + '\'' +
                 ", salario_total=" + salario_total +

@@ -1,3 +1,7 @@
+package Clases_Base;
+
+import Clases_Base.Equipo;
+
 public class Jugador {
 
     private int id_jugador;
@@ -56,7 +60,7 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return "Jugador{" +
+        return "Clases_Base.Jugador{" +
                 "id_jugador=" + id_jugador +
                 ", nombre='" + nombre + '\'' +
                 ", nickname='" + nickname + '\'' +

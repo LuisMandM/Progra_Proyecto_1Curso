@@ -1,3 +1,6 @@
+import Clases_Base.Duenyo;
+import Clases_Base.Equipo;
+import Clases_Base.Jugador;
 import org.example.Base_Datos.Gestor_BD;
 
 import java.sql.Connection;
@@ -20,7 +23,7 @@ public class Main {
         connection = Gestor_BD.Conectar_BD();
         List<Jugador> jugadores = new ArrayList<>();
         Cargar_Equipos();
-        /*
+
         try {
             Statement statement = connection.createStatement();
             ResultSet result_Jugadores = statement.executeQuery("SELECT * FROM JUGADOR");
@@ -39,7 +42,7 @@ public class Main {
 
         for (Jugador jugador:jugadores) {
             System.out.println(jugador);
-        }*/
+        }
 
 
     }

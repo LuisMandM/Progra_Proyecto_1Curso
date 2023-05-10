@@ -1,3 +1,5 @@
+package Clases_Base;
+
 public abstract class Usuario {
     private int id_usuario;
     private String contrasenya;
@@ -39,7 +41,7 @@ public abstract class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" +
+        return "Clases_Base.Usuario{" +
                 "id_usuario=" + id_usuario +
                 ", contrasenya='" + contrasenya + '\'' +
                 ", usuario='" + usuario + '\'' +

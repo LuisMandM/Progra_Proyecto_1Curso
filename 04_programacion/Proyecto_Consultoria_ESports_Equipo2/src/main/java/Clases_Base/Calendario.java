@@ -1,3 +1,5 @@
+package Clases_Base;
+
 import java.time.LocalDate;
 
 
@@ -38,7 +40,7 @@ public class Calendario {
 
     @Override
     public String toString() {
-        return "Calendario{" +
+        return "Clases_Base.Calendario{" +
                 "id_temporada=" + id_temporada +
                 ", fecha_inicio=" + fecha_inicio +
                 ", fecha_fin=" + fecha_fin +

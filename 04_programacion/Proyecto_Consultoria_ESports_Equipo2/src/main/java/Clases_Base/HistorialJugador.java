@@ -1,3 +1,8 @@
+package Clases_Base;
+
+import Clases_Base.Equipo;
+import Clases_Base.Jugador;
+
 import java.time.LocalDate;
 
 public class HistorialJugador {
@@ -47,7 +52,7 @@ public class HistorialJugador {
 
     @Override
     public String toString() {
-        return "HistorialJugador{" +
+        return "Clases_Base.HistorialJugador{" +
                 "id_jugador=" + id_jugador +
                 ", id_equipo=" + id_equipo +
                 ", equipo=" + equipo +

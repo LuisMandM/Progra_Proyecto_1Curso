@@ -1,0 +1,14 @@
+Procedimientos y/o Funciones
+
+
+_Paquete_Organizacion_
+*Clasificacion de la Jornada -> Devuelve un cursor con los datos organizados(Nombre equipo, partidos ganados.).
+*Clasificacion de la Temporada -> Devuelve un cursor con los datos organizados(Nombre equipo, partidos ganados.).
+*Partidos Ganados por Temporada -> Devuelve un cursor con los datos organizados.
+*Historial de desempeño del equipo -> Devuelve un cursor con Partidos Ganados, Perdidos, Empatados.
+
+_Paquete_Acciones_Admin_
+*Poner Resultado de un Partido.
+	-Funcion de que en caso de que haya empate configure ese resultado (Campo ganador con caracter distintivo).
+	
+

@@ -1,3 +1,7 @@
+package Clases_Base;
+
+import Clases_Base.Equipo;
+
 public class Partido {
 
     private int id_partido;
@@ -76,7 +80,7 @@ public class Partido {
 
     @Override
     public String toString() {
-        return "Partido{" +
+        return "Clases_Base.Partido{" +
                 "id_partido=" + id_partido +
                 ", marcador_local=" + marcador_local +
                 ", marcador_visitante=" + marcador_visitante +

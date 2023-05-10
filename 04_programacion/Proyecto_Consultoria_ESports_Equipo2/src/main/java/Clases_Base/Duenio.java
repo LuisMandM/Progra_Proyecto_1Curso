@@ -1,8 +1,10 @@
-public class Duenyo extends Usuario {
+package Clases_Base;
+
+public class Duenio extends Usuario {
     private String nombre;
 
-    public Duenyo(String nombre) {
-        super();
+    public Duenio(int id_duenio, String nombre, String usuario, String contrasenia) {
+        super(id_duenio,contrasenia,usuario);
         this.nombre = nombre;
     }
 
@@ -15,7 +17,7 @@ public class Duenyo extends Usuario {
     }
     @Override
     public String toString() {
-        return "Duenyo{" +
+        return "Clases_Base.Duenyo{" +
                 "nombre='" + nombre + '\'' +
                 '}';
     }

@@ -1,3 +1,8 @@
+package Clases_Base;
+
+import Clases_Base.Calendario;
+import Clases_Base.Equipo;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +54,7 @@ public class Jornada {
 
     @Override
     public String toString() {
-        return "Jornada{" +
+        return "Clases_Base.Jornada{" +
                 "id_jornada=" + id_jornada +
                 ", fecha=" + fecha +
                 ", calendario=" + calendario +

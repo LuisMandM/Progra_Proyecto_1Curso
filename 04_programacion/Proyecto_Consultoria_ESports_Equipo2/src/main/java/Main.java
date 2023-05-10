@@ -1,4 +1,4 @@
-import Clases_Base.Duenyo;
+import Clases_Base.Duenio;
 import Clases_Base.Equipo;
 import Clases_Base.Jugador;
 import org.example.Base_Datos.Gestor_BD;
@@ -57,7 +57,7 @@ public class Main {
 
             while (resultDuenios.next()){
 
-                Duenyo actual = new Duenyo(resultDuenios.getInt("ID_DUEÑO"),resultDuenios.getString("NOMBRE"),
+                Duenio actual = new Duenio(resultDuenios.getInt("ID_DUEÑO"),resultDuenios.getString("NOMBRE"),
                         resultDuenios.getString("USUARIO"),resultDuenios.getString("CONTRASEÑA"));
 
                 Statement statement_equi = connection.createStatement();

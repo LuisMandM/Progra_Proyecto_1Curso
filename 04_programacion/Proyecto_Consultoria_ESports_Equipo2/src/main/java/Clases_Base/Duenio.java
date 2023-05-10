@@ -1,9 +1,9 @@
 package Clases_Base;
 
-public class Duenyo extends Usuario {
+public class Duenio extends Usuario {
     private String nombre;
 
-    public Duenyo(int id_duenio, String nombre, String usuario, String contrasenia) {
+    public Duenio(int id_duenio, String nombre, String usuario, String contrasenia) {
         super(id_duenio,contrasenia,usuario);
         this.nombre = nombre;
     }

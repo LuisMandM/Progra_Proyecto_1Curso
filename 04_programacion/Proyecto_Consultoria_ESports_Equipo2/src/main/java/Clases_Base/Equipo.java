@@ -1,20 +1,18 @@
 package Clases_Base;
 
-import Clases_Base.Duenyo;
-
 public class Equipo {
 
     private int id_equipo;
     private String nombre;
     private double salario_total;
-    private Duenyo duenyo;
+    private Duenio duenio;
     private final Jugador[] jugadores = new Jugador[6];
 
-    public Equipo(int id_equipo, String nombre, double salario_total, Duenyo duenyo) {
+    public Equipo(int id_equipo, String nombre, double salario_total, Duenio duenio) {
         this.id_equipo = id_equipo;
         this.nombre = nombre;
         this.salario_total = salario_total;
-        this.duenyo = duenyo;
+        this.duenio = duenio;
     }
 
     public int getId_equipo() {
@@ -41,12 +39,12 @@ public class Equipo {
         this.salario_total = salario_total;
     }
 
-    public Duenyo getDuenyo() {
-        return duenyo;
+    public Duenio getDuenyo() {
+        return duenio;
     }
 
-    public void setDuenyo(Duenyo duenyo) {
-        this.duenyo = duenyo;
+    public void setDuenyo(Duenio duenio) {
+        this.duenio = duenio;
     }
 
     public void addPlayer(Jugador jugador, int posicion){
@@ -62,7 +60,7 @@ public class Equipo {
                 "id_equipo=" + id_equipo +
                 ", nombre='" + nombre + '\'' +
                 ", salario_total=" + salario_total +
-                ", duenyo=" + duenyo +
+                ", duenyo=" + duenio +
                 '}';
     }
 }

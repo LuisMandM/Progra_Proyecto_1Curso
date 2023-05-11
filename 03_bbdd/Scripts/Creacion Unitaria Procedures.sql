@@ -64,6 +64,29 @@
                     LEFT JOIN partido parti
                         ON
                             parti.ganador = equi.id_equipo
+<<<<<<< HEAD
                 GROUP BY equi.id_equipo, equi.nombre
                 ORDER BY COUNT(parti.ganador) desc;
     END clasificacion;
+=======
+                GROUP BY equi.id_equipo, equi.nombre;
+    END clasificacion;
+
+
+CREATE OR REPLACE PROCEDURE RESULTADOS_DE_LA_JORNADA
+  (P_NUMJORNADA PARTIDO.JORNADA%TYPE,P_RESULT_CURSOR OUT Sys_Refcursor)
+IS
+BEGIN
+
+    IF P_NUMJORNADA%FOUND
+        OPEN P_RESULT_CURSOR FOR
+           'SELECT MARCADOR_LOCAL,EQUIPO_LOCAL,
+            MARCADOR_VISITANTE,EQUIPO_VISITANTE
+            FROM PARTIDO
+            WHERE JORNADA= P_NUMJORNADA';
+    ELSE   
+        RAISE_APPLICATION_ERROR(-203020, 'ERROR, jornada seleccionada no encontrada en el sistema');    
+    END IF;
+    CLOSE P_RESULT_CURSOR; 
+END RESULTADOS_DE_LA_JORNADA;
+>>>>>>> master

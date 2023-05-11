@@ -54,3 +54,15 @@
 				RAISE_APPLICATION_ERROR(-20382,'SIN DATOS');
 			
 		END HISTORIAL_EQUIPO_TEMP;
+
+    CREATE  OR REPLACE PROCEDURE clasificacion
+            (resul_out   out SYS_REFCURSOR)
+        IS
+            BEGIN
+            OPEN resul_out FOR
+                SELECT equi.nombre, equi.id_equipo, COUNT(parti.ganador) AS "NUM_GANADOS" FROM equipo equi
+                    LEFT JOIN partido parti
+                        ON
+                            parti.ganador = equi.id_equipo
+                GROUP BY equi.id_equipo, equi.nombre;
+    END clasificacion;

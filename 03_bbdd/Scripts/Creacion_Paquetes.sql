@@ -1,6 +1,5 @@
-
-
  CREATE OR REPLACE PACKAGE VISUALIZACION_RESULTADOS IS
+    TYPE PACK_CURSOR IS REF CURSOR;
     
     PROCEDURE HISTORIAL_EQUIPO
     (P_EQUIPO IN EQUIPO.ID_EQUIPO%TYPE, GANADOS OUT NUMBER,PERDIDOS OUT NUMBER, 
@@ -10,6 +9,8 @@
     (P_EQUIPO IN EQUIPO.ID_EQUIPO%TYPE, P_TEMPORADA IN CALENDARIO.ID_TEMPORADA%TYPE,
     GANADOS OUT NUMBER,PERDIDOS OUT NUMBER, 
     EMPATE OUT NUMBER);
+    
+    PROCEDURE clasificacion (resul_out out PACK_CURSOR);
     
     
  END;
@@ -65,6 +66,44 @@
                 RAISE_APPLICATION_ERROR(-20382,'SIN DATOS');
         
     END HISTORIAL_EQUIPO;
-     
+    
+    
+    PROCEDURE clasificacion
+        (resul_out out PACK_CURSOR)
+        IS
+        BEGIN
+            OPEN resul_out FOR
+                SELECT equi.nombre, equi.id_equipo, COUNT(parti.ganador) AS "NUM_GANADOS" FROM equipo equi
+                    LEFT JOIN partido parti
+                        ON
+                            parti.ganador = equi.id_equipo
+                GROUP BY equi.id_equipo, equi.nombre
+                ORDER BY COUNT(parti.ganador) desc;
+    END clasificacion;
  
+
  END;
+ 
+ 
+-------- PAQUETE DE ACCIONES_ADMINISTRADOR --------
+
+
+CREATE OR REPLACE PACKAGE Acciones_Administrador 
+IS
+PROCEDURE actualizar_resultado(p_id_partido IN NUMBER,marcador_loc NUMBER, marcador_visit NUMBER);
+END;
+
+CREATE OR REPLACE PACKAGE BODY Acciones_Administrador 
+IS
+PROCEDURE actualizar_resultado(p_id_partido IN NUMBER,marcador_loc NUMBER, marcador_visit NUMBER)
+    IS
+    p_ganador number := -1;
+BEGIN
+    IF marcador_loc > marcador_visit THEN
+        SELECT equipo_local INTO p_ganador FROM partido WHERE id_partido = p_id_partido;
+        ELSE 
+        SELECT equipo_visitante INTO p_ganador FROM partido WHERE id_partido = p_id_partido;
+        END IF;
+        UPDATE partido SET ganador = p_ganador WHERE id_partido = p_id_partido;
+    END actualizar_resultado;
+END Acciones_Administrador;

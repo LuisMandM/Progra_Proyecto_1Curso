@@ -64,11 +64,6 @@
                     LEFT JOIN partido parti
                         ON
                             parti.ganador = equi.id_equipo
-<<<<<<< HEAD
-                GROUP BY equi.id_equipo, equi.nombre
-                ORDER BY COUNT(parti.ganador) desc;
-    END clasificacion;
-=======
                 GROUP BY equi.id_equipo, equi.nombre;
     END clasificacion;
 
@@ -89,4 +84,3 @@ BEGIN
     END IF;
     CLOSE P_RESULT_CURSOR; 
 END RESULTADOS_DE_LA_JORNADA;
->>>>>>> master

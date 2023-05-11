@@ -64,5 +64,6 @@
                     LEFT JOIN partido parti
                         ON
                             parti.ganador = equi.id_equipo
-                GROUP BY equi.id_equipo, equi.nombre;
+                GROUP BY equi.id_equipo, equi.nombre
+                ORDER BY COUNT(parti.ganador) desc;
     END clasificacion;

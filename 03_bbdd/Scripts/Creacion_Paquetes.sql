@@ -68,3 +68,27 @@
      
  
  END;
+
+
+-------- PAQUETE DE ACCIONES_ADMINISTRADOR --------
+
+
+CREATE OR REPLACE PACKAGE Acciones_Administrador 
+IS
+PROCEDURE actualizar_resultado(p_id_partido IN NUMBER,marcador_loc NUMBER, marcador_visit NUMBER);
+END;
+
+CREATE OR REPLACE PACKAGE BODY Acciones_Administrador 
+IS
+PROCEDURE actualizar_resultado(p_id_partido IN NUMBER,marcador_loc NUMBER, marcador_visit NUMBER)
+    IS
+    p_ganador number := -1;
+BEGIN
+    IF marcador_loc > marcador_visit THEN
+        SELECT equipo_local INTO p_ganador FROM partido WHERE id_partido = p_id_partido;
+        ELSE 
+        SELECT equipo_visitante INTO p_ganador FROM partido WHERE id_partido = p_id_partido;
+        END IF;
+        UPDATE partido SET ganador = p_ganador WHERE id_partido = p_id_partido;
+    END actualizar_resultado;
+END Acciones_Administrador;

@@ -1,7 +1,6 @@
 package Consultoria.pack.GUI;
 
 import Consultoria.pack.Clases_Base.Equipo;
-import Consultoria.pack.Clases_Base.Partido;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
@@ -33,7 +32,7 @@ public class TablaClasificacionModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        switch (columnIndex) {
+        /*switch (columnIndex) {
             case 0:
                 return equipo.getNombre();
             case 1:
@@ -46,6 +45,7 @@ public class TablaClasificacionModel extends AbstractTableModel {
                     return num_ganados;
                 }
         }
+        return null;*/
         return null;
     }
 

@@ -1,5 +1,6 @@
 package Consultoria.pack.GUI;
 
+import Consultoria.pack.Base_Datos.Visualizacion_Pack;
 import Consultoria.pack.Clases_Base.Equipo;
 import Consultoria.pack.Clases_Base.Partido;
 
@@ -25,7 +26,7 @@ public class TablaClasificacionModel extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        return partidos.size();
+        return Visualizacion_Pack.Clasificacion().size();
     }
 
     @Override
@@ -35,7 +36,7 @@ public class TablaClasificacionModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        /*switch (columnIndex) {
+        switch (columnIndex) {
             case 0:
                 return equipo.getNombre();
             case 1:
@@ -62,7 +63,6 @@ public class TablaClasificacionModel extends AbstractTableModel {
                     return empates;
                 }
         }
-        return null;*/
         return null;
     }
 

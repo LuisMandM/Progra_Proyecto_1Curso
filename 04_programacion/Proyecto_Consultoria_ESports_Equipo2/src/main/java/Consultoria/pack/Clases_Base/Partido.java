@@ -10,6 +10,20 @@ public class Partido {
     private Equipo equipoGanador;
     private Jornada jornada;
 
+
+    //Buscar_equipo() --Partido(*,*,*,Buscar_equipo(*))
+    /*
+    retorno de equipo
+
+    Public Equipo Buscar equipo(INT ID_EQUIPO){
+    Equipo Equipo_result = null
+    foreach(Equipo equipo, Main.getEquipos){
+        if (equipo.id == id_parametro) equipo_result = equipo
+    }
+    return
+
+
+    */
     public Partido(int id_partido, int marcador_local, int marcador_visitante, Equipo equipoL, Equipo equipoV, Equipo equipoGanador, Jornada jornada) {
         this.id_partido = id_partido;
         this.marcador_local = marcador_local;

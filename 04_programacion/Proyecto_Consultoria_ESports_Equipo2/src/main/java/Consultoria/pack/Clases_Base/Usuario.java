@@ -1,4 +1,4 @@
-package Clases_Base;
+package Consultoria.pack.Clases_Base;
 
 public abstract class Usuario {
     private int id_usuario;

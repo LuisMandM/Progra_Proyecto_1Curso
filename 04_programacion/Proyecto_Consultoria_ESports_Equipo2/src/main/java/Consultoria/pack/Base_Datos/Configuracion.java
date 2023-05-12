@@ -1,4 +1,4 @@
-package org.example.Base_Datos;
+package Consultoria.pack.Base_Datos;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

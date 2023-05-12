@@ -1,7 +1,4 @@
-package Clases_Base;
-
-import Clases_Base.Equipo;
-import Clases_Base.Jugador;
+package Consultoria.pack.Clases_Base;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package Clases_Base;
+package Consultoria.pack.Clases_Base;
 
 public class Duenio extends Usuario {
     private String nombre;

@@ -28,6 +28,7 @@ public class Visualizacion_Pack {
                 clasificacion.put(set.getInt(2), set.getInt(3));
             }
 
+            Gestor_BD.desconectar(connection);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -40,15 +41,15 @@ public class Visualizacion_Pack {
             Connection connection = Gestor_BD.Conectar_BD();
             CallableStatement cs = connection.prepareCall("{call VISUALIZACION_RESULTADOS.HISTORIAL_EQUIPO(?,?,?,?) }");
 
-            cs.setInt("P_EQUIPO", 1);
+            cs.setInt(1, 1);
 
-            cs.registerOutParameter("GANADOS", Types.INTEGER);
-            cs.registerOutParameter("PERDIDOS", Types.INTEGER);
-            cs.registerOutParameter("EMPATE", Types.INTEGER);
+            cs.registerOutParameter(2, Types.INTEGER);
+            cs.registerOutParameter(3, Types.INTEGER);
+            cs.registerOutParameter(4, Types.INTEGER);
 
             cs.execute();
 
-            int equipo = cs.getInt("P_EQUIPO");
+            int equipo = cs.getInt(1);
             int ganados = cs.getInt("GANADOS");
             int perdidos = cs.getInt("PERDIDOS");
             int empatados = cs.getInt("EMPATE");

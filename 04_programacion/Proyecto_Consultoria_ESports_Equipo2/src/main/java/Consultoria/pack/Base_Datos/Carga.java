@@ -1,14 +1,13 @@
 package Consultoria.pack.Base_Datos;
 
-import Consultoria.pack.Clases_Base.Duenio;
-import Consultoria.pack.Clases_Base.Equipo;
-import Consultoria.pack.Clases_Base.Jugador;
+import Consultoria.pack.Clases_Base.*;
 import Consultoria.pack.Main;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +48,6 @@ public class Carga {
                         equipo.addPlayer(player,indice);
                         indice++;
                         jugadores.add(player);
-
                     }
                     equipos.add(equipo);
                 }
@@ -61,6 +59,60 @@ public class Carga {
          Main.setDuenios(duenios);
          Main.setEquipos(equipos);
          Main.setJugadores(jugadores);
+    }
+    public static Equipo buscarEquipo(int idEquipo) {
+        Equipo equipoBuscado = null;
+        for (Equipo equipo : Main.getEquipos()) {
+            if (equipo.getId_equipo() == idEquipo) {
+                equipoBuscado = equipo;
+                break;
+            }
+        }
+        return equipoBuscado;
+    }
+    public static void Cargar_Calendario(){
+        Connection connection = Gestor_BD.Conectar_BD();
+            List<Calendario> calendarios = new ArrayList<>();
+            List<Jornada> jornadas = new ArrayList<>();
+            List<Partido> partidos = new ArrayList<>();
+        try {
 
+            Statement statement = connection.createStatement();
+            ResultSet resultCalendario = statement.executeQuery("SELECT * FROM CALENDARIO");
+
+            while (resultCalendario.next()){
+
+                Calendario calen = new Calendario(resultCalendario.getInt("ID_TEMPORADA"), LocalDate.parse(resultCalendario.getString("FECHA_INICIO")),
+                        LocalDate.parse(resultCalendario.getString("FECHA_FIN")));
+
+                Statement statement_calen = connection.createStatement();
+                ResultSet result_Calen = statement_calen.executeQuery("SELECT * FROM JORNADA  WHERE ID_TEMPORADA =  "
+                        + calen.getId_temporada());
+
+                while (result_Calen.next()){
+                    Jornada jornada = new Jornada(result_Calen.getInt("ID_JORNADA"),LocalDate.parse(result_Calen.getString("FECHA")),
+                            calen);
+
+                    Statement statement_jornada = connection.createStatement();
+                    ResultSet result_Jorna = statement_jornada.executeQuery("SELECT * FROM Partido  WHERE JORNADA =  "
+                            + jornada.getId_jornada());
+
+                    while (result_Jorna.next()){
+                        Partido partido = new Partido(result_Jorna.getInt("ID_PARTIDO"),result_Jorna.getInt("MARCADOR_LOCAL"),
+                                result_Jorna.getInt("MARCADOR_VISITATE"),buscarEquipo(result_Jorna.getInt("EQUIPO_LOCAL")),
+                                buscarEquipo(result_Jorna.getInt("EQUIPO_VISITANTE")),jornada);
+
+                        partidos.add(partido);
+                    }
+                    jornadas.add(jornada);
+                }
+                calendarios.add(calen);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        Main.setCalendarios(calendarios);
+        Main.setJornadas(jornadas);
+        Main.setPartidos(partidos);
     }
 }

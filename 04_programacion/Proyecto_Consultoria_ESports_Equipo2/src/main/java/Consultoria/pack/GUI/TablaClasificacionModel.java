@@ -7,11 +7,13 @@ import java.util.List;
 
 public class TablaClasificacionModel extends AbstractTableModel {
 
-    private String[] columnasClasificacion = {"Equipo", "ID", "Partidos ganados"};
+    private String[] columnasClasificacion = {"Equipo", "ID", "Partidos ganados", "Partidos perdidos", "Empates"};
 
     private Equipo equipo;
     private List<Partido> partidos;
     private int num_ganados;
+    private int num_perdidos;
+    private int empates;
 
     public TablaClasificacionModel() {
     }
@@ -43,6 +45,20 @@ public class TablaClasificacionModel extends AbstractTableModel {
                         num_ganados++;
                     }
                     return num_ganados;
+                }
+            case 3:
+                for (Partido partido: partidos) {
+                    if (!partido.getEquipoGanador().equals(equipo.getId_equipo())) {
+                        num_perdidos--;
+                    }
+                    return num_perdidos;
+                }
+            case 4:
+                for (Partido partido: partidos) {
+                    if (partido.getMarcador_local() == partido.getMarcador_visitante()) {
+                        empates++;
+                    }
+                    return empates;
                 }
         }
         return null;*/

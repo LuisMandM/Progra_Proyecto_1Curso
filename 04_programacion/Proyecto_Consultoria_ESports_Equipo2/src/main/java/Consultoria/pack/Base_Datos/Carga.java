@@ -58,7 +58,8 @@ public class Carga {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
+         Main.setDuenios(duenios);
+         Main.setEquipos(equipos);
          Main.setJugadores(jugadores);
 
     }

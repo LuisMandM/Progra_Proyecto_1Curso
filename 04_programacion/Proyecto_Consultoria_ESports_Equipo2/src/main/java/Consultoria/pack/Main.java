@@ -52,13 +52,12 @@ public class Main {
 
     }
 
-    public void pepe(){}
 
     public static List<Equipo> getEquipos() {
         return equipos;
     }
 
-    public  void setEquipos(List<Equipo> equipos) {
+    public static void setEquipos(List<Equipo> equipos) {
         Main.equipos = equipos;
     }
 
@@ -74,7 +73,7 @@ public class Main {
         return duenios;
     }
 
-    public  void setDuenios(List<Duenio> duenios) {
+    public static void setDuenios(List<Duenio> duenios) {
         Main.duenios = duenios;
     }
 }

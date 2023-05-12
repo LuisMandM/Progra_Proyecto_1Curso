@@ -1,9 +1,7 @@
 package Consultoria.pack;
 
 import Consultoria.pack.Base_Datos.Carga;
-import Consultoria.pack.Clases_Base.Duenio;
-import Consultoria.pack.Clases_Base.Equipo;
-import Consultoria.pack.Clases_Base.Jugador;
+import Consultoria.pack.Clases_Base.*;
 import Consultoria.pack.Base_Datos.Gestor_BD;
 import Consultoria.pack.Base_Datos.*;
 
@@ -21,8 +19,9 @@ public class Main {
     private static  List<Equipo> equipos  = new ArrayList<>();
     private static  List<Jugador> jugadores  = new ArrayList<>();
     private static  List<Duenio> duenios  = new ArrayList<>();
-
-
+    private static List<Calendario> calendarios = new ArrayList<>();
+    private static List<Jornada> jornadas = new ArrayList<>();
+    private static List<Partido> partidos = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -75,5 +74,29 @@ public class Main {
 
     public static void setDuenios(List<Duenio> duenios) {
         Main.duenios = duenios;
+    }
+
+    public static List<Calendario> getCalendarios() {
+        return calendarios;
+    }
+
+    public static void setCalendarios(List<Calendario> calendarios) {
+        Main.calendarios = calendarios;
+    }
+
+    public static List<Jornada> getJornadas() {
+        return jornadas;
+    }
+
+    public static void setJornadas(List<Jornada> jornadas) {
+        Main.jornadas = jornadas;
+    }
+
+    public static List<Partido> getPartidos() {
+        return partidos;
+    }
+
+    public static void setPartidos(List<Partido> partidos) {
+        Main.partidos = partidos;
     }
 }

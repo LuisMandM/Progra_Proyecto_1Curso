@@ -10,13 +10,12 @@ public class Partido {
     private Equipo equipoGanador;
     private Jornada jornada;
 
-    public Partido(int id_partido, int marcador_local, int marcador_visitante, Equipo equipoL, Equipo equipoV, Equipo equipoGanador, Jornada jornada) {
+    public Partido(int id_partido, int marcador_local, int marcador_visitante, Equipo equipoL, Equipo equipoV, Jornada jornada) {
         this.id_partido = id_partido;
         this.marcador_local = marcador_local;
         this.marcador_visitante = marcador_visitante;
         this.equipoL = equipoL;
         this.equipoV = equipoV;
-        this.equipoGanador = equipoGanador;
         this.jornada = jornada;
     }
 

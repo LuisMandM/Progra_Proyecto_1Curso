@@ -10,11 +10,10 @@ public class Jornada {
     private Calendario calendario;
     private List<Equipo> equipos = new ArrayList<>();
 
-    public Jornada(int id_jornada, LocalDate fecha, Calendario calendario, List<Equipo> equipos) {
+    public Jornada(int id_jornada, LocalDate fecha, Calendario calendario) {
         this.id_jornada = id_jornada;
         this.fecha = fecha;
         this.calendario = calendario;
-        this.equipos = equipos;
     }
 
     public int getId_jornada() {

@@ -2,6 +2,7 @@ package Consultoria.pack.GUI;
 
 import Consultoria.pack.Base_Datos.Carga;
 import Consultoria.pack.Base_Datos.Gestor_BD;
+import Consultoria.pack.Main;
 
 import javax.swing.*;
 
@@ -22,7 +23,8 @@ public class verClasificacion {
     public verClasificacion() {
 
         table1 = new JTable();
-        table1.setModel(new TablaClasificacionModel());
+        Carga.Cargar_Equipos();
+        table1.setModel(new TablaClasificacionModel(Main.getEquipos()));
         scrollpane1.setViewportView(table1);
 
     }

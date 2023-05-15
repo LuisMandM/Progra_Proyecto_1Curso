@@ -22,7 +22,5 @@ public class verJornada {
         table1 = new JTable();
         table1.setModel(new TablaJornadaModel());
         scrollpane1.setViewportView(table1);
-
-
     }
 }

@@ -34,6 +34,7 @@ public class TablaJornadaModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+
         switch (columnIndex) {
             case 0:
                 return partido.getJornada().getId_jornada();

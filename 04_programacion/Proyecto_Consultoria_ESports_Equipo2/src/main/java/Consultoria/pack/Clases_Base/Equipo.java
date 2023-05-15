@@ -1,5 +1,7 @@
 package Consultoria.pack.Clases_Base;
 
+import Consultoria.pack.Base_Datos.Visualizacion_Pack;
+
 public class Equipo {
 
     private int id_equipo;
@@ -63,4 +65,17 @@ public class Equipo {
                 ", duenyo=" + duenio +
                 '}';
     }
+
+
+    //Utilities
+
+
+
+    public int[] Estadisticas_globales(){
+        return Visualizacion_Pack.Historial_Equipo(this.id_equipo);
+    }public int[] Estadisticas_Temporada(int id_temporada){
+        return Visualizacion_Pack.Historial_Equipo_Temporada(id_temporada,this.id_equipo);
+    }
+
+
 }

@@ -42,26 +42,11 @@ public class TablaClasificacionModel extends AbstractTableModel {
             case 1:
                 return equipo.getId_equipo();
             case 2:
-                for (Partido partido: partidos) {
-                    if (partido.getEquipoGanador().equals(equipo.getId_equipo())) {
-                        num_ganados++;
-                    }
-                    return num_ganados;
-                }
+                return num_ganados;
             case 3:
-                for (Partido partido: partidos) {
-                    if (!partido.getEquipoGanador().equals(equipo.getId_equipo())) {
-                        num_perdidos--;
-                    }
-                    return num_perdidos;
-                }
+                return num_perdidos;
             case 4:
-                for (Partido partido: partidos) {
-                    if (partido.getMarcador_local() == partido.getMarcador_visitante()) {
-                        empates++;
-                    }
-                    return empates;
-                }
+                return empates;
         }
         return null;
     }

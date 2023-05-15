@@ -1,5 +1,8 @@
 package Consultoria.pack.GUI;
 
+import Consultoria.pack.Base_Datos.Carga;
+import Consultoria.pack.Base_Datos.Gestor_BD;
+
 import javax.swing.*;
 
 public class verClasificacion {
@@ -17,8 +20,6 @@ public class verClasificacion {
     }
 
     public verClasificacion() {
-
-        
 
         table1 = new JTable();
         table1.setModel(new TablaClasificacionModel());

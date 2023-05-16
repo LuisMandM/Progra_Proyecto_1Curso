@@ -1,8 +1,6 @@
 package Consultoria.pack.GUI;
 
-import Consultoria.pack.Base_Datos.Visualizacion_Pack;
 import Consultoria.pack.Clases_Base.Equipo;
-import Consultoria.pack.Clases_Base.Partido;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
@@ -12,7 +10,7 @@ public class TablaClasificacionModel extends AbstractTableModel {
     private String[] columnasClasificacion = {"Equipo", "ID", "Partidos ganados", "Partidos perdidos", "Empates"};
 
     private Equipo equipo;
-    private List<Partido> partidos;
+    private List<Equipo> equipos;
     private int num_ganados;
     private int num_perdidos;
     private int empates;
@@ -20,13 +18,13 @@ public class TablaClasificacionModel extends AbstractTableModel {
     public TablaClasificacionModel() {
     }
 
-    public TablaClasificacionModel(List<Partido> partidos) {
-        this.partidos = partidos;
+    public TablaClasificacionModel(List<Equipo> partidos) {
+        this.equipos = partidos;
     }
 
     @Override
     public int getRowCount() {
-        return Visualizacion_Pack.Clasificacion().size();
+        return equipos.size();
     }
 
     @Override
@@ -36,17 +34,21 @@ public class TablaClasificacionModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+
+        equipo = equipos.get(rowIndex);
+        int[] estadisticas = equipo.Estadisticas_globales();
+
         switch (columnIndex) {
             case 0:
                 return equipo.getNombre();
             case 1:
                 return equipo.getId_equipo();
             case 2:
-                return num_ganados;
+                return estadisticas[0];
             case 3:
-                return num_perdidos;
+                return estadisticas[1];
             case 4:
-                return empates;
+                return estadisticas[2];
         }
         return null;
     }

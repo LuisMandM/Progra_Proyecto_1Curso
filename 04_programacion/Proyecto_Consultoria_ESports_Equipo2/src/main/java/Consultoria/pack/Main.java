@@ -27,8 +27,6 @@ public class Main {
 
         connection = Gestor_BD.Conectar_BD();
         List<Jugador> jugadores = new ArrayList<>();
-        Visualizacion_Pack.Historial_Equipo();
-
     }
 
 

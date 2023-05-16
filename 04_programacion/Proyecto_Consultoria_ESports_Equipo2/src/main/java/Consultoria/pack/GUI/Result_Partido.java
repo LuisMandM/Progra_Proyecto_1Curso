@@ -12,10 +12,11 @@ public class Result_Partido {
     private JLabel label1;
     private JTextArea textArea1;
     private JLabel label2;
-    private JTextArea textArea2;
     private JLabel label3;
-    private JTextArea textArea3;
     private JButton button1;
+    private JComboBox comboBox1;
+    private JSpinner spinner1;
+    private JSpinner spinner2;
 
     private List<Partido> partidos;
 

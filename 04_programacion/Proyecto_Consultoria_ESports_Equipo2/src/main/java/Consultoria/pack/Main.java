@@ -27,6 +27,8 @@ public class Main {
 
         connection = Gestor_BD.Conectar_BD();
         List<Jugador> jugadores = new ArrayList<>();
+        Carga.Cargar_Calendario();
+        System.out.println("Prueba");
     }
 
 

@@ -11,7 +11,7 @@ import java.util.*;
 public class Admin_Pack {
 
 
-    public static Partido[][] GenerarEnfrentamientos() {
+    private static Partido[][] GenerarEnfrentamientos() {
         List<Equipo> equipos = Sort_Equipos();
         int num_equipos = equipos.size();
 
@@ -51,77 +51,48 @@ public class Admin_Pack {
 
 
     static public void main(String[] args) {
-        //Carga y sort de partidas y jornadas
-        Carga.Cargar_Equipos();
-        Partido[][] partidos = GenerarEnfrentamientos();
+        //Generacion_Calendario();
 
-        int anio_init = 2023;
-        int mes_init = 5;
-        int dia_init = 16;
-        LocalDate[] fechas = Fechas_Jornadas(anio_init, mes_init, dia_init);
-
-        Map<LocalDate,Partido[]> Jornadas = new HashMap<>();
-
-        for (int i = 0; i < fechas.length; i++) {
-            Jornadas.put(fechas[i],partidos[i]);
-        }
-
-
-        System.out.println("\n fechas array");
-        for (int j = 0; j <fechas.length ; j++) {
-            System.out.println("fecha "+j+": "+fechas[j]);
-        }
-
-       /* System.out.println("ENFRENTRAMIENTOS");
-        for (Equipo equipo:Main.getEquipos()) {
-            int index_2 = 1;
-            System.out.println(equipo.getNombre());
-            for (Partido[] ronda: partidos) {
-                System.out.println("RONDA Aleatoria "+ index_2 +": ");
-                for (Partido partido: ronda) {
-                    if (partido.getEquipoL() == equipo || partido.getEquipoV() == equipo)System.out.println(partido);
-                }
-                index_2++;
-            }
-            System.out.println("\n\n");
-        }*/
-
-
-
-        /*List<Equipo> equipos_sorted = Sort_Equipos();
-        int largo = Main.getEquipos().size();
-        System.out.println("Tamaño sorted : " + equipos_sorted.size());
-        System.out.println("Tamaño real : " + largo);
-        for (Equipo equipo : equipos_sorted) {
-            System.out.println(equipo.getNombre());
-        }*/
 
     }
 
+    public static Map<LocalDate, Partido[]> Generacion_Calendario(LocalDate fecha_inicio) {
+        //Carga y sort de partidas y jornadas
+        Carga.Cargar_Equipos();
+        Partido[][] partidos = GenerarEnfrentamientos();
+        int anio_init = fecha_inicio.getYear();
+        int mes_init = fecha_inicio.getMonthValue();
+        int dia_init = fecha_inicio.getDayOfMonth();
+        LocalDate[] fechas = Fechas_Jornadas(anio_init, mes_init, dia_init);
+
+        Map<LocalDate, Partido[]> jornadas = new TreeMap<>();
+        for (int i = 0; i < fechas.length; i++) {
+            jornadas.put(fechas[i], partidos[i]);
+        }
+        return jornadas;
+    }
+
     private static LocalDate[] Fechas_Jornadas(int anio_init, int mes_init, int dia_init) {
-        int rondas = Main.getEquipos().size();
+        int rondas = Main.getEquipos().size() - 1;
         LocalDate fecha_init = LocalDate.of(anio_init, mes_init, dia_init);
         LocalDate fecha_fin = fecha_init.plusWeeks(rondas);
 
 
         LocalDate[] fechas = new LocalDate[rondas];
-        fechas[0]= fecha_init;
+        fechas[0] = fecha_init;
         LocalDate fecha;
         Random random = new Random();
-        System.out.println("Fecha inicial: " + fecha_init);
         for (int i = 1; i < rondas; i++) {
             fecha = fecha_init.plusWeeks(i);
-            //System.out.println("Fecha " + i + ": " + fecha);
             int index = random.nextInt(0, 10);
             if (index > 5 && fecha.isBefore(fecha_fin)) {
                 int dia = fecha.getDayOfMonth();
                 dia = dia + dias_Correr(fecha.getDayOfWeek());
                 if (dia < 31) {
                     fecha = LocalDate.of(fecha.getYear(), fecha.getMonthValue(), dia);
-                    //System.out.println("Fecha Modificada: " + fecha + "\n");
                 }
             }
-            fechas[i]=fecha;
+            fechas[i] = fecha;
         }
         return fechas;
     }

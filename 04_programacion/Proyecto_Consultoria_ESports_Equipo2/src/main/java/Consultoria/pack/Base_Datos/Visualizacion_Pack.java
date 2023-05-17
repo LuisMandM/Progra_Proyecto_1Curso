@@ -1,8 +1,12 @@
 package Consultoria.pack.Base_Datos;
 
+import Consultoria.pack.Clases_Base.Equipo;
+import Consultoria.pack.Main;
+
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Visualizacion_Pack {
 
@@ -111,4 +115,18 @@ public class Visualizacion_Pack {
     }
 
 
+//    public static int[] OrdenarClasificacion(Map<Integer, Integer> lista) {
+//
+//        //mostar lista equipos
+//        for (Equipo verlista : Main.getEquipos()
+//        ) {
+//            System.out.println(verlista);
+//        }
+//        Map<Integer,Integer> orden_equi = new TreeMap<>();
+//
+//        //si la partida es ganada en el marcador * 3, peridda nada y empate + 1
+//        //ordenar mediante un tree map la clasificacion
+//        //
+//
+//    }
 }

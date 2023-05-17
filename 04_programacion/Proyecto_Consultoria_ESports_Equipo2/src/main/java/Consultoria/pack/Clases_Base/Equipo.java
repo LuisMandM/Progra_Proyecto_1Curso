@@ -58,12 +58,7 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Clases_Base.Equipo{" +
-                "id_equipo=" + id_equipo +
-                ", nombre='" + nombre + '\'' +
-                ", salario_total=" + salario_total +
-                ", duenyo=" + duenio +
-                '}';
+        return nombre ;
     }
 
 

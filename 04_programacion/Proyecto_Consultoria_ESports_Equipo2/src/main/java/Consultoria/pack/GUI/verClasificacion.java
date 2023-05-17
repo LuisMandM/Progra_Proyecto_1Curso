@@ -1,11 +1,13 @@
 package Consultoria.pack.GUI;
 
 import Consultoria.pack.Base_Datos.Carga;
+import Consultoria.pack.Clases_Base.Equipo;
 import Consultoria.pack.Main;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class verClasificacion {
     private JPanel panel1;

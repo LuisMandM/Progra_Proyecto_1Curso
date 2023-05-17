@@ -64,6 +64,8 @@ public class Visualizacion_Pack {
             resultados[0] = cs.getInt(2);
             resultados[1] = cs.getInt(3);
             resultados[2] = cs.getInt(4);
+
+            Gestor_BD.desconectar(connection);
         } catch (SQLException e) {
             System.out.println(e.getCause().getMessage());
 

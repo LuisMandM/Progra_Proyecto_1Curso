@@ -12,10 +12,11 @@ public class Result_Partido {
     private JLabel label1;
     private JTextArea textArea1;
     private JLabel label2;
-    private JTextArea textArea2;
     private JLabel label3;
-    private JTextArea textArea3;
     private JButton button1;
+    private JComboBox comboBox1;
+    private JSpinner spinner1;
+    private JSpinner spinner2;
 
     private List<Partido> partidos;
 
@@ -33,7 +34,7 @@ public class Result_Partido {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Result_Partido");
+        JFrame frame = new JFrame("Resultado del partido");
         frame.setContentPane(new Result_Partido().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

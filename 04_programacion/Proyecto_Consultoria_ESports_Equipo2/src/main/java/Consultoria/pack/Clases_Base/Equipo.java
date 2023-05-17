@@ -61,16 +61,12 @@ public class Equipo {
         return nombre ;
     }
 
-
     //Utilities
-
-
 
     public int[] Estadisticas_globales(){
         return Visualizacion_Pack.Historial_Equipo(this.id_equipo);
     }public int[] Estadisticas_Temporada(int id_temporada){
         return Visualizacion_Pack.Historial_Equipo_Temporada(id_temporada,this.id_equipo);
     }
-
 
 }

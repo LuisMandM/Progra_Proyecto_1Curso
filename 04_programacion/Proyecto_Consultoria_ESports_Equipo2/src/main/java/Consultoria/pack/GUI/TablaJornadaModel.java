@@ -3,6 +3,7 @@ package Consultoria.pack.GUI;
 import Consultoria.pack.Clases_Base.Equipo;
 import Consultoria.pack.Clases_Base.Jornada;
 import Consultoria.pack.Clases_Base.Partido;
+import Consultoria.pack.Main;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
@@ -11,20 +12,18 @@ public class TablaJornadaModel extends AbstractTableModel {
 
     private String[] columnasJornada = {"ID", "Fecha", "Equipo local", "Marcador local", "Marcador visitante", "Equipo visitante"};
 
-    private List<Jornada> jornada;
+    private Jornada jornada;
+    private List<Jornada> jornadas;
     private Equipo equipo;
     private Partido partido;
 
-    public TablaJornadaModel() {
-    }
-
-    public TablaJornadaModel(List<Jornada> jornada) {
-        this.jornada = jornada;
+    public TablaJornadaModel(List<Jornada> jornadas) {
+        this.jornadas = jornadas;
     }
 
     @Override
     public int getRowCount() {
-        return jornada.size();
+        return jornadas.size();
     }
 
     @Override
@@ -34,6 +33,9 @@ public class TablaJornadaModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+
+        jornada = jornadas.get(rowIndex);
+
         switch (columnIndex) {
             case 0:
                 return partido.getJornada().getId_jornada();

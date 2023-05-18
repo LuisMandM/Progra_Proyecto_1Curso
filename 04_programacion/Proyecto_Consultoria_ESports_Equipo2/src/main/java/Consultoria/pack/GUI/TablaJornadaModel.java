@@ -3,6 +3,7 @@ package Consultoria.pack.GUI;
 import Consultoria.pack.Clases_Base.Equipo;
 import Consultoria.pack.Clases_Base.Jornada;
 import Consultoria.pack.Clases_Base.Partido;
+import Consultoria.pack.Main;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;

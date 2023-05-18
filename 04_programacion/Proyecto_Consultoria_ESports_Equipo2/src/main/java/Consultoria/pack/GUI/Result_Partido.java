@@ -34,7 +34,7 @@ public class Result_Partido {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Result_Partido");
+        JFrame frame = new JFrame("Resultado del partido");
         frame.setContentPane(new Result_Partido().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

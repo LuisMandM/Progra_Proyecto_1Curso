@@ -2,6 +2,7 @@ package Consultoria.pack.GUI;
 
 import Consultoria.pack.Base_Datos.Carga;
 import Consultoria.pack.Clases_Base.Jornada;
+import Consultoria.pack.Clases_Base.Partido;
 import Consultoria.pack.Main;
 
 import javax.swing.*;
@@ -34,7 +35,8 @@ public class verJornada {
 
         table1 = new JTable();
         Carga.Cargar_Equipos();
-        table1.setModel(new TablaJornadaModel(Main.getJornadas()));
+        Carga.Cargar_Calendario();  
+        table1.setModel(new TablaJornadaModel(Main.getPartidos()));
         scrollpane1.setViewportView(table1);
         button1.addActionListener(new ActionListener() {
             @Override
@@ -45,7 +47,7 @@ public class verJornada {
                 } else {
                     numJor--;
                     Textfield1.setText(String.valueOf("Jornada " + numJor));
-                    table1.setModel(new TablaJornadaModel((List<Jornada>) Main.getJornadas()));
+                    table1.setModel(new TablaJornadaModel((List<Partido>) Main.getPartidos()));
                 }
             }
         });
@@ -58,7 +60,7 @@ public class verJornada {
                 } else {
                     numJor++;
                     Textfield1.setText(String.valueOf("Jornada " + numJor));
-                    table1.setModel(new TablaJornadaModel((List<Jornada>) Main.getJornadas()));
+                    table1.setModel(new TablaJornadaModel((List<Partido>) Main.getPartidos()));
                 }
             }
         });

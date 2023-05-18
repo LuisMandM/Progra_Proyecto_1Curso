@@ -101,9 +101,13 @@ public class Carga {
                             + jornada.getId_jornada());
 
                     while (result_Jorna.next()){
+                        Equipo equipo_local = buscarEquipo((result_Jorna.getInt("EQUIPO_LOCAL")));
+                        Equipo equipo_visitante = buscarEquipo((result_Jorna.getInt("EQUIPO_VISITANTE")));
+
+                        //System.out.println(equipo_local);
                         Partido partido = new Partido(result_Jorna.getInt("ID_PARTIDO"),result_Jorna.getInt("MARCADOR_LOCAL"),
-                                result_Jorna.getInt("MARCADOR_VISITANTE"),buscarEquipo(result_Jorna.getInt("EQUIPO_LOCAL")),
-                                buscarEquipo(result_Jorna.getInt("EQUIPO_VISITANTE")),jornada);
+                                result_Jorna.getInt("MARCADOR_VISITANTE"),equipo_local,
+                                equipo_visitante,jornada);
 
                         partidos.add(partido);
                     }

@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Carga {
@@ -82,25 +83,31 @@ public class Carga {
 
             while (resultCalendario.next()){
 
-                Calendario calen = new Calendario(resultCalendario.getInt("ID_TEMPORADA"), LocalDate.parse(resultCalendario.getString("FECHA_INICIO")),
-                        LocalDate.parse(resultCalendario.getString("FECHA_FIN")));
+                Calendario calen = new Calendario(resultCalendario.getInt("ID_TEMPORADA"), LocalDate.parse(resultCalendario.getDate("FECHA_INICIO").toString()),
+                        LocalDate.parse(resultCalendario.getDate("FECHA_FIN").toString()));
+
+                System.out.println(calen);
 
                 Statement statement_calen = connection.createStatement();
                 ResultSet result_Calen = statement_calen.executeQuery("SELECT * FROM JORNADA  WHERE ID_TEMPORADA =  "
                         + calen.getId_temporada());
 
                 while (result_Calen.next()){
-                    Jornada jornada = new Jornada(result_Calen.getInt("ID_JORNADA"),LocalDate.parse(result_Calen.getString("FECHA")),
+                    Jornada jornada = new Jornada(result_Calen.getInt("ID_JORNADA"),LocalDate.parse(result_Calen.getDate("FECHA").toString()),
                             calen);
-
+                    System.out.println(jornada);
                     Statement statement_jornada = connection.createStatement();
                     ResultSet result_Jorna = statement_jornada.executeQuery("SELECT * FROM Partido  WHERE JORNADA =  "
                             + jornada.getId_jornada());
 
                     while (result_Jorna.next()){
+                        Equipo equipo_local = buscarEquipo((result_Jorna.getInt("EQUIPO_LOCAL")));
+                        Equipo equipo_visitante = buscarEquipo((result_Jorna.getInt("EQUIPO_VISITANTE")));
+
+                        //System.out.println(equipo_local);
                         Partido partido = new Partido(result_Jorna.getInt("ID_PARTIDO"),result_Jorna.getInt("MARCADOR_LOCAL"),
-                                result_Jorna.getInt("MARCADOR_VISITATE"),buscarEquipo(result_Jorna.getInt("EQUIPO_LOCAL")),
-                                buscarEquipo(result_Jorna.getInt("EQUIPO_VISITANTE")),jornada);
+                                result_Jorna.getInt("MARCADOR_VISITANTE"),equipo_local,
+                                equipo_visitante,jornada);
 
                         partidos.add(partido);
                     }

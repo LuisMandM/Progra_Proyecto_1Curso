@@ -19,6 +19,14 @@ public class Partido {
         this.jornada = jornada;
     }
 
+    public Partido() {
+    }
+
+    public Partido(int marcador_local, int marcador_visitante) {
+        this.marcador_local = marcador_local;
+        this.marcador_visitante = marcador_visitante;
+    }
+
     public int getId_partido() {
         return id_partido;
     }
@@ -77,14 +85,7 @@ public class Partido {
 
     @Override
     public String toString() {
-        return "Clases_Base.Partido{" +
-                "id_partido=" + id_partido +
-                ", marcador_local=" + marcador_local +
-                ", marcador_visitante=" + marcador_visitante +
-                ", equipoL=" + equipoL +
-                ", equipoV=" + equipoV +
-                ", equipoGanador=" + equipoGanador +
-                ", jornada=" + jornada +
-                '}';
+        return equipoL.getNombre() +
+                " vs  " + equipoV.getNombre() ;
     }
 }

@@ -16,14 +16,15 @@ public class TablaJornadaModel extends AbstractTableModel {
     private List<Jornada> jornadas;
     private Equipo equipo;
     private Partido partido;
+    private List<Partido> partidos;
 
-    public TablaJornadaModel(List<Jornada> jornadas) {
-        this.jornadas = jornadas;
+    public TablaJornadaModel(List<Partido> partidos) {
+        this.partidos = partidos;
     }
 
     @Override
     public int getRowCount() {
-        return jornadas.size();
+        return partidos.size();
     }
 
     @Override
@@ -34,7 +35,7 @@ public class TablaJornadaModel extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
 
-        jornada = jornadas.get(rowIndex);
+        partido = partidos.get(rowIndex);
 
         switch (columnIndex) {
             case 0:

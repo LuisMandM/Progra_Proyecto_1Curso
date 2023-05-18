@@ -41,10 +41,10 @@ public abstract class Usuario {
 
     @Override
     public String toString() {
-        return "Clases_Base.Usuario{" +
-                "id_usuario=" + id_usuario +
-                ", contrasenya='" + contrasenya + '\'' +
-                ", usuario='" + usuario + '\'' +
-                '}';
+        return "\n********************Usuario********************\n" +
+                "-Id usuario: " + id_usuario + "\n" +
+                "-Contraseña: " + contrasenya + "\n" +
+                "-Usuario: " + usuario +
+                "\n*********************************************\n";
     }
 }

@@ -16,6 +16,14 @@ public class Jornada {
         this.calendario = calendario;
     }
 
+    public Jornada(LocalDate fecha, Calendario calendario) {
+        this.fecha = fecha;
+        this.calendario = calendario;
+    }
+
+    public Jornada() {
+    }
+
     public int getId_jornada() {
         return id_jornada;
     }

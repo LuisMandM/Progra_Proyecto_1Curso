@@ -14,6 +14,14 @@ public class Calendario {
         this.fecha_fin = fecha_fin;
     }
 
+    public Calendario(LocalDate fecha_inicio, LocalDate fecha_fin) {
+        this.fecha_inicio = fecha_inicio;
+        this.fecha_fin = fecha_fin;
+    }
+
+    public Calendario() {
+    }
+
     public int getId_temporada() {
         return id_temporada;
     }

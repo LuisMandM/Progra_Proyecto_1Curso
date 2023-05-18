@@ -1,9 +1,12 @@
 package Consultoria.pack.Base_Datos;
 
+import Consultoria.pack.Clases_Base.Calendario;
 import Consultoria.pack.Clases_Base.Equipo;
+import Consultoria.pack.Clases_Base.Jornada;
 import Consultoria.pack.Clases_Base.Partido;
 import Consultoria.pack.Main;
 
+import java.sql.*;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.*;
@@ -51,9 +54,65 @@ public class Admin_Pack {
 
 
     static public void main(String[] args) {
-        //Generacion_Calendario();
+        Carga.Cargar_Equipos();
+        Map<LocalDate, Partido[]> liga = Generacion_Calendario(LocalDate.of(2023, 5, 18));
+        System.out.println("Finalizado");
+    }
 
 
+    private static void Organizar_Temporada(Calendario calendario,Map<LocalDate,Partido[]> temporada){
+        List<Jornada> jornadas = new ArrayList<>();
+        List<Partido> partidos = new ArrayList<>();
+
+        for (Map.Entry<LocalDate, Partido[]> entry:temporada.entrySet()) {
+            Jornada actual = new Jornada(entry.getKey(),calendario);
+            for (Partido partido: entry.getValue()) {
+                partido.setJornada(actual);
+                partidos.add(partido);
+            }
+            jornadas.add(actual);
+        }
+    }
+
+
+    private static Calendario Cargar_Calendario(Calendario calen_init) throws SQLException {
+
+        Connection connection = Gestor_BD.Conectar_BD();
+        String fecha_init = calen_init.getFecha_inicio().getYear() + "/" + calen_init.getFecha_inicio().getMonthValue() + "/"
+                + calen_init.getFecha_inicio().getDayOfMonth();
+        String fecha_fin = calen_init.getFecha_inicio().getYear() + "/" + calen_init.getFecha_inicio().getMonthValue() + "/"
+                + calen_init.getFecha_inicio().getDayOfMonth();
+        PreparedStatement pst = connection.prepareStatement("INSERT INTO CALENDARIO(FECHA_INICIO, FECHA_FIN) VALUES(?,?)");
+        pst.setString(1, fecha_init);
+        pst.setString(2, fecha_fin);
+        int filas_modificadas = pst.executeUpdate();
+        if (filas_modificadas > 0) {
+            Gestor_BD.commit(connection);
+
+            PreparedStatement query = connection.prepareStatement("SELECT * FROM CALENDARIO WHERE FECHA_INICIO = ?" +
+                    " AND FECHA_FIN = ?");
+
+            query.setString(1,fecha_init);
+            query.setString(2,fecha_fin);
+
+            ResultSet set = query.executeQuery();
+            int id_calendario = set.getInt("ID_TEMPORADA");
+            calen_init.setId_temporada(id_calendario);
+        } else calen_init.setId_temporada(-1);
+
+        return calen_init;
+    }
+
+    private static Calendario Crear_Calendario(Map<LocalDate, Partido[]> temporada) {
+        Calendario liga = null;
+        if (temporada.size() > 0) {
+            List<LocalDate> fechas = new ArrayList<>();
+            temporada.forEach((fecha, partido) -> fechas.add(fecha));
+            LocalDate fecha_init = fechas.get(0);
+            LocalDate fecha_fin = fechas.get(fechas.size() - 1);
+            liga = new Calendario(fecha_init, fecha_fin);
+        }
+        return liga;
     }
 
     public static Map<LocalDate, Partido[]> Generacion_Calendario(LocalDate fecha_inicio) {

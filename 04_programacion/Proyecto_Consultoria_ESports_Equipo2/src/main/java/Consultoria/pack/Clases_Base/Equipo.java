@@ -2,6 +2,8 @@ package Consultoria.pack.Clases_Base;
 
 import Consultoria.pack.Base_Datos.Visualizacion_Pack;
 
+import java.util.Objects;
+
 public class Equipo {
 
     private int id_equipo;
@@ -27,6 +29,19 @@ public class Equipo {
 
     public String getNombre() {
         return nombre;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Equipo equipo = (Equipo) o;
+        return Objects.equals(nombre, equipo.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre);
     }
 
     public void setNombre(String nombre) {

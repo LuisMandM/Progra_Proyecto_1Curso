@@ -1,6 +1,6 @@
 package Consultoria.pack.Clases_Base;
 
-public abstract class Usuario {
+public class Usuario {
     private int id_usuario;
     private String contrasenya;
     private String usuario;
@@ -41,10 +41,10 @@ public abstract class Usuario {
 
     @Override
     public String toString() {
-        return "Clases_Base.Usuario{" +
-                "id_usuario=" + id_usuario +
-                ", contrasenya='" + contrasenya + '\'' +
-                ", usuario='" + usuario + '\'' +
-                '}';
+        return "\n********************Usuario********************\n" +
+                "-Id usuario: " + id_usuario + "\n" +
+                "-Contraseña: " + contrasenya + "\n" +
+                "-Usuario: " + usuario +
+                "\n*********************************************\n";
     }
 }

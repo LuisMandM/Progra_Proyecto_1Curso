@@ -49,11 +49,11 @@ public class HistorialJugador {
 
     @Override
     public String toString() {
-        return "Clases_Base.HistorialJugador{" +
-                "id_jugador=" + id_jugador +
-                ", id_equipo=" + id_equipo +
-                ", equipo=" + equipo +
-                ", jugador=" + jugador +
-                '}';
+        return "\n********************Historial Jugador********************\n" +
+                "-Id jugador: " + id_jugador + "\n" +
+                "-Id equipo: " + id_equipo + "\n" +
+                "-Equipo: " + equipo + "\n" +
+                "-Jugador: " + jugador +
+                "\n********************************************************\n";
     }
 }

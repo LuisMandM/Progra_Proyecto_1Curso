@@ -1,6 +1,7 @@
 package Consultoria.pack.Clases_Base;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 
 public class Calendario {
@@ -12,6 +13,14 @@ public class Calendario {
         this.id_temporada = id_temporada;
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
+    }
+
+    public Calendario(LocalDate fecha_inicio, LocalDate fecha_fin) {
+        this.fecha_inicio = fecha_inicio;
+        this.fecha_fin = fecha_fin;
+    }
+
+    public Calendario() {
     }
 
     public int getId_temporada() {
@@ -45,5 +54,18 @@ public class Calendario {
                 ", fecha_inicio=" + fecha_inicio +
                 ", fecha_fin=" + fecha_fin +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Calendario that = (Calendario) o;
+        return id_temporada == that.id_temporada && Objects.equals(fecha_inicio, that.fecha_inicio) && Objects.equals(fecha_fin, that.fecha_fin);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_temporada, fecha_inicio, fecha_fin);
     }
 }

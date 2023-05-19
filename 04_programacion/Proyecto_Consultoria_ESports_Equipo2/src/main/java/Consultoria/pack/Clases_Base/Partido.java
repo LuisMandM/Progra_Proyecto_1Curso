@@ -1,5 +1,7 @@
 package Consultoria.pack.Clases_Base;
 
+import java.util.Objects;
+
 public class Partido {
 
     private int id_partido;
@@ -87,5 +89,18 @@ public class Partido {
     public String toString() {
         return equipoL.getNombre() +
                 " vs  " + equipoV.getNombre() ;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Partido partido = (Partido) o;
+        return id_partido == partido.id_partido && Objects.equals(equipoL, partido.equipoL) && Objects.equals(equipoV, partido.equipoV) && Objects.equals(jornada, partido.jornada);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_partido, equipoL, equipoV, jornada);
     }
 }

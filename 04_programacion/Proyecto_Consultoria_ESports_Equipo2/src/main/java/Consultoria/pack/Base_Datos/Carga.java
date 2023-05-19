@@ -15,52 +15,53 @@ import java.util.List;
 public class Carga {
 
 
-    public static void Cargar_Equipos(){
+    public static void Cargar_Equipos() {
         Connection connection = Gestor_BD.Conectar_BD();
         List<Jugador> jugadores = new ArrayList<>();
         List<Duenio> duenios = new ArrayList<>();
         List<Equipo> equipos = new ArrayList<>();
-         try {
+        try {
 
             Statement statement = connection.createStatement();
             ResultSet resultDuenios = statement.executeQuery("SELECT * FROM DUEÑO");
 
-            while (resultDuenios.next()){
+            while (resultDuenios.next()) {
 
-                Duenio actual = new Duenio(resultDuenios.getInt("ID_DUEÑO"),resultDuenios.getString("NOMBRE"),
-                        resultDuenios.getString("USUARIO"),resultDuenios.getString("CONTRASEÑA"));
+                Duenio actual = new Duenio(resultDuenios.getInt("ID_DUEÑO"), resultDuenios.getString("NOMBRE"),
+                        resultDuenios.getString("USUARIO"), resultDuenios.getString("CONTRASEÑA"));
 
                 Statement statement_equi = connection.createStatement();
                 ResultSet result_Equi = statement_equi.executeQuery("SELECT * FROM EQUIPO WHERE ID_DUENIO = "
                         + actual.getId_usuario());
 
-                while (result_Equi.next()){
-                    Equipo equipo = new Equipo(result_Equi.getInt("ID_EQUIPO"),result_Equi.getString("NOMBRE"),
-                            result_Equi.getInt("SALARIO_TOTAL"),actual);
+                while (result_Equi.next()) {
+                    Equipo equipo = new Equipo(result_Equi.getInt("ID_EQUIPO"), result_Equi.getString("NOMBRE"),
+                            result_Equi.getInt("SALARIO_TOTAL"), actual);
 
                     Statement statement_player = connection.createStatement();
                     ResultSet result_Play = statement_player.executeQuery("SELECT * FROM JUGADOR NATURAL JOIN JUGADOR_EQUIPO T WHERE T.ID_EQUIPO = "
                             + equipo.getId_equipo());
                     int indice = 0;
 
-                    while (result_Play.next() && indice<6){
-                        Jugador player = new Jugador(result_Play.getInt("ID_JUGADOR"),result_Play.getString("NOMBRE"),
-                                result_Play.getString("NICKNAME"),result_Play.getInt("SUELDO"),equipo);
-                        equipo.addPlayer(player,indice);
+                    while (result_Play.next() && indice < 6) {
+                        Jugador player = new Jugador(result_Play.getInt("ID_JUGADOR"), result_Play.getString("NOMBRE"),
+                                result_Play.getString("NICKNAME"), result_Play.getInt("SUELDO"), equipo);
+                        equipo.addPlayer(player, indice);
                         indice++;
-                        jugadores.add(player);
+                        if (!Main.getJugadores().contains(player)) jugadores.add(player);
                     }
-                    equipos.add(equipo);
+                    if (!Main.getEquipos().contains(equipo)) equipos.add(equipo);
                 }
-                duenios.add(actual);
+                if (!Main.getDuenios().contains(actual)) duenios.add(actual);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-         Main.setDuenios(duenios);
-         Main.setEquipos(equipos);
-         Main.setJugadores(jugadores);
+        Main.setDuenios(duenios);
+        Main.setEquipos(equipos);
+        Main.setJugadores(jugadores);
     }
+
     public static Equipo buscarEquipo(int idEquipo) {
         Equipo equipoBuscado = null;
         for (Equipo equipo : Main.getEquipos()) {
@@ -71,17 +72,18 @@ public class Carga {
         }
         return equipoBuscado;
     }
-    public static void Cargar_Calendario(){
+
+    public static void Cargar_Calendario() {
         Connection connection = Gestor_BD.Conectar_BD();
-            List<Calendario> calendarios = new ArrayList<>();
-            List<Jornada> jornadas = new ArrayList<>();
-            List<Partido> partidos = new ArrayList<>();
+        List<Calendario> calendarios = new ArrayList<>();
+        List<Jornada> jornadas = new ArrayList<>();
+        List<Partido> partidos = new ArrayList<>();
         try {
 
             Statement statement = connection.createStatement();
             ResultSet resultCalendario = statement.executeQuery("SELECT * FROM CALENDARIO");
 
-            while (resultCalendario.next()){
+            while (resultCalendario.next()) {
 
                 Calendario calen = new Calendario(resultCalendario.getInt("ID_TEMPORADA"), LocalDate.parse(resultCalendario.getDate("FECHA_INICIO").toString()),
                         LocalDate.parse(resultCalendario.getDate("FECHA_FIN").toString()));
@@ -92,28 +94,28 @@ public class Carga {
                 ResultSet result_Calen = statement_calen.executeQuery("SELECT * FROM JORNADA  WHERE ID_TEMPORADA =  "
                         + calen.getId_temporada());
 
-                while (result_Calen.next()){
-                    Jornada jornada = new Jornada(result_Calen.getInt("ID_JORNADA"),LocalDate.parse(result_Calen.getDate("FECHA").toString()),
+                while (result_Calen.next()) {
+                    Jornada jornada = new Jornada(result_Calen.getInt("ID_JORNADA"), LocalDate.parse(result_Calen.getDate("FECHA").toString()),
                             calen);
                     System.out.println(jornada);
                     Statement statement_jornada = connection.createStatement();
                     ResultSet result_Jorna = statement_jornada.executeQuery("SELECT * FROM Partido  WHERE JORNADA =  "
                             + jornada.getId_jornada());
 
-                    while (result_Jorna.next()){
+                    while (result_Jorna.next()) {
                         Equipo equipo_local = buscarEquipo((result_Jorna.getInt("EQUIPO_LOCAL")));
                         Equipo equipo_visitante = buscarEquipo((result_Jorna.getInt("EQUIPO_VISITANTE")));
 
                         //System.out.println(equipo_local);
-                        Partido partido = new Partido(result_Jorna.getInt("ID_PARTIDO"),result_Jorna.getInt("MARCADOR_LOCAL"),
-                                result_Jorna.getInt("MARCADOR_VISITANTE"),equipo_local,
-                                equipo_visitante,jornada);
+                        Partido partido = new Partido(result_Jorna.getInt("ID_PARTIDO"), result_Jorna.getInt("MARCADOR_LOCAL"),
+                                result_Jorna.getInt("MARCADOR_VISITANTE"), equipo_local,
+                                equipo_visitante, jornada);
 
-                        partidos.add(partido);
+                        if (!Main.getPartidos().contains(partido)) partidos.add(partido);
                     }
-                    jornadas.add(jornada);
+                    if (!Main.getJornadas().contains(jornada)) jornadas.add(jornada);
                 }
-                calendarios.add(calen);
+                if (!Main.getCalendarios().contains(calen)) calendarios.add(calen);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -1,5 +1,7 @@
 package Consultoria.pack.Clases_Base;
 
+import java.util.Objects;
+
 public class Duenio extends Usuario {
     private String nombre;
 
@@ -20,5 +22,20 @@ public class Duenio extends Usuario {
         return "Clases_Base.Duenyo{" +
                 "nombre='" + nombre + '\'' +
                 '}';
+    }
+
+    //equals and Hascode
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Duenio duenio = (Duenio) o;
+        return Objects.equals(nombre, duenio.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre);
     }
 }

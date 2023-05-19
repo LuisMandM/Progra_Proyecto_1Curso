@@ -8,18 +8,19 @@ import Consultoria.pack.Main;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class verJornada {
     private JPanel panel1;
     private JLabel label1;
     private JTable table1;
     private JScrollPane scrollpane1;
+    private JComboBox<LocalDate> comboBox1;
     private JButton button1;
     private JButton button2;
-    private JTextField Textfield1;
-
-    private int numJor = 1;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Jornadas");
@@ -31,37 +32,30 @@ public class verJornada {
 
     public verJornada() {
 
-        Textfield1.setText(String.valueOf("Jornada " + numJor));
-
         table1 = new JTable();
         Carga.Cargar_Equipos();
-        Carga.Cargar_Calendario();  
+        Carga.Cargar_Calendario();
+
+        for (Jornada jornada: Main.getJornadas()) {
+            comboBox1.addItem(jornada.getFecha());
+        }
+
         table1.setModel(new TablaJornadaModel(Main.getPartidos()));
         scrollpane1.setViewportView(table1);
-        button1.addActionListener(new ActionListener() {
+
+        comboBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (numJor <= 1) {
-                    numJor = 9;
-                    Textfield1.setText(String.valueOf("Jornada " + numJor));
-                } else {
-                    numJor--;
-                    Textfield1.setText(String.valueOf("Jornada " + numJor));
-                    table1.setModel(new TablaJornadaModel((List<Partido>) Main.getPartidos()));
+                LocalDate fecha = (LocalDate) comboBox1.getSelectedItem();
+                List<Partido> partidos = new ArrayList<>();
+
+                for (Partido partido1: Main.getPartidos()) {
+                    if (partido1.getJornada().getFecha() == fecha) {
+                        partidos.add(partido1);
+                    }
                 }
-            }
-        });
-        button2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (numJor >= 9) {
-                    numJor = 1;
-                    Textfield1.setText(String.valueOf("Jornada " + numJor));
-                } else {
-                    numJor++;
-                    Textfield1.setText(String.valueOf("Jornada " + numJor));
-                    table1.setModel(new TablaJornadaModel((List<Partido>) Main.getPartidos()));
-                }
+                table1.setModel(new TablaJornadaModel(partidos));
+                scrollpane1.setViewportView(table1);
             }
         });
     }

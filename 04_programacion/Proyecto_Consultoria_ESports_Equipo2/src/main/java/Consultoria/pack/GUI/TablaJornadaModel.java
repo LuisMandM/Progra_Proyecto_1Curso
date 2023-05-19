@@ -39,7 +39,7 @@ public class TablaJornadaModel extends AbstractTableModel {
 
         switch (columnIndex) {
             case 0:
-                return partido.getJornada().getId_jornada();
+                return partido.getId_partido();
             case 1:
                 return partido.getJornada().getFecha();
             case 2:

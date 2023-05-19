@@ -60,28 +60,74 @@ public class Admin_Pack {
     }
 
 
-    private static void Organizar_Temporada(Calendario calendario,Map<LocalDate,Partido[]> temporada){
+    private static void Organizar_Temporada(Calendario calendario, Map<LocalDate, Partido[]> temporada) throws SQLException {
         List<Jornada> jornadas = new ArrayList<>();
         List<Partido> partidos = new ArrayList<>();
 
-        for (Map.Entry<LocalDate, Partido[]> entry:temporada.entrySet()) {
-            Jornada actual = new Jornada(entry.getKey(),calendario);
-            for (Partido partido: entry.getValue()) {
-                partido.setJornada(actual);
-                partidos.add(partido);
+        for (Map.Entry<LocalDate, Partido[]> entry : temporada.entrySet()) {
+            Jornada actual = new Jornada(entry.getKey(), calendario);
+            actual = Cargar_Jornada(actual);
+            if (actual.getId_jornada() != -1) {
+                for (Partido partido : entry.getValue()) {
+                    partido.setJornada(actual);
+                    Cargar_Partido(partido);
+                    //partidos.add(partido);
+                }
+                jornadas.add(actual);
+            } else {
+                System.out.println("Error con la escritura en BD de Jornada");
             }
-            jornadas.add(actual);
         }
     }
 
+    private static void Cargar_Partido(Partido partido_init) throws SQLException {
+        Connection connection = Gestor_BD.Conectar_BD();
+        PreparedStatement pst = connection.prepareStatement("INSERT INTO PARTIDO(EQUIPO_LOCAL,EQUIPO_VISITANTE,JORNADA)" +
+                "VALUES(?,?,?)");
+        pst.setInt(1, partido_init.getEquipoL().getId_equipo());
+        pst.setInt(2, partido_init.getEquipoV().getId_equipo());
+        pst.setInt(3, partido_init.getJornada().getId_jornada());
+
+        int filas_modificadas = pst.executeUpdate();
+        if (filas_modificadas > 0) {
+            System.out.println("Ingreso exitoso de partido");
+            Gestor_BD.commit(connection);
+        } else System.out.println("ALGO HA IDO MAL ESCRIBIENDO PARTIDO");
+        Gestor_BD.desconectar(connection);
+    }
+
+
+    private static Jornada Cargar_Jornada(Jornada jornada_init) throws SQLException {
+        Connection connection = Gestor_BD.Conectar_BD();
+        String fecha = Convertir_fecha(jornada_init.getFecha());
+        PreparedStatement pst = connection.prepareStatement("INSERT INTO JORNADA(FECHA,ID_TEMPORADA) VALUES(?,?)");
+        pst.setString(1, fecha);
+        pst.setInt(2, jornada_init.getCalendario().getId_temporada());
+
+        int filas_modificadas = pst.executeUpdate();
+        if (filas_modificadas > 0) {
+            Gestor_BD.commit(connection);
+            System.out.println("ingreso exitoso jornada");
+
+            PreparedStatement query = connection.prepareStatement("SELECT * FROM JORNADA WHERE FECHA = ? " +
+                    "AND ID_TEMPORADA = ?");
+            query.setString(1, fecha);
+            query.setInt(2, jornada_init.getCalendario().getId_temporada());
+
+            ResultSet set = query.executeQuery();
+            int id_jornada = set.getInt("ID_JORNADA");
+            jornada_init.setId_jornada(id_jornada);
+
+        } else jornada_init.setId_jornada(-1);
+        Gestor_BD.desconectar(connection);
+        return jornada_init;
+    }
 
     private static Calendario Cargar_Calendario(Calendario calen_init) throws SQLException {
 
         Connection connection = Gestor_BD.Conectar_BD();
-        String fecha_init = calen_init.getFecha_inicio().getYear() + "/" + calen_init.getFecha_inicio().getMonthValue() + "/"
-                + calen_init.getFecha_inicio().getDayOfMonth();
-        String fecha_fin = calen_init.getFecha_inicio().getYear() + "/" + calen_init.getFecha_inicio().getMonthValue() + "/"
-                + calen_init.getFecha_inicio().getDayOfMonth();
+        String fecha_init = Convertir_fecha(calen_init.getFecha_inicio());
+        String fecha_fin = Convertir_fecha(calen_init.getFecha_fin());
         PreparedStatement pst = connection.prepareStatement("INSERT INTO CALENDARIO(FECHA_INICIO, FECHA_FIN) VALUES(?,?)");
         pst.setString(1, fecha_init);
         pst.setString(2, fecha_fin);
@@ -92,15 +138,21 @@ public class Admin_Pack {
             PreparedStatement query = connection.prepareStatement("SELECT * FROM CALENDARIO WHERE FECHA_INICIO = ?" +
                     " AND FECHA_FIN = ?");
 
-            query.setString(1,fecha_init);
-            query.setString(2,fecha_fin);
+            query.setString(1, fecha_init);
+            query.setString(2, fecha_fin);
 
             ResultSet set = query.executeQuery();
             int id_calendario = set.getInt("ID_TEMPORADA");
             calen_init.setId_temporada(id_calendario);
         } else calen_init.setId_temporada(-1);
 
+        Gestor_BD.desconectar(connection);
         return calen_init;
+    }
+
+    private static String Convertir_fecha(LocalDate fecha) {
+        return fecha.getYear() + "/" + fecha.getMonthValue() + "/"
+                + fecha.getDayOfMonth();
     }
 
     private static Calendario Crear_Calendario(Map<LocalDate, Partido[]> temporada) {

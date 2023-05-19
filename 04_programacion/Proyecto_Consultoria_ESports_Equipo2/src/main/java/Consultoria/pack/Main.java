@@ -2,15 +2,11 @@ package Consultoria.pack;
 
 import Consultoria.pack.Base_Datos.Carga;
 import Consultoria.pack.Clases_Base.*;
-import Consultoria.pack.Base_Datos.Gestor_BD;
-import Consultoria.pack.Base_Datos.*;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 import static Consultoria.pack.Base_Datos.Visualizacion_Pack.OrdenarClasificacion;
 
 public class Main {
@@ -26,16 +22,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        connection = Gestor_BD.Conectar_BD();
-        List<Jugador> jugadores = new ArrayList<>();
-        Carga.Cargar_Equipos();
-        Carga.Cargar_Calendario();
-        System.out.println("Prueba");
 //        connection = Gestor_BD.Conectar_BD();
 //        List<Jugador> jugadores = new ArrayList<>();
         Carga.Cargar_Equipos();
         OrdenarClasificacion();
-
     }
 
 

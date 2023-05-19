@@ -1,6 +1,6 @@
 package Consultoria.pack.Clases_Base;
 
-public abstract class Usuario {
+public class Usuario {
     private int id_usuario;
     private String contrasenya;
     private String usuario;

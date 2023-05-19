@@ -1,5 +1,7 @@
 package Consultoria.pack.Clases_Base;
 
+import java.util.Objects;
+
 public class Jugador {
 
     private int id_jugador;
@@ -65,5 +67,20 @@ public class Jugador {
                 ", sueldo=" + sueldo +
                 ", equipo=" + equipo +
                 '}';
+    }
+
+    //equals and HasCode
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Jugador jugador = (Jugador) o;
+        return id_jugador == jugador.id_jugador && Objects.equals(nombre, jugador.nombre) && Objects.equals(nickname, jugador.nickname);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_jugador, nombre, nickname);
     }
 }

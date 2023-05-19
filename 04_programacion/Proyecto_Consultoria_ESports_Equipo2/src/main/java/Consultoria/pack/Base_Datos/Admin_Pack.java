@@ -20,9 +20,15 @@ public class Admin_Pack {
     }
 
 
-
-
-
+    /**
+     * Metodo creado para el emparejamiento aleatorio de los equipos participantes en la temporada
+     * crea el numero de jornadas posibles según el numero de equipos, y dentro de cada ronda distribuye parejamente
+     * para que se hagan los enfrentamientos. El numero de jornadas esta determinado por numero_equipos-1 y el
+     * numero de partidos por ronda esta dado por numero_equipos/2. Esta función solo puede darse con una lista de equipos
+     * con tamaño par.
+     * @return Matriz de Partidos. Donde las filas son las Rondas y las columnas los emparejamientos.
+     * @autor Luis M.
+     */
     private static Partido[][] GenerarEnfrentamientos() {
         List<Equipo> equipos = Sort_Equipos();
         int num_equipos = equipos.size();
@@ -61,6 +67,15 @@ public class Admin_Pack {
         return rondas;
     }
 
+
+    /**
+     * Metodo encargado de realizar el envio a escritura de Jornadas y partidos creados, se hace la asociacion de las jornadas
+     * con la Temporada(Calendario) respectivo.
+     * @param calendario Objeto calendario recuperado de la base de datos.
+     * @param temporada Map<LocalDate, Partido[]>.
+     * @throws SQLException
+     * @autor Luis M.
+     */
     private static void Organizar_Temporada(Calendario calendario, Map<LocalDate, Partido[]> temporada) throws SQLException {
         List<Jornada> jornadas = new ArrayList<>();
         List<Partido> partidos = new ArrayList<>();
@@ -83,6 +98,13 @@ public class Admin_Pack {
 
     }
 
+
+    /**
+     * Metodo encargado de la escritura en base de datos de las partidas creadas.
+     * @param partido_init Objeto Partido unicamente con campos de Equipos participantes y su Jornada asociada.
+     * @throws SQLException
+     * @autor Luis M.
+     */
     private static void Cargar_Partido(Partido partido_init) throws SQLException {
         Connection connection = Gestor_BD.Conectar_BD();
         PreparedStatement pst = connection.prepareStatement("INSERT INTO PARTIDO(EQUIPO_LOCAL,EQUIPO_VISITANTE,JORNADA)" +
@@ -100,6 +122,14 @@ public class Admin_Pack {
     }
 
 
+    /**
+     * Metodo de Escritura y recuperacion automatica de un objeto jornada en la base de datos. Se hace una escritura y
+     * lectura automatica para retornar el objeto con un id_Jornada dado por defecto en la base de datos.
+     * @param jornada_init Objeto Jornada unicamente con fecha y con Calendario asociado
+     * @return se retorna el mismo objeto pasado como parametro pero con un ID_Jornada corrrespondiente en la base de datos.
+     * @throws SQLException
+     * @autor  Luis M.
+     */
     private static Jornada Cargar_Jornada(Jornada jornada_init) throws SQLException {
         Connection connection = Gestor_BD.Conectar_BD();
         String fecha = Convertir_fecha(jornada_init.getFecha());
@@ -129,6 +159,15 @@ public class Admin_Pack {
         return jornada_init;
     }
 
+
+    /**
+     * Metodo de Escritura y recuperacion automatica de un objeto Calendario en la base de datos. Se hace una escritura y
+     * lectura automatica para retornar el objeto con un id_temporada dado por defecto en la base de datos.
+     * @param calen_init Objeto Calendario unicamente con las fechas de Inicio y Fin
+     * @return Se retorna el mismo objeto dado como parametro pero con ID_TEMPORADA Correspondiente al de la base de datos.
+     * @throws SQLException
+     * @autor Luis M.
+     */
     private static Calendario Cargar_Calendario(Calendario calen_init) throws SQLException {
 
         Connection connection = Gestor_BD.Conectar_BD();
@@ -165,6 +204,12 @@ public class Admin_Pack {
         else return fecha.getDayOfMonth() + "/" + fecha.getMonthValue() + "/" + fecha.getYear();
     }
 
+    /**
+     * Metodo para la creacion de calendario, determina su fecha de inicio y fin basado en las fechas determinadas
+     * previamente para las jornadas.
+     * @param temporada Map<LocalDate, Partido[]> Donde se tienen las fechas de Jornada como Key y los encuentros de cada uno en un array.
+     * @return Objeto Calendario sin ID_temporada ya que es una creacion en local.
+     */
     private static Calendario Crear_Calendario(Map<LocalDate, Partido[]> temporada) {
         Calendario liga = null;
         if (temporada.size() > 0) {
@@ -177,7 +222,15 @@ public class Admin_Pack {
         return liga;
     }
 
-    public static Map<LocalDate, Partido[]> Generacion_Calendario(LocalDate fecha_inicio) {
+
+    /**
+     * Metodo encargado de crear un Map en donde se alojan los partidos determinados por el sistema y las fechas de las
+     * jornadas asociadas a estos.
+     * @param fecha_inicio Se pasa un LocalDate con la fecha deseada de inicio de la temporada.
+     * @return Map<LocalDate, Partido[]> Donde se tienen las fechas de Jornada como Key y los encuentros de cada uno en un array.
+     * @autor Luis M.
+     */
+    public static Map<LocalDate, Partido[]> Generacion_Calendario (LocalDate fecha_inicio) {
         //Carga y sort de partidas y jornadas
         //Carga.Cargar_Equipos();
         Partido[][] partidos = GenerarEnfrentamientos();

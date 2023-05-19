@@ -5,10 +5,10 @@ public class Jugador {
     private int id_jugador;
     private String nombre;
     private String nickname;
-    private int sueldo;
+    private double sueldo;
     private Equipo equipo;
 
-    public Jugador(int id_jugador, String nombre, String nickname, int sueldo, Equipo equipo) {
+    public Jugador(int id_jugador, String nombre, String nickname, double sueldo, Equipo equipo) {
         this.id_jugador = id_jugador;
         this.nombre = nombre;
         this.nickname = nickname;
@@ -40,11 +40,11 @@ public class Jugador {
         this.nickname = nickname;
     }
 
-    public int getSueldo() {
+    public double getSueldo() {
         return sueldo;
     }
 
-    public void setSueldo(int sueldo) {
+    public void setSueldo(double sueldo) {
         this.sueldo = sueldo;
     }
 

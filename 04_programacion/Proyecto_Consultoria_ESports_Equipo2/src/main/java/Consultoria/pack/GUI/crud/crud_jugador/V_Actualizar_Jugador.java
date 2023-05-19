@@ -1,11 +1,38 @@
 package Consultoria.pack.GUI.crud.crud_jugador;
 
+import Consultoria.pack.Clases_Base.Jugador;
+import Consultoria.pack.Main;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class V_Actualizar_Jugador {
 
     private JPanel panelActualizar;
-    private JTextField textFieldElegir_jugador;
-    private JComboBox comboBoxJugador;
-    private JButton buttonSeleccionar;
+    private JComboBox<Jugador> comboBoxActualiJugador;
+    private JButton seleccionarButton;
+    private JLabel labelEscoger;
+
+    public V_Actualizar_Jugador() {
+        for (Jugador jugador: Main.getJugadores()) {
+            comboBoxActualiJugador.addItem(jugador);
+        }
+        seleccionarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Jugador jugadorSelec = (Jugador) comboBoxActualiJugador.getSelectedItem();
+                //aun falta crear booleano
+                JFrame frame = new JFrame("V_CrearJugador");
+                frame.setContentPane(new V_CrearJugador(jugadorSelec).getPanel_CrearJugador());
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+    }
+    public JPanel getPanelActualizar() {
+        return panelActualizar;
+    }
+
 }

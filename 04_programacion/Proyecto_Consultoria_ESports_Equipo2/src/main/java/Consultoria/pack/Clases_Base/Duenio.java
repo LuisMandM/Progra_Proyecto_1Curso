@@ -17,8 +17,6 @@ public class Duenio extends Usuario {
     }
     @Override
     public String toString() {
-        return "Clases_Base.Duenyo{" +
-                "nombre='" + nombre + '\'' +
-                '}';
+        return nombre;
     }
 }

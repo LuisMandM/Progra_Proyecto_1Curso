@@ -1,6 +1,7 @@
 package Consultoria.pack.GUI;
 
 import Consultoria.pack.Base_Datos.Carga;
+import Consultoria.pack.Clases_Base.Calendario;
 import Consultoria.pack.Clases_Base.Jornada;
 import Consultoria.pack.Clases_Base.Partido;
 import Consultoria.pack.Main;
@@ -19,6 +20,9 @@ public class verJornada {
     private JTable table1;
     private JScrollPane scrollpane1;
     private JComboBox<LocalDate> comboBox1;
+    private JComboBox comboBox2;
+    private JLabel label2;
+    private JLabel label3;
     private JButton button1;
     private JButton button2;
 
@@ -40,6 +44,10 @@ public class verJornada {
             comboBox1.addItem(jornada.getFecha());
         }
 
+        for (Calendario calendario: Main.getCalendarios()) {
+            comboBox2.addItem(calendario.getFecha_inicio());
+        }
+
         table1.setModel(new TablaJornadaModel(Main.getPartidos()));
         scrollpane1.setViewportView(table1);
 
@@ -56,6 +64,20 @@ public class verJornada {
                 }
                 table1.setModel(new TablaJornadaModel(partidos));
                 scrollpane1.setViewportView(table1);
+            }
+        });
+        comboBox2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LocalDate fechaTemp = (LocalDate) comboBox2.getSelectedItem();
+                List<Calendario> calendarios = new ArrayList<>();
+
+                for (Calendario calendario: Main.getCalendarios()) {
+                    if (calendario.getFecha_inicio() == fechaTemp) {
+                        calendarios.add(calendario);
+                    }
+                }
+
             }
         });
     }

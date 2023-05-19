@@ -13,6 +13,15 @@ import java.util.*;
 
 public class Admin_Pack {
 
+    public static void Generar_Temporada(LocalDate fecha_inicio) throws SQLException {
+        Map<LocalDate, Partido[]> liga = Generacion_Calendario(fecha_inicio);
+        Calendario temporada = Cargar_Calendario(Crear_Calendario(liga));
+        Organizar_Temporada(temporada, liga);
+    }
+
+
+
+
 
     private static Partido[][] GenerarEnfrentamientos() {
         List<Equipo> equipos = Sort_Equipos();
@@ -52,14 +61,6 @@ public class Admin_Pack {
         return rondas;
     }
 
-
-    static public void main(String[] args) {
-        Carga.Cargar_Equipos();
-        Map<LocalDate, Partido[]> liga = Generacion_Calendario(LocalDate.of(2023, 5, 18));
-        System.out.println("Finalizado");
-    }
-
-
     private static void Organizar_Temporada(Calendario calendario, Map<LocalDate, Partido[]> temporada) throws SQLException {
         List<Jornada> jornadas = new ArrayList<>();
         List<Partido> partidos = new ArrayList<>();
@@ -78,6 +79,8 @@ public class Admin_Pack {
                 System.out.println("Error con la escritura en BD de Jornada");
             }
         }
+        Carga.Cargar_Calendario();
+
     }
 
     private static void Cargar_Partido(Partido partido_init) throws SQLException {
@@ -115,8 +118,11 @@ public class Admin_Pack {
             query.setInt(2, jornada_init.getCalendario().getId_temporada());
 
             ResultSet set = query.executeQuery();
-            int id_jornada = set.getInt("ID_JORNADA");
-            jornada_init.setId_jornada(id_jornada);
+
+            while (set.next()) {
+                int id_jornada = set.getInt("ID_JORNADA");
+                jornada_init.setId_jornada(id_jornada);
+            }
 
         } else jornada_init.setId_jornada(-1);
         Gestor_BD.desconectar(connection);
@@ -142,8 +148,10 @@ public class Admin_Pack {
             query.setString(2, fecha_fin);
 
             ResultSet set = query.executeQuery();
-            int id_calendario = set.getInt("ID_TEMPORADA");
-            calen_init.setId_temporada(id_calendario);
+            while (set.next()) {
+                int id_calendario = set.getInt("ID_TEMPORADA");
+                calen_init.setId_temporada(id_calendario);
+            }
         } else calen_init.setId_temporada(-1);
 
         Gestor_BD.desconectar(connection);
@@ -151,8 +159,10 @@ public class Admin_Pack {
     }
 
     private static String Convertir_fecha(LocalDate fecha) {
-        return fecha.getYear() + "/" + fecha.getMonthValue() + "/"
-                + fecha.getDayOfMonth();
+
+        if (fecha.getMonthValue() < 10)
+            return fecha.getDayOfMonth() + "/0" + fecha.getMonthValue() + "/" + fecha.getYear();
+        else return fecha.getDayOfMonth() + "/" + fecha.getMonthValue() + "/" + fecha.getYear();
     }
 
     private static Calendario Crear_Calendario(Map<LocalDate, Partido[]> temporada) {
@@ -169,7 +179,7 @@ public class Admin_Pack {
 
     public static Map<LocalDate, Partido[]> Generacion_Calendario(LocalDate fecha_inicio) {
         //Carga y sort de partidas y jornadas
-        Carga.Cargar_Equipos();
+        //Carga.Cargar_Equipos();
         Partido[][] partidos = GenerarEnfrentamientos();
         int anio_init = fecha_inicio.getYear();
         int mes_init = fecha_inicio.getMonthValue();

@@ -76,6 +76,7 @@ public class Equipo {
         return nombre ;
     }
 
+
     //Utilities
 
     public int[] Estadisticas_globales(){

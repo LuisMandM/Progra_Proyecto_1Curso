@@ -4,8 +4,7 @@ import Consultoria.pack.Clases_Base.Equipo;
 import Consultoria.pack.Main;
 
 import java.sql.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Visualizacion_Pack {
 
@@ -112,41 +111,65 @@ public class Visualizacion_Pack {
         return resultados;
 
     }
-
+//    @Override
+//
+///**
+// * Método con llamada a procedimiento "calcularPuntaje" de paquete "Visualización_Resultados" de la base de datos,
+// * busca retornar la puntuación de cada equipo ordenada de mayor a menor.
+// * @param equipos Lista con Número de Identificador de todos los equipos.
+// * @param puntaje llamada a la función calcularPuntaje que hace el cálculo según el resultado.
+// * @return Lista recorrida de todos los equipos con sus puntajes ordenados ascendentemente.
+// * @autor Maria.
+// */
 
     public static void OrdenarClasificacion() {
-        for (Equipo ver_equis : Main.getEquipos()
-        ) {
-            System.out.println(ver_equis);
+        List<Equipo> equipos = Main.getEquipos();
+
+        for (Equipo verlista_equi : equipos) {
+            System.out.println(verlista_equi);
         }
 
-
-        // Mostrar lista equipos
-        for (Equipo lista_equi : Main.getEquipos()
-        ) {
-            int idEquipo = lista_equi.getId_equipo();
-            int[] resultados = Historial_Equipo(idEquipo);
-            int partidosGanados = resultados[0];
-            int partidosPerdidos = resultados[1];
-            int partidosEmpatados = resultados[2];
-            int puntaje = calcularPuntaje(partidosGanados, partidosPerdidos, partidosEmpatados);
-
-
+        for (int i = 0; i < equipos.size() - 1; i++) {
+            for (int j = 0; j < equipos.size() - i - 1; j++) {
+                Equipo equipo1 = equipos.get(j);
+                Equipo equipo2 = equipos.get(j + 1);
+                int puntajeEquipo1 = calcularPuntaje(equipo1);
+                int puntajeEquipo2 = calcularPuntaje(equipo2);
+                if (puntajeEquipo1 < puntajeEquipo2) {
+                    equipos.set(j, equipo2);
+                    equipos.set(j + 1, equipo1);
+                }
+            }
         }
 
-
-        // Mostrar la clasificación ordenada de mayor a menor puntaje
         System.out.println("********************CLASIFICACIÓN********************");
-
+        for (Equipo equipo : equipos) {
+            int puntaje = calcularPuntaje(equipo);
+            System.out.println("-Id del equipo: " + equipo.getId_equipo() + "\n-Puntaje: " + puntaje);
+        }
         System.out.println("*****************************************************");
     }
 
 
-    public static int calcularPuntaje(int partidosGanados, int partidosPerdidos, int partidosEmpatados) {
+//    @Override
+//
+///**
+// * Método con llamada desde procedimiento "OrdenarClasificación" de paquete "Visualización_Resultados" de la base de datos,
+// * busca calcular la puntuación de cada equipo según el resultado.
+// * @param equipo Número de Identificador de todos los equipos.
+// * @return suma de los partidos ganados y empatados.
+// * @autor Maria.
+// */
+
+public static int calcularPuntaje(Equipo equipo) {
+        int idEquipo = equipo.getId_equipo();
+        int[] resultados = Historial_Equipo(idEquipo);
+        int partidosGanados = resultados[0];
+        int partidosPerdidos = resultados[1];
+        int partidosEmpatados = resultados[2];
 
         int puntajeGanados = partidosGanados * 3;
         int puntajeEmpate = partidosEmpatados + 1;
-
         return puntajeGanados + puntajeEmpate;
     }
 }

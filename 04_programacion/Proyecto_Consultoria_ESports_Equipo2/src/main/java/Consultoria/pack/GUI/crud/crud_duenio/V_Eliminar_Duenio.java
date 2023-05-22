@@ -1,6 +1,8 @@
 package Consultoria.pack.GUI.crud.crud_duenio;
 
+import Consultoria.pack.Base_Datos.Carga;
 import Consultoria.pack.Clases_Base.Duenio;
+import Consultoria.pack.Main;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +19,7 @@ public class V_Eliminar_Duenio {
 
     public V_Eliminar_Duenio() {
 
-        for (Duenio duenio : duenios) {
+        for (Duenio duenio : Main.getDuenios()) {
             comboBoxDuenio.addItem(duenio);
         }
         buttonEliminar.addActionListener(new ActionListener() {
@@ -32,11 +34,4 @@ public class V_Eliminar_Duenio {
         return panelEliminar_Duenio;
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("V_Eliminar_Duenio");
-        frame.setContentPane(new V_Eliminar_Duenio().panelEliminar_Duenio);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 }

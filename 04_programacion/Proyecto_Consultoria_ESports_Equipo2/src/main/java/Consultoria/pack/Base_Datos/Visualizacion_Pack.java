@@ -42,6 +42,7 @@ public class Visualizacion_Pack {
     /**
      * Metodo con llamada a procedimiento "Historial_Equipo" de paquete "Visualizacion_Resultados" de la base de datos,
      * busca retornar la cantidad de partidos ganados, perdidos y empatados en la historia del equipo.
+     *
      * @param id_equipo Numero de Identificador del equipo.
      * @return Array de tres posiciones con [0] = Partidas Ganados, [1] = Partidas Perdidos, [2] = Partidas empatadas.
      * @autor Luis M.
@@ -80,8 +81,9 @@ public class Visualizacion_Pack {
     /**
      * Metodo con llamada a procedimiento "Historial_Equipo" de paquete "Visualizacion_Resultados" de la base de datos,
      * busca retornar la cantidad de partidos ganados, perdidos y empatados en una temporada especifica.
+     *
      * @param id_temporada Numero de Identificador de la temporada que se desea filtrar.
-     * @param id_equipo Numero de Identificador del equipo.
+     * @param id_equipo    Numero de Identificador del equipo.
      * @return Array de tres posiciones con [0] = Partidas Ganados, [1] = Partidas Perdidos, [2] = Partidas empatadas.
      * @autor Luis M.
      */
@@ -111,23 +113,17 @@ public class Visualizacion_Pack {
         return resultados;
 
     }
-//    @Override
-//
-///**
-// * Método con llamada a procedimiento "calcularPuntaje" de paquete "Visualización_Resultados" de la base de datos,
-// * busca retornar la puntuación de cada equipo ordenada de mayor a menor.
-// * @param equipos Lista con Número de Identificador de todos los equipos.
-// * @param puntaje llamada a la función calcularPuntaje que hace el cálculo según el resultado.
-// * @return Lista recorrida de todos los equipos con sus puntajes ordenados ascendentemente.
-// * @autor Maria.
-// */
 
-    public static void OrdenarClasificacion() {
+
+    /**
+     * Método con llamada a procedimiento "calcularPuntaje" de paquete "Visualización_Resultados" de la base de datos,
+     * busca retornar la puntuación de cada equipo ordenada de mayor a menor.
+     * @return Lista recorrida de todos los equipos con sus puntajes ordenados ascendentemente.
+     * @autor Maria.
+     */
+
+    public static List<Equipo> OrdenarClasificacion() {
         List<Equipo> equipos = Main.getEquipos();
-
-        for (Equipo verlista_equi : equipos) {
-            System.out.println(verlista_equi);
-        }
 
         for (int i = 0; i < equipos.size() - 1; i++) {
             for (int j = 0; j < equipos.size() - i - 1; j++) {
@@ -142,17 +138,19 @@ public class Visualizacion_Pack {
             }
         }
 
-        System.out.println("********************CLASIFICACIÓN********************");
+        /*System.out.println("********************CLASIFICACIÓN********************");
         for (Equipo equipo : equipos) {
             int puntaje = calcularPuntaje(equipo);
             System.out.println("-Id del equipo: " + equipo.getId_equipo() + "\n-Puntaje: " + puntaje);
         }
-        System.out.println("*****************************************************");
+        System.out.println("*****************************************************");*/
+
+        return equipos;
+
+
     }
 
 
-//    @Override
-//
 ///**
 // * Método con llamada desde procedimiento "OrdenarClasificación" de paquete "Visualización_Resultados" de la base de datos,
 // * busca calcular la puntuación de cada equipo según el resultado.
@@ -161,7 +159,7 @@ public class Visualizacion_Pack {
 // * @autor Maria.
 // */
 
-public static int calcularPuntaje(Equipo equipo) {
+    public static int calcularPuntaje(Equipo equipo) {
         int idEquipo = equipo.getId_equipo();
         int[] resultados = Historial_Equipo(idEquipo);
         int partidosGanados = resultados[0];

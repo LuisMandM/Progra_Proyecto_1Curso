@@ -34,7 +34,7 @@ public class Main {
 
        /* System.out.println("********************CLASIFICACIÓN********************");
         for (Equipo equipo : equipos_p) {
-            int puntaje = Visualizacion_Pack.calcularPuntaje(equipo, );
+            int puntaje = Visualizacion_Pack.calcularPuntaje(equipo);
             System.out.println("-Id del equipo: " + equipo.getId_equipo() + "\n-Puntaje: " + puntaje);
         }
         System.out.println("*****************************************************");*/

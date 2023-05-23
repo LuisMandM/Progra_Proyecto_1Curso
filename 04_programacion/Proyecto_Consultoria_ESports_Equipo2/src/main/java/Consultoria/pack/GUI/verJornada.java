@@ -47,8 +47,7 @@ public class verJornada {
             comboBox1.addItem(calendario.getFecha_inicio());
         }
 
-        table1.setModel(new TablaJornadaModel(Main.getPartidos()));
-        scrollpane1.setViewportView(table1);
+        table1.setModel(new TablaJornadaModel());
 
         comboBox2.addActionListener(new ActionListener() {
             @Override

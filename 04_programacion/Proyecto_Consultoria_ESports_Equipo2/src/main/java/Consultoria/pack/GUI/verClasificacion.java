@@ -22,7 +22,6 @@ public class verClasificacion {
     private JComboBox comboBox1;
     private JComboBox comboBox2;
     private JLabel label2;
-    private JLabel label3;
     private JButton button1;
     private JButton button2;
     private JTextField Textfield1;
@@ -47,10 +46,6 @@ public class verClasificacion {
         Carga.Cargar_Equipos();
         Carga.Cargar_Calendario();
 
-        for (Jornada jornada: Main.getJornadas()) {
-            comboBox2.addItem(jornada.getFecha());
-        }
-
         for (Calendario calendario: Main.getCalendarios()) {
             comboBox1.addItem(calendario.getFecha_inicio());
         }
@@ -63,27 +58,15 @@ public class verClasificacion {
             public void actionPerformed(ActionEvent e) {
                 LocalDate fechaTemp = (LocalDate) comboBox1.getSelectedItem();
                 List<Calendario> calendarios = new ArrayList<>();
+                int idTemporada = 0;
 
                 for (Calendario calendario: Main.getCalendarios()) {
                     if (calendario.getFecha_inicio() == fechaTemp) {
+                        idTemporada = calendario.getId_temporada();
                         calendarios.add(calendario);
                     }
                 }
-            }
-        });
-        comboBox2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                LocalDate fechaJor = (LocalDate) comboBox2.getSelectedItem();
-                List<Equipo> equipos = new ArrayList<>();
-                int[] estadisticas;
-
-                for (Equipo equipo: equipos) {
-                    estadisticas = equipo.Estadisticas_globales();
-                    Visualizacion_Pack.calcularPuntaje(estadisticas[0], estadisticas[1], estadisticas[2]);
-                }
-                Visualizacion_Pack.OrdenarClasificacion();
-                table1.setModel(new TablaClasificacionModel(equipos));
+                table1.setModel(new TablaClasificacionModel(Visualizacion_Pack.OrdenarClasificacion(idTemporada)));
                 scrollpane1.setViewportView(table1);
             }
         });

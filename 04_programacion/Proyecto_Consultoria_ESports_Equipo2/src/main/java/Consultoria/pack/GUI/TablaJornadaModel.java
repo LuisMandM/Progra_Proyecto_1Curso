@@ -22,6 +22,9 @@ public class TablaJornadaModel extends AbstractTableModel {
         this.partidos = partidos;
     }
 
+    public TablaJornadaModel() {
+    }
+
     @Override
     public int getRowCount() {
         return partidos.size();

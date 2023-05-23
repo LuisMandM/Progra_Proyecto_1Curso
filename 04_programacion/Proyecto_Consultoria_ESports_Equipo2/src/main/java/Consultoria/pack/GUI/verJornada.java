@@ -12,15 +12,14 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class verJornada {
     private JPanel panel1;
     private JLabel label1;
     private JTable table1;
     private JScrollPane scrollpane1;
-    private JComboBox<LocalDate> comboBox1;
-    private JComboBox comboBox2;
+    private JComboBox<LocalDate> comboBox2;
+    private JComboBox comboBox1;
     private JLabel label2;
     private JLabel label3;
     private JButton button1;
@@ -41,20 +40,20 @@ public class verJornada {
         Carga.Cargar_Calendario();
 
         for (Jornada jornada: Main.getJornadas()) {
-            comboBox1.addItem(jornada.getFecha());
+            comboBox2.addItem(jornada.getFecha());
         }
 
         for (Calendario calendario: Main.getCalendarios()) {
-            comboBox2.addItem(calendario.getFecha_inicio());
+            comboBox1.addItem(calendario.getFecha_inicio());
         }
 
         table1.setModel(new TablaJornadaModel(Main.getPartidos()));
         scrollpane1.setViewportView(table1);
 
-        comboBox1.addActionListener(new ActionListener() {
+        comboBox2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LocalDate fecha = (LocalDate) comboBox1.getSelectedItem();
+                LocalDate fecha = (LocalDate) comboBox2.getSelectedItem();
                 List<Partido> partidos = new ArrayList<>();
 
                 for (Partido partido1: Main.getPartidos()) {
@@ -66,10 +65,10 @@ public class verJornada {
                 scrollpane1.setViewportView(table1);
             }
         });
-        comboBox2.addActionListener(new ActionListener() {
+        comboBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LocalDate fechaTemp = (LocalDate) comboBox2.getSelectedItem();
+                LocalDate fechaTemp = (LocalDate) comboBox1.getSelectedItem();
                 List<Calendario> calendarios = new ArrayList<>();
 
                 for (Calendario calendario: Main.getCalendarios()) {
@@ -77,7 +76,6 @@ public class verJornada {
                         calendarios.add(calendario);
                     }
                 }
-
             }
         });
     }

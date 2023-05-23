@@ -19,6 +19,25 @@ public class Admin_Pack {
         Organizar_Temporada(temporada, liga);
     }
 
+    public static void Registrar_Resultado(Partido partido_ref) {
+        try {
+            Connection connection = Gestor_BD.Conectar_BD();
+            CallableStatement cs = connection.prepareCall("{call Acciones_Administrador.actualizar_resultado(?,?,?)}");
+
+            cs.setInt(1, partido_ref.getId_partido());
+            cs.setInt(2, partido_ref.getMarcador_local());
+            cs.setInt(3, partido_ref.getMarcador_visitante());
+
+            cs.execute();
+
+            Gestor_BD.desconectar(connection);
+        } catch (SQLException e) {
+            System.out.println(e.getCause().getMessage());
+        }
+    }
+
+
+
 
     /**
      * Metodo creado para el emparejamiento aleatorio de los equipos participantes en la temporada

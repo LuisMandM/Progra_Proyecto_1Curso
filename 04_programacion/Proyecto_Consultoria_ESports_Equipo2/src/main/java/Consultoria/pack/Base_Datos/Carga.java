@@ -97,7 +97,7 @@ public class Carga {
                 while (result_Calen.next()) {
                     Jornada jornada = new Jornada(result_Calen.getInt("ID_JORNADA"), LocalDate.parse(result_Calen.getDate("FECHA").toString()),
                             calen);
-                    System.out.println(jornada);
+                    //System.out.println(jornada);
                     Statement statement_jornada = connection.createStatement();
                     ResultSet result_Jorna = statement_jornada.executeQuery("SELECT * FROM Partido  WHERE JORNADA =  "
                             + jornada.getId_jornada());

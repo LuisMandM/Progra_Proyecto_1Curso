@@ -30,12 +30,15 @@ public class Main {
         List<Jugador> jugadores = new ArrayList<>();
         Carga.Cargar_Equipos();
         Carga.Cargar_Calendario();
-        System.out.println("Prueba");
-//        connection = Gestor_BD.Conectar_BD();
-//        List<Jugador> jugadores = new ArrayList<>();
-        Carga.Cargar_Equipos();
-        OrdenarClasificacion();
+        List<Equipo> equipos_p = Visualizacion_Pack.OrdenarClasificacion();
 
+        System.out.println("********************CLASIFICACIÓN********************");
+        for (Equipo equipo : equipos_p) {
+            int puntaje = Visualizacion_Pack.calcularPuntaje(equipo);
+            System.out.println("-Id del equipo: " + equipo.getId_equipo() + "\n-Puntaje: " + puntaje);
+        }
+        System.out.println("*****************************************************");
+        System.out.println("Prueba");
     }
 
 

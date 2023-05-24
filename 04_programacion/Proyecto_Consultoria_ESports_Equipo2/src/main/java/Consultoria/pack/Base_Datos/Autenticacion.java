@@ -9,61 +9,64 @@ import java.sql.Types;
 public class Autenticacion {
 
 
+    /**
+     * Metodo que se encarga de conectarse a la base de datos y enviar el usuario y una version hexadecimal de la contraseña
+     * ingresada para vvalidar y autenticar al usuario, dependiendo la respuesta que devuelva se sabe si se debe abrir
+     * las ventanas de administrador, usuario o Dueño.
+     * @param usuario String con el usuario
+     * @param password String con el password
+     * @return entero procedente de la comparacion de la respuesta con base de datos (10: Administrador; 20: Dueño;
+     * 30: Usuario normal; 900: Error de conexion a la base de datos;-800: Usuario no encontrado;-900:Contraseña incorrecta)
+     */
     public static int Autorizacion(String usuario, String password) {
         int view = 0;
         String passHex = String.format("%x", new BigInteger(1, password.getBytes())).toUpperCase();
         int answer;
         boolean found = false;
 
-        for (int i = 0; i < 3; i++) {
-            if (!found) {
-                switch (i) {
-                    case (0):
-                        answer = Autenticar_Admin(usuario, passHex);
-                        if (answer != 0) {
-                            switch (answer) {
-                                case -1 -> view = -900;
-                                case 10 -> {
-                                    view = 10;
-                                    found = true;
-                                }
-                                case -404 -> view = -800;
-                            }
-                        } else view = 900;
-
-
-                    case (1):
-                        answer = Autenticar_Duenio(usuario, passHex);
-                        if (answer != 0) {
-                            switch (answer) {
-                                case -1 -> view = -900;
-                                case 20 -> {
-                                    view = 20;
-                                    found = true;
-                                }
-                                case -404 -> view = -800;
-                            }
-                        } else view = 900;
-
-
-                    case (2):
-                        answer = Autenticar_User(usuario, passHex);
-                        if (answer != 0) {
-                            switch (answer) {
-                                case -1 -> view = -900;
-                                case 30 -> {
-                                    view = 30;
-                                    found = true;
-                                }
-                                case -404 -> view = -800;
-                            }
-                        } else
-                            view = 900;
+        answer = Autenticar_Admin(usuario, passHex);
+        if (answer != 0) {
+            switch (answer) {
+                case -1 -> {
+                    view = -900;
+                    found = true;
                 }
-            }else break;
+                case 10 -> {
+                    view = 10;
+                    found = true;
+                }
+                case -404 -> view = -800;
+            }
+        } else view = 900;
+
+        if (!found && view != 900) {
+            answer = Autenticar_Duenio(usuario, passHex);
+            if (answer != 0) {
+                switch (answer) {
+                    case -1 -> {
+                        view = -900;
+                        found = true;
+                    }
+                    case 20 -> {
+                        view = 20;
+                        found = true;
+                    }
+                    case -404 -> view = -800;
+                }
+            } else view = 900;
+        } else if (!found) {
+            answer = Autenticar_User(usuario, passHex);
+            if (answer != 0) {
+                switch (answer) {
+                    case -1 -> view = -900;
+                    case 30 -> {
+                        view = 30;
+                        found = true;
+                    }
+                    case -404 -> view = -800;
+                }
+            }
         }
-
-
         return view;
 
     }

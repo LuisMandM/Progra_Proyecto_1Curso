@@ -122,15 +122,15 @@ public class Visualizacion_Pack {
      * @autor Maria.
      */
 
-    public static List<Equipo> OrdenarClasificacion() {
+    public static List<Equipo> OrdenarClasificacion(int idTemporada) {
         List<Equipo> equipos = Main.getEquipos();
 
         for (int i = 0; i < equipos.size() - 1; i++) {
             for (int j = 0; j < equipos.size() - i - 1; j++) {
                 Equipo equipo1 = equipos.get(j);
                 Equipo equipo2 = equipos.get(j + 1);
-                int puntajeEquipo1 = calcularPuntaje(equipo1);
-                int puntajeEquipo2 = calcularPuntaje(equipo2);
+                int puntajeEquipo1 = calcularPuntaje(equipo1,idTemporada);
+                int puntajeEquipo2 = calcularPuntaje(equipo2,idTemporada);
                 if (puntajeEquipo1 < puntajeEquipo2) {
                     equipos.set(j, equipo2);
                     equipos.set(j + 1, equipo1);
@@ -159,9 +159,9 @@ public class Visualizacion_Pack {
 // * @autor Maria.
 // */
 
-    public static int calcularPuntaje(Equipo equipo) {
+    public static int calcularPuntaje(Equipo equipo, int idTemporada) {
         int idEquipo = equipo.getId_equipo();
-        int[] resultados = Historial_Equipo(idEquipo);
+        int[] resultados = equipo.Estadisticas_Temporada(idTemporada);
         int partidosGanados = resultados[0];
         int partidosPerdidos = resultados[1];
         int partidosEmpatados = resultados[2];

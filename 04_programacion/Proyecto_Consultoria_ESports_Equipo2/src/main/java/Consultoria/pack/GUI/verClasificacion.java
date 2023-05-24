@@ -1,12 +1,17 @@
 package Consultoria.pack.GUI;
 
 import Consultoria.pack.Base_Datos.Carga;
+import Consultoria.pack.Base_Datos.Visualizacion_Pack;
+import Consultoria.pack.Clases_Base.Calendario;
 import Consultoria.pack.Clases_Base.Equipo;
+import Consultoria.pack.Clases_Base.Jornada;
 import Consultoria.pack.Main;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class verClasificacion {
@@ -14,6 +19,9 @@ public class verClasificacion {
     private JLabel label1;
     private JTable table1;
     private JScrollPane scrollpane1;
+    private JComboBox comboBox1;
+    private JComboBox comboBox2;
+    private JLabel label2;
     private JButton button1;
     private JButton button2;
     private JTextField Textfield1;
@@ -36,58 +44,30 @@ public class verClasificacion {
 
         table1 = new JTable();
         Carga.Cargar_Equipos();
+        Carga.Cargar_Calendario();
+
+        for (Calendario calendario: Main.getCalendarios()) {
+            comboBox1.addItem(calendario.getFecha_inicio());
+        }
+
         table1.setModel(new TablaClasificacionModel(Main.getEquipos()));
         scrollpane1.setViewportView(table1);
 
-        Textfield2.setText("Temporada " + numTemp);
-        Textfield1.setText("Jornada " + numJor);
+        comboBox1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LocalDate fechaTemp = (LocalDate) comboBox1.getSelectedItem();
+                List<Calendario> calendarios = new ArrayList<>();
+                int idTemporada = 0;
 
-        button2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (numJor >= 9) {
-                    numJor = 1;
-                    Textfield1.setText(String.valueOf("Jornada " + numJor));
-                } else {
-                    numJor++;
-                    Textfield1.setText(String.valueOf("Jornada " + numJor));
+                for (Calendario calendario: Main.getCalendarios()) {
+                    if (calendario.getFecha_inicio() == fechaTemp) {
+                        idTemporada = calendario.getId_temporada();
+                        calendarios.add(calendario);
+                    }
                 }
-            }
-        });
-        button1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (numJor <= 1) {
-                    numJor = 9;
-                    Textfield1.setText(String.valueOf("Jornada " + numJor));
-                } else {
-                    numJor--;
-                    Textfield1.setText(String.valueOf("Jornada " + numJor));
-                }
-            }
-        });
-        button3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (numTemp <= 1) {
-                    numTemp = 9;
-                    Textfield2.setText(String.valueOf("Temporada " + numTemp));
-                } else {
-                    numTemp--;
-                    Textfield2.setText(String.valueOf("Temporada " + numTemp));
-                }
-            }
-        });
-        button4.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (numTemp >= 9) {
-                    numTemp = 1;
-                    Textfield2.setText(String.valueOf("Temporada " + numTemp));
-                } else {
-                    numTemp++;
-                    Textfield2.setText(String.valueOf("Temporada " + numTemp));
-                }
+                table1.setModel(new TablaClasificacionModel(Visualizacion_Pack.OrdenarClasificacion(idTemporada)));
+                scrollpane1.setViewportView(table1);
             }
         });
     }

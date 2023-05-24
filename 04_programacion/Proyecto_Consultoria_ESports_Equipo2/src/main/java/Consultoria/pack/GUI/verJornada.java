@@ -1,6 +1,7 @@
 package Consultoria.pack.GUI;
 
 import Consultoria.pack.Base_Datos.Carga;
+import Consultoria.pack.Clases_Base.Calendario;
 import Consultoria.pack.Clases_Base.Jornada;
 import Consultoria.pack.Clases_Base.Partido;
 import Consultoria.pack.Main;
@@ -8,6 +9,8 @@ import Consultoria.pack.Main;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class verJornada {
@@ -15,11 +18,12 @@ public class verJornada {
     private JLabel label1;
     private JTable table1;
     private JScrollPane scrollpane1;
+    private JComboBox<LocalDate> comboBox2;
+    private JComboBox comboBox1;
+    private JLabel label2;
+    private JLabel label3;
     private JButton button1;
     private JButton button2;
-    private JTextField Textfield1;
-
-    private int numJor = 1;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Jornadas");
@@ -31,36 +35,45 @@ public class verJornada {
 
     public verJornada() {
 
-        Textfield1.setText(String.valueOf("Jornada " + numJor));
-
         table1 = new JTable();
         Carga.Cargar_Equipos();
-        Carga.Cargar_Calendario();  
-        table1.setModel(new TablaJornadaModel(Main.getPartidos()));
-        scrollpane1.setViewportView(table1);
-        button1.addActionListener(new ActionListener() {
+        Carga.Cargar_Calendario();
+
+        for (Jornada jornada: Main.getJornadas()) {
+            comboBox2.addItem(jornada.getFecha());
+        }
+
+        for (Calendario calendario: Main.getCalendarios()) {
+            comboBox1.addItem(calendario.getFecha_inicio());
+        }
+
+        table1.setModel(new TablaJornadaModel());
+
+        comboBox2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (numJor <= 1) {
-                    numJor = 9;
-                    Textfield1.setText(String.valueOf("Jornada " + numJor));
-                } else {
-                    numJor--;
-                    Textfield1.setText(String.valueOf("Jornada " + numJor));
-                    table1.setModel(new TablaJornadaModel((List<Partido>) Main.getPartidos()));
+                LocalDate fecha = (LocalDate) comboBox2.getSelectedItem();
+                List<Partido> partidos = new ArrayList<>();
+
+                for (Partido partido1: Main.getPartidos()) {
+                    if (partido1.getJornada().getFecha() == fecha) {
+                        partidos.add(partido1);
+                    }
                 }
+                table1.setModel(new TablaJornadaModel(partidos));
+                scrollpane1.setViewportView(table1);
             }
         });
-        button2.addActionListener(new ActionListener() {
+        comboBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (numJor >= 9) {
-                    numJor = 1;
-                    Textfield1.setText(String.valueOf("Jornada " + numJor));
-                } else {
-                    numJor++;
-                    Textfield1.setText(String.valueOf("Jornada " + numJor));
-                    table1.setModel(new TablaJornadaModel((List<Partido>) Main.getPartidos()));
+                LocalDate fechaTemp = (LocalDate) comboBox1.getSelectedItem();
+                List<Calendario> calendarios = new ArrayList<>();
+
+                for (Calendario calendario: Main.getCalendarios()) {
+                    if (calendario.getFecha_inicio() == fechaTemp) {
+                        calendarios.add(calendario);
+                    }
                 }
             }
         });

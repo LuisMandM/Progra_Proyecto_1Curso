@@ -60,13 +60,8 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return "Clases_Base.Jugador{" +
-                "id_jugador=" + id_jugador +
-                ", nombre='" + nombre + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", sueldo=" + sueldo +
-                ", equipo=" + equipo +
-                '}';
+        return
+                id_jugador + "  " + nombre + "  " + nickname;
     }
 
     //equals and HasCode

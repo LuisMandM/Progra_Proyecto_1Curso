@@ -30,17 +30,20 @@ public class V_Login {
                     break;
 
                 case 10:
-                    //Aqui va el llamado al menu de Admin;
+                    JOptionPane.showMessageDialog(null, "Se abre ventana inicio ADMIN",
+                            "V_ADMIN", JOptionPane.INFORMATION_MESSAGE);
                    frame.setVisible(false);
                     break;
 
                 case 20:
-                    //Aqui va el llamado a menu de Duenio;
+                    JOptionPane.showMessageDialog(null, "Se abre ventana inicio DUEÑO",
+                            "V_DUENIO", JOptionPane.INFORMATION_MESSAGE);
                     frame.setVisible(false);
                     break;
 
                 case 30:
-                    //Aqui va el llamado a menu Usuario;
+                    JOptionPane.showMessageDialog(null, "Se abre ventana inicio CLIENTE",
+                            "V_CLIENTE", JOptionPane.INFORMATION_MESSAGE);
                     frame.setVisible(false);
                     break;
 

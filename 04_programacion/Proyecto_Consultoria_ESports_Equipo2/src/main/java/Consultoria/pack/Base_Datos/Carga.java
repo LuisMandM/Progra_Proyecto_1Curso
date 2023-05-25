@@ -40,7 +40,7 @@ public class Carga {
 
                     Statement statement_player = connection.createStatement();
                     ResultSet result_Play = statement_player.executeQuery("SELECT * FROM JUGADOR NATURAL JOIN JUGADOR_EQUIPO T WHERE T.ID_EQUIPO = "
-                            + equipo.getId_equipo());
+                            + equipo.getId_equipo() + "AND T.FECHA_FIN IS NULL");
                     int indice = 0;
 
                     while (result_Play.next() && indice < 6) {
@@ -123,5 +123,29 @@ public class Carga {
         Main.setCalendarios(calendarios);
         Main.setJornadas(jornadas);
         Main.setPartidos(partidos);
+    }
+
+    public static void Cargar_Jugadores_Libres(){
+        List<Jugador> free_Players = new ArrayList<>();
+
+        try {
+            Connection connection = Gestor_BD.Conectar_BD();
+            Statement st = connection.createStatement();
+
+            ResultSet result_Play = st.executeQuery("SELECT * FROM JUGADORES_DISPONIBLES");
+
+            while (result_Play.next()){
+                Jugador player = new Jugador(result_Play.getInt("ID_JUGADOR"), result_Play.getString("NOMBRE"),
+                        result_Play.getString("NICKNAME"), result_Play.getInt("SUELDO"));
+
+                free_Players.add(player);
+            }
+
+            if (free_Players.size()>0) Main.setFree_players(free_Players);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 }

@@ -29,6 +29,8 @@ public class Main {
     private static List<Partido> partidos = new ArrayList<>();
     private static List<Usuario> usuarios = new ArrayList<>();
 
+    private static List<Jugador> free_players = new ArrayList<>();
+
 
     public static void main(String[] args) {
 
@@ -103,5 +105,13 @@ public class Main {
 
     public static void setPartidos(List<Partido> partidos) {
         Main.partidos = partidos;
+    }
+
+    public static List<Jugador> getFree_players() {
+        return free_players;
+    }
+
+    public static void setFree_players(List<Jugador> free_players) {
+        Main.free_players = free_players;
     }
 }

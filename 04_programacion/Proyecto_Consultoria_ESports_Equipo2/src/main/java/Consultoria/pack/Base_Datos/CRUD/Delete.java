@@ -1,11 +1,9 @@
 package Consultoria.pack.Base_Datos.CRUD;
 
-import Consultoria.pack.Base_Datos.Admin_Pack;
 import Consultoria.pack.Base_Datos.Gestor_BD;
 import Consultoria.pack.Clases_Base.Administrador;
 import Consultoria.pack.Clases_Base.Duenio;
 import Consultoria.pack.Clases_Base.Usuario;
-import Consultoria.pack.GUI.Login.V_Login;
 
 import javax.swing.*;
 import java.sql.Connection;

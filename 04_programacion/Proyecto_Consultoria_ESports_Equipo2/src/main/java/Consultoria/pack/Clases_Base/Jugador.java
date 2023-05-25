@@ -10,6 +10,13 @@ public class Jugador {
     private double sueldo;
     private Equipo equipo;
 
+    public Jugador(String nombre, String nickname, double sueldo, Equipo equipo) {
+        this.nombre = nombre;
+        this.nickname = nickname;
+        this.sueldo = sueldo;
+        this.equipo = equipo;
+    }
+
     public Jugador(int id_jugador, String nombre, String nickname, double sueldo, Equipo equipo) {
         this.id_jugador = id_jugador;
         this.nombre = nombre;

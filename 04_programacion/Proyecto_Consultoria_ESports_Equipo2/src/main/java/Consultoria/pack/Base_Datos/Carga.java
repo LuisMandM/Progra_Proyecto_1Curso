@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Carga {
@@ -125,7 +124,7 @@ public class Carga {
         Main.setPartidos(partidos);
     }
 
-    public static void Cargar_Jugadores_Libres(){
+    public static void Cargar_Jugadores_Libres() {
         List<Jugador> free_Players = new ArrayList<>();
 
         try {
@@ -134,14 +133,36 @@ public class Carga {
 
             ResultSet result_Play = st.executeQuery("SELECT * FROM JUGADORES_DISPONIBLES");
 
-            while (result_Play.next()){
+            while (result_Play.next()) {
                 Jugador player = new Jugador(result_Play.getInt("ID_JUGADOR"), result_Play.getString("NOMBRE"),
                         result_Play.getString("NICKNAME"), result_Play.getInt("SUELDO"));
 
                 free_Players.add(player);
             }
 
-            if (free_Players.size()>0) Main.setFree_players(free_Players);
+            if (free_Players.size() > 0) Main.setFree_players(free_Players);
+
+            Gestor_BD.desconectar(connection);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void Cargar_Clientes() {
+        List<Usuario> users = new ArrayList<>();
+
+        try {
+            Connection connection = Gestor_BD.Conectar_BD();
+            Statement st = connection.createStatement();
+            ResultSet users_Set = st.executeQuery("SELECT * FROM CLIENTE");
+            while (users_Set.next()) {
+                Usuario actual = new Usuario(users_Set.getInt("ID_USUARIO"),
+                        users_Set.getString("CONTRASEÑA"), users_Set.getString("USUARIO"));
+                users.add(actual);
+            }
+
+            if (users.size() > 0) Main.setUsuarios(users);
+            Gestor_BD.desconectar(connection);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -6,6 +6,16 @@ contraseña varchar2(20) not null,
 usuario varchar2(50) not null
 );
 
+
+--tabla para guardar a los usuarios
+CREATE TABLE CLIENTE(
+    ID_USUARIO NUMBER(10)GENERATED AS IDENTITY (START WITH 1 
+    INCREMENT BY 1 MAXVALUE 9999999999 MINVALUE 0 NOCYCLE) 
+    CONSTRAINT ID_USER_PK PRIMARY KEY,
+    CONTRASEÑA varchar2(20) not null,
+    USUARIO varchar2(50) not null
+);
+
 create table Dueño(
 id_dueño NUMBER(10) GENERATED AS IDENTITY (START WITH 1 
     INCREMENT BY 1 MAXVALUE 9999999999 MINVALUE 0 NOCYCLE) 

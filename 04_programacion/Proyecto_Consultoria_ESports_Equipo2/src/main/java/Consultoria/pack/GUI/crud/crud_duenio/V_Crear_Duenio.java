@@ -19,27 +19,48 @@ public class V_Crear_Duenio {
     private JButton buttonGuardar;
     private JPasswordField passwordField1;
     private JLabel labelID;
-    private boolean insert = false;
-    Duenio duenio;
-    public V_Crear_Duenio(Duenio duenio) {
-    this.duenio=duenio;
-    }
+    private Duenio duenio;
+    private boolean actualizar = false;
+
     public V_Crear_Duenio() {
+
+    }
+
+    public V_Crear_Duenio(Duenio duenio) {
+        this.duenio = duenio;
+        this.actualizar = true;
+
+        textFieldID.setText(String.valueOf(duenio.getId_usuario()));
+        textFieldNombre.setText(duenio.getNombre());
+        textFieldUsuario.setText(duenio.getUsuario());
+        passwordField1.setText(duenio.getContrasenya());
+        gest_Duenio();
+
         buttonGuardar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = Integer.parseInt(textFieldID.getText());
-                String nombre = textFieldNombre.getText();
-                String usuario = textFieldUsuario.getText();
-                String contraseña = Arrays.toString(passwordField1.getPassword());
-                Duenio duenio = new Duenio(id,nombre,usuario,contraseña);
-                Main.getDuenios().add(duenio);
-                textFieldID.setText("");
-                textFieldNombre.setText("");
-                textFieldUsuario.setText("");
-                passwordField1.setText("");
+                gest_Duenio();
             }
         });
+    }
+    private void gest_Duenio() {
+        if (!actualizar) {
+            int id = Integer.parseInt(textFieldID.getText());
+            String nombre = textFieldNombre.getText();
+            String usuario = textFieldUsuario.getText();
+            String contrasenya = Arrays.toString(passwordField1.getPassword());
+            Duenio duenio = new Duenio(id, nombre, usuario, contrasenya);
+            Main.getDuenios().add(duenio);
+            textFieldID.setText("");
+            textFieldNombre.setText("");
+            textFieldUsuario.setText("");
+            passwordField1.setText("");
+        } else {
+            textFieldID.setText(String.valueOf(duenio.getId_usuario()));
+            textFieldNombre.setText(duenio.getNombre());
+            textFieldUsuario.setText(duenio.getUsuario());
+            passwordField1.setText(duenio.getContrasenya());
+        }
     }
     public JPanel getPanelCrear_duenio() {
         return panelCrear_duenio;

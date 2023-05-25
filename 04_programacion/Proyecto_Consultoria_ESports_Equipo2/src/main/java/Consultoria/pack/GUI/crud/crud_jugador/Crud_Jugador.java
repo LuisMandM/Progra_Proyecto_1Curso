@@ -15,6 +15,7 @@ public Crud_Jugador() {
     crearButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+            Carga.Cargar_Equipos();
             JFrame frame = new JFrame("V_CrearJugador");
             frame.setContentPane(new V_CrearJugador().getPanel_CrearJugador());
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,6 +26,7 @@ public Crud_Jugador() {
     actualizarButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+            Carga.Cargar_Equipos();
             JFrame frame = new JFrame("V_Actualizar_Jugador");
             frame.setContentPane(new V_Actualizar_Jugador().getPanelActualizar());
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,13 +37,15 @@ public Crud_Jugador() {
     eliminarButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Carga.Cargar_Equipos();
             JFrame frame = new JFrame("V_Eliminar_Jugador");
-            frame.setContentPane(new V_Eliminar_Jugador().getPanelActualizar_Jugador());
+            frame.setContentPane(new V_Eliminar_Jugador().getPanelEliminar_Jugador());
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
         }
     });
 }
+    public JPanel getPanelCrudJugador() {
+        return panelCrudJugador;
+    }
 }

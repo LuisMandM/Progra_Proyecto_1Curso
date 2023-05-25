@@ -4,7 +4,11 @@ import Consultoria.pack.Base_Datos.Carga;
 import Consultoria.pack.Clases_Base.*;
 import Consultoria.pack.Base_Datos.Gestor_BD;
 import Consultoria.pack.Base_Datos.*;
+import Consultoria.pack.GUI.Login.V_Login;
+import Consultoria.pack.GUI.crud.crud_duenio.Crud_Duenio;
 
+import javax.swing.*;
+import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,24 +27,37 @@ public class Main {
     private static List<Calendario> calendarios = new ArrayList<>();
     private static List<Jornada> jornadas = new ArrayList<>();
     private static List<Partido> partidos = new ArrayList<>();
+    private static List<Usuario> usuarios = new ArrayList<>();
+
+    private static List<Jugador> free_players = new ArrayList<>();
+
 
     public static void main(String[] args) {
 
-        connection = Gestor_BD.Conectar_BD();
-        List<Jugador> jugadores = new ArrayList<>();
-        Carga.Cargar_Equipos();
-        Carga.Cargar_Calendario();
-        //List<Equipo> equipos_p = Visualizacion_Pack.OrdenarClasificacion();
-
-       /* System.out.println("********************CLASIFICACIÓN********************");
-        for (Equipo equipo : equipos_p) {
-            int puntaje = Visualizacion_Pack.calcularPuntaje(equipo);
-            System.out.println("-Id del equipo: " + equipo.getId_equipo() + "\n-Puntaje: " + puntaje);
-        }
-        System.out.println("*****************************************************");*/
+        JFrame frame = new JFrame("Login");
+        frame.setContentPane(new V_Login(frame).getPanel());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
         System.out.println("Prueba");
     }
 
+    public static Connection getConnection() {
+        return connection;
+    }
+
+    public static void setConnection(Connection connection) {
+        Main.connection = connection;
+    }
+
+    public static List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public static void setUsuarios(List<Usuario> usuarios) {
+        Main.usuarios = usuarios;
+    }
 
     public static List<Equipo> getEquipos() {
         return equipos;
@@ -88,5 +105,13 @@ public class Main {
 
     public static void setPartidos(List<Partido> partidos) {
         Main.partidos = partidos;
+    }
+
+    public static List<Jugador> getFree_players() {
+        return free_players;
+    }
+
+    public static void setFree_players(List<Jugador> free_players) {
+        Main.free_players = free_players;
     }
 }

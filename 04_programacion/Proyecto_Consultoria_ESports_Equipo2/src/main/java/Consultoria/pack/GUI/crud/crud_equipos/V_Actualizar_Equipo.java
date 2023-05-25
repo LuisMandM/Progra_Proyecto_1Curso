@@ -13,6 +13,7 @@ public class V_Actualizar_Equipo {
     private JPanel panelActualizarEquipo;
     private JLabel labelEscogerEquipo;
     private JComboBox<Equipo> comboBox1;
+    private Equipo equiposelec;
 
     public V_Actualizar_Equipo() {
         for (Equipo equipo : Main.getEquipos()) {
@@ -21,10 +22,8 @@ public class V_Actualizar_Equipo {
         botonSeleccionar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Equipo equiposelec = (Equipo) comboBox1.getSelectedItem();
-                // falta crear metodo con booleano
-                Carga.Cargar_Equipos();
-                JFrame frame = new JFrame("V_Crear_Equipo");
+                equiposelec = (Equipo) comboBox1.getSelectedItem();
+                JFrame frame = new JFrame("Actualizar_Equipo");
                 frame.setContentPane(new V_Crear_Equipo(equiposelec).getPanelCrear_Equipo());
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();

@@ -1,6 +1,8 @@
 package Consultoria.pack.GUI.crud;
 
 import Consultoria.pack.GUI.crud.crud_duenio.Crud_Duenio;
+import Consultoria.pack.GUI.crud.crud_equipos.Crud_Equipos;
+import Consultoria.pack.GUI.crud.crud_jugador.Crud_Jugador;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,6 +22,26 @@ public class V_Admin {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Crud_Duenio");
                 frame.setContentPane(new Crud_Duenio().getPanelCrudDuenio());
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+        botonEquipo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("Crud_Equipos");
+                frame.setContentPane(new Crud_Equipos().getPanelCrudEquipos());
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+        botonJugador.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("Crud_Jugador");
+                frame.setContentPane(new Crud_Jugador().getPanelCrudJugador());
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);

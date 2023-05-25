@@ -13,6 +13,8 @@ public class V_Actualizar_Jugador {
     private JComboBox<Jugador> comboBoxActualiJugador;
     private JButton seleccionarButton;
     private JLabel labelEscoger;
+    private Jugador jugadorselec;
+    private final boolean actualizar = false;
 
     public V_Actualizar_Jugador() {
         for (Jugador jugador: Main.getJugadores()) {
@@ -21,18 +23,16 @@ public class V_Actualizar_Jugador {
         seleccionarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Jugador jugadorSelec = (Jugador) comboBoxActualiJugador.getSelectedItem();
-                //aun falta crear booleano
-                JFrame frame = new JFrame("V_CrearJugador");
-                frame.setContentPane(new V_CrearJugador(jugadorSelec).getPanel_CrearJugador());
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.pack();
-                frame.setVisible(true);
+                    Jugador jugadorSelec = (Jugador) comboBoxActualiJugador.getSelectedItem();
+                    JFrame frame = new JFrame("Actualizar_Jugador");
+                    frame.setContentPane(new V_CrearJugador(jugadorSelec).getPanel_CrearJugador());
+                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame.pack();
+                    frame.setVisible(true);
             }
         });
     }
     public JPanel getPanelActualizar() {
         return panelActualizar;
     }
-
 }

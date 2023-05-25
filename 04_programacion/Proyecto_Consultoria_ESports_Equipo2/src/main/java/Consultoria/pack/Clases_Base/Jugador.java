@@ -18,6 +18,16 @@ public class Jugador {
         this.equipo = equipo;
     }
 
+    public Jugador(int id_jugador, String nombre, String nickname, double sueldo) {
+        this.id_jugador = id_jugador;
+        this.nombre = nombre;
+        this.nickname = nickname;
+        this.sueldo = sueldo;
+    }
+
+    public Jugador() {
+    }
+
     public int getId_jugador() {
         return id_jugador;
     }

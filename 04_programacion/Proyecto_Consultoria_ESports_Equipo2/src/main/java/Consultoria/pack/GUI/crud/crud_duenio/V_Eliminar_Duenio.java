@@ -14,8 +14,6 @@ public class V_Eliminar_Duenio {
     private JPanel panelEliminar_Duenio;
     private JComboBox<Duenio> comboBoxDuenio;
     private JButton buttonEliminar;
-    List<Duenio> duenios;
-
 
     public V_Eliminar_Duenio() {
 
@@ -26,7 +24,7 @@ public class V_Eliminar_Duenio {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Duenio duenioselec = (Duenio) comboBoxDuenio.getSelectedItem();
-                duenios.remove(duenioselec);
+                Main.getDuenios().remove(duenioselec);
             }
         });
     }

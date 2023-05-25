@@ -20,15 +20,14 @@ public class confeccionarEquipo {
     private JList list2;
     private JLabel label1;
     private JLabel label2;
-    private JLabel label3;
-    private JTextArea textArea1;
-    private JTextArea textArea2;
     private JTextArea textArea3;
     private JTextArea textArea4;
     private JTextField textField1;
     private JTextField textField2;
     private JTextField textField3;
     private JTextField textField4;
+    private JPasswordField passwordField1;
+    private JTextField textField5;
     private JLabel label4;
 
     List<Jugador> jugadores = new ArrayList<>();
@@ -44,6 +43,7 @@ public class confeccionarEquipo {
     public confeccionarEquipo() {
         Carga.Cargar_Equipos();
         actualizarListaJugadores();
+        actualizarListaEquipo();
 
         list1.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -67,5 +67,14 @@ public class confeccionarEquipo {
             modelo.addElement(jugador);
         }
         list1.setModel(modelo);
+    }
+
+    private void actualizarListaEquipo() {
+        DefaultListModel<Jugador> modeloEquipo = new DefaultListModel<>();
+
+        for (Jugador jugador: Main.getJugadores()) {
+            modeloEquipo.addElement(jugador);
+        }
+        list2.setModel(modeloEquipo);
     }
 }

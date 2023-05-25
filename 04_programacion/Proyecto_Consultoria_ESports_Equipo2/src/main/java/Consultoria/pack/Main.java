@@ -27,6 +27,8 @@ public class Main {
     private static List<Calendario> calendarios = new ArrayList<>();
     private static List<Jornada> jornadas = new ArrayList<>();
     private static List<Partido> partidos = new ArrayList<>();
+    private static List<Usuario> usuarios = new ArrayList<>();
+
 
     public static void main(String[] args) {
 
@@ -39,6 +41,21 @@ public class Main {
         System.out.println("Prueba");
     }
 
+    public static Connection getConnection() {
+        return connection;
+    }
+
+    public static void setConnection(Connection connection) {
+        Main.connection = connection;
+    }
+
+    public static List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public static void setUsuarios(List<Usuario> usuarios) {
+        Main.usuarios = usuarios;
+    }
 
     public static List<Equipo> getEquipos() {
         return equipos;

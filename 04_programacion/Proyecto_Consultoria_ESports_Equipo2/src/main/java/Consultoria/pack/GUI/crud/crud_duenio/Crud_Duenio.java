@@ -17,6 +17,7 @@ public class Crud_Duenio {
         CrearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Carga.Cargar_Equipos();
                 JFrame frame = new JFrame("V_Crear_Duenio");
                 frame.setContentPane(new V_Crear_Duenio().getPanelCrear_duenio());
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,5 +1,6 @@
 package Consultoria.pack.GUI.crud.crud_jugador;
 
+import Consultoria.pack.Clases_Base.Duenio;
 import Consultoria.pack.Clases_Base.Equipo;
 import Consultoria.pack.Clases_Base.Jugador;
 import Consultoria.pack.Main;
@@ -20,10 +21,20 @@ public class V_CrearJugador {
     private JTextField textFieldSueldo;
     private JButton buttonGuardar;
     private JComboBox<Equipo> comboBoxEquipos;
+    private boolean actualizar;
     private JLabel labelEquipo;
     Jugador jugador;
     public V_CrearJugador(Jugador jugador) {
         this.jugador = jugador;
+        this.actualizar = true;
+        for (Equipo equipo : Main.getEquipos()) {
+            comboBoxEquipos.addItem(equipo);
+        }
+        textFieldId_jugador.setText(String.valueOf(jugador.getId_jugador()));
+        textFieldNombre.setText(jugador.getNombre());
+        textFieldNickname.setText(jugador.getNickname());
+        textFieldSueldo.setText(String.valueOf(jugador.getSueldo()));
+        gest_Jugador();
     }
     public V_CrearJugador() {
 
@@ -47,7 +58,26 @@ public class V_CrearJugador {
             }
         });
     }
-
+    private void gest_Jugador() {
+        if (!actualizar) {
+            int id_jugador = Integer.parseInt(textFieldId_jugador.getText());
+            String nombre = textFieldNombre.getText();
+            String nickname = textFieldNickname.getText();
+            double sueldo = Double.parseDouble(textFieldSueldo.getText());
+            Equipo equiposelec = (Equipo) comboBoxEquipos.getSelectedItem();
+            Jugador jugador = new Jugador(id_jugador, nombre, nickname, sueldo, equiposelec);
+            Main.getJugadores().add(jugador);
+            textFieldId_jugador.setText("");
+            textFieldNombre.setText("");
+            textFieldNickname.setText("");
+            textFieldSueldo.setText("");
+        } else {
+            textFieldId_jugador.setText(String.valueOf(jugador.getId_jugador()));
+            textFieldNombre.setText(jugador.getNombre());
+            textFieldNickname.setText(jugador.getNickname());
+            textFieldSueldo.setText(String.valueOf(jugador.getSueldo()));
+        }
+    }
     public JPanel getPanel_CrearJugador() {
         return Panel_CrearJugador;
     }

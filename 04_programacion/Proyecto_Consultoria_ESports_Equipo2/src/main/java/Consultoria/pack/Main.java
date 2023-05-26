@@ -1,21 +1,12 @@
 package Consultoria.pack;
 
-import Consultoria.pack.Base_Datos.Carga;
 import Consultoria.pack.Clases_Base.*;
-import Consultoria.pack.Base_Datos.Gestor_BD;
-import Consultoria.pack.Base_Datos.*;
-import Consultoria.pack.GUI.Login.V_Login;
-import Consultoria.pack.GUI.crud.crud_duenio.Crud_Duenio;
+import Consultoria.pack.gui.Login.V_Login;
 
 import javax.swing.*;
-import java.math.BigInteger;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import static Consultoria.pack.Base_Datos.Visualizacion_Pack.OrdenarClasificacion;
 
 public class Main {
 

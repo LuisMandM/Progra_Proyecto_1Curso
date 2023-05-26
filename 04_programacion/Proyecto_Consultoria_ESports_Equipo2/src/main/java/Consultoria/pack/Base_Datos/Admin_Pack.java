@@ -216,7 +216,7 @@ public class Admin_Pack {
         return calen_init;
     }
 
-    private static String Convertir_fecha(LocalDate fecha) {
+    public static String Convertir_fecha(LocalDate fecha) {
 
         if (fecha.getMonthValue() < 10)
             return fecha.getDayOfMonth() + "/0" + fecha.getMonthValue() + "/" + fecha.getYear();

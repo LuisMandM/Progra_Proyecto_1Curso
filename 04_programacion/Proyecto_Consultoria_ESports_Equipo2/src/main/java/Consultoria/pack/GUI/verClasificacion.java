@@ -40,6 +40,10 @@ public class verClasificacion {
         frame.setVisible(true);
     }
 
+    public JPanel getPanel1() {
+        return panel1;
+    }
+
     public verClasificacion() {
 
         table1 = new JTable();

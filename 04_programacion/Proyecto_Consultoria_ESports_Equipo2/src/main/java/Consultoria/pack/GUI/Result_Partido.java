@@ -41,5 +41,7 @@ public class Result_Partido {
         frame.setVisible(true);
     }
 
-
+    public JPanel getPanel1() {
+        return panel1;
+    }
 }

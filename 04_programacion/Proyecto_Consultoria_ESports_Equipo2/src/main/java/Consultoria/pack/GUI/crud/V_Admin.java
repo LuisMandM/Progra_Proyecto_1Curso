@@ -55,4 +55,8 @@ public class V_Admin {
         frame.pack();
         frame.setVisible(true);
     }
+
+    public JPanel getV_Admin() {
+        return V_Admin;
+    }
 }

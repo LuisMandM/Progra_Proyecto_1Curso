@@ -116,4 +116,8 @@ public class confeccionarEquipo {
         }
         list1.setModel(modelo);
     }
+
+    public JPanel getPanel1() {
+        return panel1;
+    }
 }

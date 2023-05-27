@@ -1,5 +1,6 @@
 package Consultoria.pack.GUI.crud.crud_duenio;
 
+import Consultoria.pack.Base_Datos.CRUD.Delete;
 import Consultoria.pack.Base_Datos.Carga;
 import Consultoria.pack.Clases_Base.Duenio;
 import Consultoria.pack.Main;
@@ -22,6 +23,7 @@ public class V_Eliminar_Duenio {
         }
         buttonEliminar.addActionListener(e -> {
             Duenio duenioselec = (Duenio) comboBoxDuenio.getSelectedItem();
+            Delete.Delete_Duenio(duenioselec);
 
             //Main.getDuenios().remove(duenioselec);
         });

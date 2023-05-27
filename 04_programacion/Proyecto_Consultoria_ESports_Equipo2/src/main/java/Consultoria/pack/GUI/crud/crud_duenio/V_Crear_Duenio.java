@@ -1,6 +1,7 @@
 package Consultoria.pack.GUI.crud.crud_duenio;
 
 import Consultoria.pack.Base_Datos.CRUD.Create;
+import Consultoria.pack.Base_Datos.CRUD.Update;
 import Consultoria.pack.Clases_Base.Duenio;
 import Consultoria.pack.Main;
 
@@ -24,7 +25,7 @@ public class V_Crear_Duenio {
     private boolean actualizar = false;
 
     public V_Crear_Duenio() {
-
+        buttonGuardar.addActionListener(e -> gest_Duenio());
     }
 
     public V_Crear_Duenio(Duenio duenio) {
@@ -36,14 +37,7 @@ public class V_Crear_Duenio {
         textFieldUsuario.setText(duenio.getUsuario());
         passwordField1.setText(duenio.getContrasenya());
 
-        gest_Duenio();
-
-        buttonGuardar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                gest_Duenio();
-            }
-        });
+        buttonGuardar.addActionListener(e -> gest_Duenio());
     }
     private void gest_Duenio() {
         if (!actualizar) {
@@ -59,10 +53,15 @@ public class V_Crear_Duenio {
             textFieldUsuario.setText("");
             passwordField1.setText("");
         } else {
-            textFieldID.setText(String.valueOf(duenio.getId_usuario()));
-            textFieldNombre.setText(duenio.getNombre());
-            textFieldUsuario.setText(duenio.getUsuario());
-            passwordField1.setText(duenio.getContrasenya());
+            duenio.setNombre(textFieldNombre.getText());
+            duenio.setUsuario(textFieldUsuario.getText());
+
+            Update.Update_Duenio(duenio);
+
+            //textFieldID.setText(String.valueOf(duenio.getId_usuario()));
+            //textFieldNombre.setText(duenio.getNombre());
+            //textFieldUsuario.setText(duenio.getUsuario());
+            //passwordField1.setText(duenio.getContrasenya());
         }
     }
     public JPanel getPanelCrear_duenio() {

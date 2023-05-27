@@ -20,12 +20,10 @@ public class V_Eliminar_Duenio {
         for (Duenio duenio : Main.getDuenios()) {
             comboBoxDuenio.addItem(duenio);
         }
-        buttonEliminar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Duenio duenioselec = (Duenio) comboBoxDuenio.getSelectedItem();
-                Main.getDuenios().remove(duenioselec);
-            }
+        buttonEliminar.addActionListener(e -> {
+            Duenio duenioselec = (Duenio) comboBoxDuenio.getSelectedItem();
+
+            //Main.getDuenios().remove(duenioselec);
         });
     }
     public JPanel getPanelEliminar_Duenio() {

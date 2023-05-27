@@ -53,7 +53,7 @@ public class verJornada {
                 List<Partido> partidos = new ArrayList<>();
 
 
-                
+
                 for (Partido partido1: Main.getPartidos()) {
                     if (partido1.getJornada().getFecha() == fecha) {
                         partidos.add(partido1);

@@ -33,6 +33,10 @@ public class verJornada {
         frame.setVisible(true);
     }
 
+    public JPanel getPanel1() {
+        return panel1;
+    }
+
     public verJornada() {
 
         table1 = new JTable();

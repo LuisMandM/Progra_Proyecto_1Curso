@@ -10,6 +10,9 @@ public class Duenio extends Usuario {
         this.nombre = nombre;
     }
 
+    public Duenio(String nombre, String usuario, String contrasenya) {
+    }
+
     public String getNombre() {
         return nombre;
     }

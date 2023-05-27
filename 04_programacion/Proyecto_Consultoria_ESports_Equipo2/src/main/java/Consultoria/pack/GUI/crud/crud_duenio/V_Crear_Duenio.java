@@ -1,5 +1,6 @@
 package Consultoria.pack.GUI.crud.crud_duenio;
 
+import Consultoria.pack.Base_Datos.CRUD.Create;
 import Consultoria.pack.Clases_Base.Duenio;
 import Consultoria.pack.Main;
 
@@ -34,6 +35,7 @@ public class V_Crear_Duenio {
         textFieldNombre.setText(duenio.getNombre());
         textFieldUsuario.setText(duenio.getUsuario());
         passwordField1.setText(duenio.getContrasenya());
+
         gest_Duenio();
 
         buttonGuardar.addActionListener(new ActionListener() {
@@ -49,8 +51,9 @@ public class V_Crear_Duenio {
             String nombre = textFieldNombre.getText();
             String usuario = textFieldUsuario.getText();
             String contrasenya = Arrays.toString(passwordField1.getPassword());
-            Duenio duenio = new Duenio(id, nombre, usuario, contrasenya);
-            Main.getDuenios().add(duenio);
+            Duenio duenio = new Duenio(nombre, usuario, contrasenya);
+            //Main.getDuenios().add(duenio);
+            Create.Crear_duenio(duenio);
             textFieldID.setText("");
             textFieldNombre.setText("");
             textFieldUsuario.setText("");

@@ -55,6 +55,8 @@ public class verJornada {
                 LocalDate fecha = (LocalDate) comboBox2.getSelectedItem();
                 List<Partido> partidos = new ArrayList<>();
 
+
+                
                 for (Partido partido1: Main.getPartidos()) {
                     if (partido1.getJornada().getFecha() == fecha) {
                         partidos.add(partido1);

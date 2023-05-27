@@ -25,13 +25,6 @@ public class verJornada {
     private JButton button1;
     private JButton button2;
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Jornadas");
-        frame.setContentPane(new verJornada().panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 
     public JPanel getPanel1() {
         return panel1;

@@ -16,7 +16,7 @@ public Crud_Usuario() {
         public void actionPerformed(ActionEvent e) {
             JFrame frame = new JFrame("V_Crear_Usuario");
             frame.setContentPane(new V_Crear_Usuario().getPanelCrearUsuario());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
         }

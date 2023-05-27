@@ -23,7 +23,7 @@ public class V_Actualizar_Usuario {
             Usuario usuarioselec = (Usuario) comboBoxUsuario.getSelectedItem();
             JFrame frame = new JFrame("Actualizar_Jugador");
             frame.setContentPane(new V_CrearJugador().getPanel_CrearJugador());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
         }

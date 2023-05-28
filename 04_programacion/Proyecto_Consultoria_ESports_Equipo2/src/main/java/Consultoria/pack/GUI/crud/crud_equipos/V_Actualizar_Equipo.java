@@ -25,7 +25,7 @@ public class V_Actualizar_Equipo {
                 equiposelec = (Equipo) comboBox1.getSelectedItem();
                 JFrame frame = new JFrame("Actualizar_Equipo");
                 frame.setContentPane(new V_Crear_Equipo(equiposelec).getPanelCrear_Equipo());
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
             }

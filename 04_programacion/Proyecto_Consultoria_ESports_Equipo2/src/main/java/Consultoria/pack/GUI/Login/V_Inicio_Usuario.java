@@ -1,8 +1,8 @@
 package Consultoria.pack.GUI.Login;
 
-import Consultoria.pack.gui.Result_Partido;
-import Consultoria.pack.gui.VerClasificacion;
-import Consultoria.pack.gui.VerJornada;
+import Consultoria.pack.GUI.Result_Partido;
+import Consultoria.pack.GUI.verClasificacion;
+import Consultoria.pack.GUI.verJornada;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -24,7 +24,7 @@ public class V_Inicio_Usuario {
         public void actionPerformed(ActionEvent e) {
             JFrame frame = new JFrame("Resultado del partido");
             frame.setContentPane(new Result_Partido().getPanel1());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
         }
@@ -33,8 +33,8 @@ public class V_Inicio_Usuario {
         @Override
         public void actionPerformed(ActionEvent e) {
             JFrame frame = new JFrame("Jornadas");
-            frame.setContentPane(new VerJornada().getPanel1());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setContentPane(new verJornada().getPanel1());
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
         }
@@ -43,8 +43,8 @@ public class V_Inicio_Usuario {
         @Override
         public void actionPerformed(ActionEvent e) {
             JFrame frame = new JFrame("Clasificación");
-            frame.setContentPane(new VerClasificacion().getPanel1());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setContentPane(new verClasificacion().getPanel1());
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
         }

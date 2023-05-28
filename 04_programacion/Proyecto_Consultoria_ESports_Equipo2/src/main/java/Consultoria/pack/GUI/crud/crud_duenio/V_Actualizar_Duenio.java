@@ -26,7 +26,7 @@ public class V_Actualizar_Duenio {
                     duenioSeleccionado = (Duenio) comboBoxDuenio.getSelectedItem();
                     JFrame frame = new JFrame("Actualizar");
                     frame.setContentPane(new V_Crear_Duenio(duenioSeleccionado).getPanelCrear_duenio());
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     frame.pack();
                     frame.setVisible(true);
             }

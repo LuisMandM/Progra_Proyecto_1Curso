@@ -18,7 +18,7 @@ public Crud_Jugador() {
             Carga.Cargar_Equipos();
             JFrame frame = new JFrame("V_CrearJugador");
             frame.setContentPane(new V_CrearJugador().getPanel_CrearJugador());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
         }
@@ -29,7 +29,7 @@ public Crud_Jugador() {
             Carga.Cargar_Equipos();
             JFrame frame = new JFrame("V_Actualizar_Jugador");
             frame.setContentPane(new V_Actualizar_Jugador().getPanelActualizar());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
         }
@@ -39,7 +39,7 @@ public Crud_Jugador() {
         public void actionPerformed(ActionEvent e) {
             JFrame frame = new JFrame("V_Eliminar_Jugador");
             frame.setContentPane(new V_Eliminar_Jugador().getPanelEliminar_Jugador());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
         }

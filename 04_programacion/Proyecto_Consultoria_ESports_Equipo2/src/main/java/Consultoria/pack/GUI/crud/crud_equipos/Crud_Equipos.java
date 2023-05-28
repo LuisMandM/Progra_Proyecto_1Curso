@@ -18,7 +18,7 @@ public Crud_Equipos() {
             Carga.Cargar_Equipos();
             JFrame frame = new JFrame("V_Crear_Equipo");
             frame.setContentPane(new V_Crear_Equipo().getPanelCrear_Equipo());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
         }
@@ -29,7 +29,7 @@ public Crud_Equipos() {
             Carga.Cargar_Equipos();
             JFrame frame = new JFrame("V_Actualizar_Equipo");
             frame.setContentPane(new V_Actualizar_Equipo().getPanelActualizarEquipo());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
         }
@@ -40,7 +40,7 @@ public Crud_Equipos() {
             Carga.Cargar_Equipos();
             JFrame frame = new JFrame("V_Eliminar_Equipo");
             frame.setContentPane(new V_Eliminar_Equipo().getPanelEliminarEquipo());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
         }

@@ -22,7 +22,7 @@ public class V_Admin {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Crud_Duenio");
                 frame.setContentPane(new Crud_Duenio().getPanelCrudDuenio());
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -32,7 +32,7 @@ public class V_Admin {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Crud_Equipos");
                 frame.setContentPane(new Crud_Equipos().getPanelCrudEquipos());
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -42,7 +42,7 @@ public class V_Admin {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Crud_Jugador");
                 frame.setContentPane(new Crud_Jugador().getPanelCrudJugador());
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -51,7 +51,7 @@ public class V_Admin {
     public static void main(String[] args) {
         JFrame frame = new JFrame("V_Admin");
         frame.setContentPane(new V_Admin().V_Admin);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }

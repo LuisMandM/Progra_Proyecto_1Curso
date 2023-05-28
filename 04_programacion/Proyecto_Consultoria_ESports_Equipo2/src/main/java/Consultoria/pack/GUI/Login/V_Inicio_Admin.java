@@ -18,7 +18,7 @@ public class V_Inicio_Admin {
         public void actionPerformed(ActionEvent e) {
             JFrame frame = new JFrame("V_Admin");
             frame.setContentPane(new V_Admin().getV_Admin());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
         }
@@ -28,7 +28,7 @@ public class V_Inicio_Admin {
         public void actionPerformed(ActionEvent e) {
             JFrame frame = new JFrame("Generar_Calendario");
             frame.setContentPane(new Generar_Calendario().getPanelGenerar());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
         }

@@ -20,7 +20,7 @@ public class Crud_Duenio {
                 Carga.Cargar_Equipos();
                 JFrame frame = new JFrame("V_Crear_Duenio");
                 frame.setContentPane(new V_Crear_Duenio().getPanelCrear_duenio());
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -31,7 +31,7 @@ public class Crud_Duenio {
                 Carga.Cargar_Equipos();
                 JFrame frame = new JFrame("V_Actualizar_Duenio");
                 frame.setContentPane(new V_Actualizar_Duenio().getPanelActualizarDuenio());
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -42,7 +42,7 @@ public class Crud_Duenio {
                 Carga.Cargar_Equipos();
                 JFrame frame = new JFrame("V_Eliminar_Duenio");
                 frame.setContentPane(new V_Eliminar_Duenio().getPanelEliminar_Duenio());
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
             }

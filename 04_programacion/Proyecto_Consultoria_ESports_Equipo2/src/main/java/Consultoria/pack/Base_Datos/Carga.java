@@ -22,7 +22,7 @@ public class Carga {
         try {
 
             Statement statement = connection.createStatement();
-            ResultSet resultDuenios = statement.executeQuery("SELECT * FROM DUEÑO");
+            ResultSet resultDuenios = statement.executeQuery("SELECT * FROM VISTA_DUEÑO");
 
             while (resultDuenios.next()) {
 
@@ -30,7 +30,7 @@ public class Carga {
                         resultDuenios.getString("USUARIO"), resultDuenios.getString("CONTRASEÑA"));
 
                 Statement statement_equi = connection.createStatement();
-                ResultSet result_Equi = statement_equi.executeQuery("SELECT * FROM EQUIPO WHERE ID_DUENIO = "
+                ResultSet result_Equi = statement_equi.executeQuery("SELECT * FROM VISTA_EQUIPO WHERE ID_DUENIO = "
                         + actual.getId_usuario());
 
                 while (result_Equi.next()) {

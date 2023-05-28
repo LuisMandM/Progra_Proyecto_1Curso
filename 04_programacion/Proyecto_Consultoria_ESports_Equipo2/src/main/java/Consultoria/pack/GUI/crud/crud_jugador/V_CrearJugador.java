@@ -32,6 +32,7 @@ public class V_CrearJugador {
         this.actualizar = true;
 
         //Se puede cambiar unicamente para cargar al combobox el equipo actual
+        // comboBoxEquipos.addItem(jugador.getEquipo); sin el for
         for (Equipo equipo : Main.getEquipos()) {
             comboBoxEquipos.addItem(equipo);
         }
@@ -47,16 +48,20 @@ public class V_CrearJugador {
     }
 
     public V_CrearJugador() {
-
+        //Esto se puede quitar
         for (Equipo equipo : Main.getEquipos()) {
             comboBoxEquipos.addItem(equipo);
         }
+
+        textFieldId_jugador.setText("Campo asignado por el sistema.");
+        textFieldId_jugador.setEditable(false);
+
         buttonGuardar.addActionListener(e -> gest_Jugador());
     }
 
     private void gest_Jugador() {
         if (!actualizar) {
-            int id_jugador = Integer.parseInt(textFieldId_jugador.getText());
+            //int id_jugador = Integer.parseInt(textFieldId_jugador.getText());
             String nombre = textFieldNombre.getText();
             String nickname = textFieldNickname.getText();
             double sueldo = Double.parseDouble(textFieldSueldo.getText());
@@ -64,7 +69,7 @@ public class V_CrearJugador {
             //Esta linea se debe quitar.
             Equipo equiposelec = (Equipo) comboBoxEquipos.getSelectedItem();
 
-            Jugador jugador = new Jugador(id_jugador, nombre, nickname, sueldo);
+            Jugador jugador = new Jugador(nombre, nickname, sueldo);
 
             Create.Crear_jugador(jugador);
             //Main.getJugadores().add(jugador);

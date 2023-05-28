@@ -52,6 +52,11 @@ public class V_Crear_Equipo {
         for (Duenio duenio: Main.getDuenios()) {
             comboBoxDuenio.addItem(duenio);
         }
+        textFieldID_Equipo.setText("Campo asignado por el sistema.");
+        textFieldID_Equipo.setEditable(false);
+        textFieldSalario_Total.setText("0");
+        textFieldSalario_Total.setEditable(false);
+
         buttonConfirmar.addActionListener(e -> gest_Equipo());
     }
     private void gest_Equipo() {
@@ -60,7 +65,7 @@ public class V_Crear_Equipo {
             String nombre = textFieldNombreEquipo.getText();
             double tope_salarial = Double.parseDouble(textFieldSalario_Total.getText());
             Duenio duenioselec = (Duenio) comboBoxDuenio.getSelectedItem();
-            Equipo equipo = new Equipo(id,nombre,tope_salarial,duenioselec);
+            Equipo equipo = new Equipo(nombre,tope_salarial,duenioselec);
 
             Create.Crear_equipo(equipo);
             //Main.getEquipos().add(equipo);

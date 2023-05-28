@@ -1,4 +1,4 @@
-package Consultoria.pack.GUI;
+package Consultoria.pack.GUI.visualizacion;
 
 import Consultoria.pack.Clases_Base.Partido;
 

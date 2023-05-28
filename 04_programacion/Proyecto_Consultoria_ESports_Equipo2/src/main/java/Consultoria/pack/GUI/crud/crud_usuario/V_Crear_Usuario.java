@@ -37,6 +37,9 @@ public class V_Crear_Usuario {
     }
 
     public V_Crear_Usuario() {
+        textFieldID.setText("Campo asignado por el sistema.");
+        textFieldID.setEditable(false);
+
         buttonGuardar.addActionListener(e -> gest_Usuario());
     }
 

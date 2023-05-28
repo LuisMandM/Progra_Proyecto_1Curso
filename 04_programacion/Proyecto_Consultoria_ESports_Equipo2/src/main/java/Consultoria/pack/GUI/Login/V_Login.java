@@ -1,6 +1,7 @@
 package Consultoria.pack.GUI.Login;
 
 import Consultoria.pack.Base_Datos.Autenticacion;
+import Consultoria.pack.Base_Datos.Carga;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -33,18 +34,21 @@ public class V_Login {
                     JOptionPane.showMessageDialog(null, "Se abre ventana inicio ADMIN",
                             "V_ADMIN", JOptionPane.INFORMATION_MESSAGE);
                    frame.setVisible(false);
+                   Carga_base();
                     break;
 
                 case 20:
                     JOptionPane.showMessageDialog(null, "Se abre ventana inicio DUEÑO",
                             "V_DUENIO", JOptionPane.INFORMATION_MESSAGE);
                     frame.setVisible(false);
+                    Carga_base();
                     break;
 
                 case 30:
                     JOptionPane.showMessageDialog(null, "Se abre ventana inicio CLIENTE",
                             "V_CLIENTE", JOptionPane.INFORMATION_MESSAGE);
                     frame.setVisible(false);
+                    Carga_base();
                     break;
 
                 case 900:
@@ -71,5 +75,12 @@ public class V_Login {
 
     public JPanel getPanel() {
         return panel;
+    }
+
+    public static void Carga_base(){
+        Carga.Cargar_Clientes();
+        Carga.Cargar_Equipos();
+        Carga.Cargar_Calendario();
+        Carga.Cargar_Jugadores_Libres();
     }
 }

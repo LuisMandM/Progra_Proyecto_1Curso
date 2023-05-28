@@ -19,12 +19,14 @@ public class V_Crear_Duenio {
     private JTextField textFieldNombre;
     private JTextField textFieldUsuario;
     private JButton buttonGuardar;
-    private JPasswordField passwordField1;
+    private JPasswordField passwordField1; //Puede cambiarse por un campo textfield normal.
     private JLabel labelID;
     private Duenio duenio;
     private boolean actualizar = false;
 
     public V_Crear_Duenio() {
+        textFieldID.setText("Campo asignado por el sistema.");
+        textFieldID.setEditable(false);
         buttonGuardar.addActionListener(e -> gest_Duenio());
     }
 
@@ -33,6 +35,8 @@ public class V_Crear_Duenio {
         this.actualizar = true;
 
         textFieldID.setText(String.valueOf(duenio.getId_usuario()));
+        textFieldID.setEditable(false);
+
         textFieldNombre.setText(duenio.getNombre());
         textFieldUsuario.setText(duenio.getUsuario());
         passwordField1.setText(duenio.getContrasenya());

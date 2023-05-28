@@ -19,6 +19,9 @@ public class Equipo {
         this.duenio = duenio;
     }
 
+    public Equipo(String nombre, double tope_salarial, Duenio duenioselec) {
+    }
+
     public int getId_equipo() {
         return id_equipo;
     }

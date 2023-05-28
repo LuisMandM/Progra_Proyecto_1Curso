@@ -28,6 +28,9 @@ public class Jugador {
     public Jugador() {
     }
 
+    public Jugador(String nombre, String nickname, double sueldo) {
+    }
+
     public int getId_jugador() {
         return id_jugador;
     }

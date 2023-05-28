@@ -1,9 +1,9 @@
 package Consultoria.pack.GUI.Login;
 
-import Consultoria.pack.GUI.*;
 import Consultoria.pack.GUI.confeccionarEquipo;
-import Consultoria.pack.GUI.verClasificacion;
-import Consultoria.pack.GUI.verJornada;
+import Consultoria.pack.GUI.visualizacion.Result_Partido;
+import Consultoria.pack.GUI.visualizacion.verClasificacion;
+import Consultoria.pack.GUI.visualizacion.verJornada;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

@@ -49,7 +49,12 @@ public class Equipo {
     }
 
     public double getSalario_total() {
-        return salario_total;
+        double salario = 0;
+        for (Jugador jugador : jugadores) {
+            salario += jugador.getSueldo();
+        }
+
+        return salario;
     }
 
     public void setSalario_total(double salario_total) {
@@ -64,25 +69,28 @@ public class Equipo {
         this.duenio = duenio;
     }
 
-    public void addPlayer(Jugador jugador, int posicion){
+    public void addPlayer(Jugador jugador, int posicion) {
         this.jugadores[posicion] = jugador;
     }
+
     public Jugador[] getJugadores() {
         return jugadores;
     }
 
     @Override
     public String toString() {
-        return nombre ;
+        return nombre;
     }
 
 
     //Utilities
 
-    public int[] Estadisticas_globales(){
+    public int[] Estadisticas_globales() {
         return Visualizacion_Pack.Historial_Equipo(this.id_equipo);
-    }public int[] Estadisticas_Temporada(int id_temporada){
-        return Visualizacion_Pack.Historial_Equipo_Temporada(id_temporada,this.id_equipo);
+    }
+
+    public int[] Estadisticas_Temporada(int id_temporada) {
+        return Visualizacion_Pack.Historial_Equipo_Temporada(id_temporada, this.id_equipo);
     }
 
 }

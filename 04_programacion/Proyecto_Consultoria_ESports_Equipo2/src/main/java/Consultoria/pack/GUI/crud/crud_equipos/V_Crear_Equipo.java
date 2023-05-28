@@ -1,5 +1,7 @@
 package Consultoria.pack.GUI.crud.crud_equipos;
 
+import Consultoria.pack.Base_Datos.CRUD.Create;
+import Consultoria.pack.Base_Datos.CRUD.Update;
 import Consultoria.pack.Base_Datos.Carga;
 import Consultoria.pack.Clases_Base.Duenio;
 import Consultoria.pack.Clases_Base.Equipo;
@@ -21,7 +23,7 @@ public class V_Crear_Equipo {
     private JTextField textFieldNombreEquipo;
     private JTextField textFieldSalario_Total;
     private JLabel labelEquipoDuenio;
-    private JComboBox comboBoxDuenio;
+    private JComboBox<Duenio> comboBoxDuenio;
     private JButton buttonConfirmar;
     private boolean actualizar = false;
     private Duenio duenioselec;
@@ -31,25 +33,26 @@ public class V_Crear_Equipo {
     public V_Crear_Equipo(Equipo equipo) {
         this.equipo = equipo;
         this.actualizar = true;
+        //Se puede cambiar unicamente para cargar al combobox el dueño actual
+
         for (Duenio duenio: Main.getDuenios()) {
             comboBoxDuenio.addItem(duenio);
         }
         textFieldID_Equipo.setText(String.valueOf(equipo.getId_equipo()));
+        textFieldID_Equipo.setEditable(false);
+
         textFieldNombreEquipo.setText(equipo.getNombre());
         textFieldSalario_Total.setText(String.valueOf(equipo.getSalario_total()));
-        comboBoxDuenio.getSelectedItem();
-        gest_Equipo();
+        textFieldSalario_Total.setEditable(false);
+        //comboBoxDuenio.getSelectedItem();
+
+        buttonConfirmar.addActionListener(e -> gest_Equipo());
     }
     public V_Crear_Equipo() {
         for (Duenio duenio: Main.getDuenios()) {
             comboBoxDuenio.addItem(duenio);
         }
-        buttonConfirmar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                gest_Equipo();
-            }
-        });
+        buttonConfirmar.addActionListener(e -> gest_Equipo());
     }
     private void gest_Equipo() {
         if (!actualizar) {
@@ -58,14 +61,22 @@ public class V_Crear_Equipo {
             double tope_salarial = Double.parseDouble(textFieldSalario_Total.getText());
             Duenio duenioselec = (Duenio) comboBoxDuenio.getSelectedItem();
             Equipo equipo = new Equipo(id,nombre,tope_salarial,duenioselec);
-            Main.getEquipos().add(equipo);
+
+            Create.Crear_equipo(equipo);
+            //Main.getEquipos().add(equipo);
             textFieldID_Equipo.setText("");
             textFieldNombreEquipo.setText("");
             textFieldSalario_Total.setText("");
         } else {
-            textFieldID_Equipo.setText(String.valueOf(equipo.getId_equipo()));
-            textFieldNombreEquipo.setText(equipo.getNombre());
-            textFieldSalario_Total.setText(String.valueOf(equipo.getSalario_total()));
+
+            equipo.setNombre(textFieldNombreEquipo.getText());
+            equipo.setDuenyo((Duenio) comboBoxDuenio.getSelectedItem());
+
+            Update.Update_Equipo(equipo);
+
+            //textFieldID_Equipo.setText(String.valueOf(equipo.getId_equipo()));
+            //textFieldNombreEquipo.setText(equipo.getNombre());
+            //textFieldSalario_Total.setText(String.valueOf(equipo.getSalario_total()));
         }
     }
     public JPanel getPanelCrear_Equipo() {

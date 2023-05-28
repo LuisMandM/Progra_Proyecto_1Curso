@@ -15,6 +15,9 @@ public class Usuario {
 
     }
 
+    public Usuario(String nombreU, String contrasenya) {
+    }
+
     public int getId_usuario() {
         return id_usuario;
     }

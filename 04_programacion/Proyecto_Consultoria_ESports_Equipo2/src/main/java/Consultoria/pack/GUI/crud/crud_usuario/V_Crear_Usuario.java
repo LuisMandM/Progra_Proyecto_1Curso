@@ -1,5 +1,7 @@
 package Consultoria.pack.GUI.crud.crud_usuario;
 
+import Consultoria.pack.Base_Datos.CRUD.Create;
+import Consultoria.pack.Base_Datos.CRUD.Update;
 import Consultoria.pack.Clases_Base.Equipo;
 import Consultoria.pack.Clases_Base.Jugador;
 import Consultoria.pack.Clases_Base.Usuario;
@@ -27,39 +29,35 @@ public class V_Crear_Usuario {
         this.actualizar = true;
 
         textFieldID.setText(String.valueOf(usuario.getId_usuario()));
+        textFieldID.setEditable(false);
+
         textFieldUsuario.setText(usuario.getUsuario());
         passwordUsuario.setText(usuario.getContrasenya());
-        gest_Usuario();
+        buttonGuardar.addActionListener(e -> gest_Usuario());
     }
+
     public V_Crear_Usuario() {
-        buttonGuardar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int id_usuario = Integer.parseInt(textFieldID.getText());
-                String nombreU = textFieldUsuario.getText();
-                String contrasenya = Arrays.toString(passwordUsuario.getPassword());
-                Usuario usuario = new Usuario(id_usuario,nombreU,contrasenya);
-                // tengo que añadir al Main
-                textFieldID.setText("");
-                textFieldUsuario.setText("");
-                passwordUsuario.setText("");
-            }
-        });
+        buttonGuardar.addActionListener(e -> gest_Usuario());
     }
+
     private void gest_Usuario() {
         if (!actualizar) {
-            int id_usuario = Integer.parseInt(textFieldID.getText());
+            //int id_usuario = Integer.parseInt(textFieldID.getText());
             String nombreU = textFieldUsuario.getText();
             String contrasenya = Arrays.toString(passwordUsuario.getPassword());
-            Usuario usuario = new Usuario(id_usuario,nombreU,contrasenya);
-            Main.getUsuarios().add(usuario);
+            Usuario usuario = new Usuario(nombreU, contrasenya);
+
+            Create.Crear_Usuario(usuario);
+            //Main.getUsuarios().add(usuario);
             textFieldID.setText("");
             textFieldUsuario.setText("");
             passwordUsuario.setText("");
         } else {
-            textFieldID.setText(String.valueOf(usuario.getId_usuario()));
-            textFieldUsuario.setText(usuario.getUsuario());
-            passwordUsuario.setText(usuario.getContrasenya());
+
+            usuario.setUsuario(textFieldUsuario.getText());
+            usuario.setContrasenya(new String(passwordUsuario.getPassword())); //Se puede cambiar pot un texfield normal
+
+            Update.Update_User(usuario);
         }
     }
 

@@ -23,7 +23,10 @@ public class V_Eliminar_Duenio {
         }
         buttonEliminar.addActionListener(e -> {
             Duenio duenioselec = (Duenio) comboBoxDuenio.getSelectedItem();
-            Delete.Delete_Duenio(duenioselec);
+
+            if (duenioselec!= null)  Delete.Delete_Duenio(duenioselec);
+            else JOptionPane.showMessageDialog(null, "Error al seleccionar el dueño " +
+                    "intente nuevamente", "Error BD", JOptionPane.ERROR_MESSAGE);
 
             //Main.getDuenios().remove(duenioselec);
         });

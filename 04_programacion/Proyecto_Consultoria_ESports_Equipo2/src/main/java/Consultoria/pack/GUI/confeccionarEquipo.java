@@ -1,5 +1,6 @@
 package Consultoria.pack.GUI;
 
+import Consultoria.pack.Base_Datos.CRUD.Update;
 import Consultoria.pack.Base_Datos.Carga;
 import Consultoria.pack.Clases_Base.Duenio;
 import Consultoria.pack.Clases_Base.Equipo;
@@ -17,10 +18,10 @@ import java.util.Objects;
 
 public class confeccionarEquipo {
     JPanel panel1;
-    private JList<Jugador> list1;
+    private JList<Jugador> jugadores_libres;
     private JButton añadirButton;
     private JButton quitarButton;
-    private JList<Jugador> list2;
+    private JList<Jugador> jugadores_equipo;
     private JLabel label1;
     private JLabel label2;
     private JTextArea textArea3;
@@ -37,6 +38,7 @@ public class confeccionarEquipo {
     List<Jugador> jugadores = new ArrayList<>();
     private String nombre;
     private String password;
+    private Equipo equipo_jugador;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Confeccionar equipo");
@@ -51,13 +53,13 @@ public class confeccionarEquipo {
         Carga.Cargar_Jugadores_Libres();
         actualizarListaJugadores();
 
-        list1.addListSelectionListener(new ListSelectionListener() {
+        jugadores_libres.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                String id = String.valueOf(list1.getSelectedValue().getId_jugador());
-                String nombre = String.valueOf(list1.getSelectedValue().getNombre());
-                String nickname = String.valueOf(list1.getSelectedValue().getNickname());
-                String sueldo = String.valueOf(list1.getSelectedValue().getSueldo());
+                String id = String.valueOf(jugadores_libres.getSelectedValue().getId_jugador());
+                String nombre = String.valueOf(jugadores_libres.getSelectedValue().getNombre());
+                String nickname = String.valueOf(jugadores_libres.getSelectedValue().getNickname());
+                String sueldo = String.valueOf(jugadores_libres.getSelectedValue().getSueldo());
                 textField1.setText(id);
                 textField2.setText(nombre);
                 textField3.setText(nickname);
@@ -77,8 +79,9 @@ public class confeccionarEquipo {
                         for (Equipo equipo: Main.getEquipos()) {
                             if (equipo.getDuenyo() == duenio) {
 
-                                for (int i = 1; i < equipo.getJugadores().length; i++) {
-                                    modeloEquipo.addElement(equipo.getJugadores()[i-1]);
+                                for (int i = 0; i < equipo.getJugadores().length; i++) {
+                                    modeloEquipo.addElement(equipo.getJugadores()[i]);
+                                    equipo_jugador = equipo;
                                 }
                                 /*for (Jugador jugador: Main.getJugadores()) {
                                     if (Objects.equals(jugador.getEquipo().getNombre(), duenio.getNombre())) {
@@ -88,7 +91,7 @@ public class confeccionarEquipo {
                             }
                         }
                     }
-                    list2.setModel(modeloEquipo);
+                    jugadores_equipo.setModel(modeloEquipo);
                 }
             }
         });
@@ -96,7 +99,10 @@ public class confeccionarEquipo {
         añadirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Jugador actual =jugadores_libres.getSelectedValue();
+                System.out.println(actual.getEquipo());
+                actual.setEquipo(equipo_jugador);
+                Update.Add_PlayerTeam(actual);
             }
         });
 
@@ -114,7 +120,7 @@ public class confeccionarEquipo {
         for (Jugador jugador: Main.getFree_players()) {
             modelo.addElement(jugador);
         }
-        list1.setModel(modelo);
+        jugadores_libres.setModel(modelo);
     }
 
     public JPanel getPanel1() {

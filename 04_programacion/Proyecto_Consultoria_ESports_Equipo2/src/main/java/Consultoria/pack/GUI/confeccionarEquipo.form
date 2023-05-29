@@ -33,7 +33,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="c6402" class="javax.swing.JList" binding="list1" default-binding="true">
+          <component id="c6402" class="javax.swing.JList" binding="jugadores_libres" default-binding="true">
             <constraints/>
             <properties/>
           </component>
@@ -46,7 +46,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="340f7" class="javax.swing.JList" binding="list2" default-binding="true">
+          <component id="340f7" class="javax.swing.JList" binding="jugadores_equipo" default-binding="true">
             <constraints/>
             <properties/>
           </component>

@@ -27,4 +27,11 @@ public class V_Actualizar_Usuario {
         }
     });
 }
+    public JPanel getPanelActualizarUsuario() {
+        return panelActualizarUsuario;
+    }
+
+    public static void main(String[] args) {
+
+    }
 }

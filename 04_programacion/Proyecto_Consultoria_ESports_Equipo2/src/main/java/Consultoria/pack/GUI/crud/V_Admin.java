@@ -3,6 +3,7 @@ import Consultoria.pack.Base_Datos.Carga;
 import Consultoria.pack.GUI.crud.crud_duenio.Crud_Duenio;
 import Consultoria.pack.GUI.crud.crud_equipos.Crud_Equipos;
 import Consultoria.pack.GUI.crud.crud_jugador.Crud_Jugador;
+import Consultoria.pack.GUI.crud.crud_usuario.Crud_Usuario;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -47,9 +48,20 @@ public class V_Admin {
                 frame.setVisible(true);
             }
         });
+        botonUsuario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("Crud_Usuario");
+                frame.setContentPane(new Crud_Usuario().getPanelCrudUsuario());
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
     }
     public static void main(String[] args) {
         Carga.Cargar_Equipos();
+        Carga.Cargar_Clientes();
         JFrame frame = new JFrame("V_Admin");
         frame.setContentPane(new V_Admin().V_Admin);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -10,7 +10,14 @@ public class Crud_Usuario {
     private JButton actualizarButton;
     private JButton eliminarButton;
 
-public Crud_Usuario() {
+    public JPanel getPanelCrudUsuario() {
+        return panelCrudUsuario;
+    }
+    public static void main(String[] args) {
+
+    }
+
+    public Crud_Usuario() {
     crearButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -24,13 +31,21 @@ public Crud_Usuario() {
     actualizarButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            JFrame frame = new JFrame("V_Actualizar_Usuario");
+            frame.setContentPane(new V_Actualizar_Usuario().getPanelActualizarUsuario());
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.pack();
+            frame.setVisible(true);
         }
     });
     eliminarButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            JFrame frame = new JFrame("V_Eliminar_Usuario");
+            frame.setContentPane(new V_Eliminar_Usuario().getV_Eliminr_Dueño());
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.pack();
+            frame.setVisible(true);
         }
     });
 }

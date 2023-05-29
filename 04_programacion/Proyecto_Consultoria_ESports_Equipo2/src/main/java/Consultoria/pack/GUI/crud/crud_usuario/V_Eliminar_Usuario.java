@@ -24,4 +24,11 @@ public V_Eliminar_Usuario() {
         }
     });
 }
+    public JPanel getV_Eliminr_Dueño() {
+        return V_Eliminr_Dueño;
+    }
+
+    public static void main(String[] args) {
+
+    }
 }

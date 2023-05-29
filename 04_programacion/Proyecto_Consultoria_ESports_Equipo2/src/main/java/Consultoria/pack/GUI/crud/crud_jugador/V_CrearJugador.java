@@ -24,18 +24,12 @@ public class V_CrearJugador {
     private JButton buttonGuardar;
     private JComboBox<Equipo> comboBoxEquipos;
     private boolean actualizar;
-    private JLabel labelEquipo;
     Jugador jugador;
 
     public V_CrearJugador(Jugador jugador) {
         this.jugador = jugador;
         this.actualizar = true;
 
-        //Se puede cambiar unicamente para cargar al combobox el equipo actual
-        // comboBoxEquipos.addItem(jugador.getEquipo); sin el for
-        for (Equipo equipo : Main.getEquipos()) {
-            comboBoxEquipos.addItem(equipo);
-        }
         textFieldId_jugador.setText(String.valueOf(jugador.getId_jugador()));
         textFieldId_jugador.setEditable(false);
 
@@ -48,11 +42,6 @@ public class V_CrearJugador {
     }
 
     public V_CrearJugador() {
-        //Esto se puede quitar
-        for (Equipo equipo : Main.getEquipos()) {
-            comboBoxEquipos.addItem(equipo);
-        }
-
         textFieldId_jugador.setText("Campo asignado por el sistema.");
         textFieldId_jugador.setEditable(false);
 
@@ -61,22 +50,30 @@ public class V_CrearJugador {
 
     private void gest_Jugador() {
         if (!actualizar) {
-            //int id_jugador = Integer.parseInt(textFieldId_jugador.getText());
+
             String nombre = textFieldNombre.getText();
             String nickname = textFieldNickname.getText();
-            double sueldo = Double.parseDouble(textFieldSueldo.getText());
 
-            //Esta linea se debe quitar.
-            Equipo equiposelec = (Equipo) comboBoxEquipos.getSelectedItem();
+            try {
+                double sueldo = Double.parseDouble(textFieldSueldo.getText());
 
-            Jugador jugador = new Jugador(nombre, nickname, sueldo);
+                if (sueldo > 0) {
+                    Jugador jugador = new Jugador(nombre, nickname, sueldo);
 
-            Create.Crear_jugador(jugador);
-            //Main.getJugadores().add(jugador);
-            textFieldId_jugador.setText("");
-            textFieldNombre.setText("");
-            textFieldNickname.setText("");
-            textFieldSueldo.setText("");
+                    Create.Crear_jugador(jugador);
+                    textFieldId_jugador.setText("");
+                    textFieldNombre.setText("");
+                    textFieldNickname.setText("");
+                    textFieldSueldo.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(null,"El sueldo de un jugador no puede ser " +
+                                    "nulo o negativo.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null,"Tipo de dato en sueldo no es correcto.",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
 
             jugador.setNombre(textFieldNombre.getText());

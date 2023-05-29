@@ -6,6 +6,7 @@ import Consultoria.pack.Clases_Base.Jornada;
 import Consultoria.pack.Clases_Base.Partido;
 import Consultoria.pack.Main;
 
+import javax.swing.*;
 import java.sql.*;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -30,9 +31,18 @@ public class Admin_Pack {
 
             cs.execute();
 
+            int filas_updated = cs.executeUpdate();
+            if (filas_updated > 0) {
+                Gestor_BD.commit(connection);
+                JOptionPane.showMessageDialog(null, "Resultado registrado correctamente",
+                        "Resultado Registrado", JOptionPane.INFORMATION_MESSAGE);
+            } else JOptionPane.showMessageDialog(null, "Actualizacion incorrecta,\n" +
+                    "Intente nuevamente", "Error", JOptionPane.INFORMATION_MESSAGE);
+
             Gestor_BD.desconectar(connection);
         } catch (SQLException e) {
-            System.out.println(e.getCause().getMessage());
+            JOptionPane.showMessageDialog(null, e.getCause().getMessage(),
+                    "Error BD", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -249,7 +259,7 @@ public class Admin_Pack {
      * @return Map<LocalDate, Partido[]> Donde se tienen las fechas de Jornada como Key y los encuentros de cada uno en un array.
      * @autor Luis M.
      */
-    public static Map<LocalDate, Partido[]> Generacion_Calendario (LocalDate fecha_inicio) {
+    private static Map<LocalDate, Partido[]> Generacion_Calendario (LocalDate fecha_inicio) {
         //Carga y sort de partidas y jornadas
         //Carga.Cargar_Equipos();
         Partido[][] partidos = GenerarEnfrentamientos();

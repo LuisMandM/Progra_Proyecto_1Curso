@@ -59,12 +59,7 @@ public class Jornada {
 
     @Override
     public String toString() {
-        return "Clases_Base.Jornada{" +
-                "id_jornada=" + id_jornada +
-                ", fecha=" + fecha +
-                ", calendario=" + calendario +
-                ", equipos=" + equipos +
-                '}';
+        return "Jornada: "+ id_jornada + " / "+getFecha();
     }
 
     //Equals and HashCode

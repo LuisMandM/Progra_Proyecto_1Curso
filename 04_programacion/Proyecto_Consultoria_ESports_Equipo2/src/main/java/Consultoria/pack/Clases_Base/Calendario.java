@@ -49,11 +49,7 @@ public class Calendario {
 
     @Override
     public String toString() {
-        return "Clases_Base.Calendario{" +
-                "id_temporada=" + id_temporada +
-                ", fecha_inicio=" + fecha_inicio +
-                ", fecha_fin=" + fecha_fin +
-                '}';
+        return "Temporada: "+fecha_inicio+" - "+fecha_fin;
     }
 
     @Override

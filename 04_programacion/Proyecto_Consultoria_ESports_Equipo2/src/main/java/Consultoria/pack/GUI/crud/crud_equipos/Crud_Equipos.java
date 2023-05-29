@@ -1,4 +1,4 @@
-package Consultoria.pack.GUI.crud.crud_equipos;
+package Consultoria.pack.gui.crud.crud_equipos;
 
 import Consultoria.pack.Base_Datos.Carga;
 

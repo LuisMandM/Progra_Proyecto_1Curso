@@ -1,4 +1,4 @@
-package Consultoria.pack.GUI.crud.crud_duenio;
+package Consultoria.pack.gui.crud.crud_duenio;
 
 import Consultoria.pack.Clases_Base.Duenio;
 import Consultoria.pack.Main;

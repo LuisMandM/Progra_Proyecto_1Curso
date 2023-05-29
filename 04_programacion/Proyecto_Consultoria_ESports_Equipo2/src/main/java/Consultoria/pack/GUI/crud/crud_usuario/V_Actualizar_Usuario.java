@@ -1,8 +1,7 @@
-package Consultoria.pack.GUI.crud.crud_usuario;
+package Consultoria.pack.gui.crud.crud_usuario;
 
 import Consultoria.pack.Clases_Base.Jugador;
 import Consultoria.pack.Clases_Base.Usuario;
-import Consultoria.pack.GUI.crud.crud_jugador.V_CrearJugador;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

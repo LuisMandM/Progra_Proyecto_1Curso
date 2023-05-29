@@ -1,4 +1,4 @@
-package Consultoria.pack.GUI.crud.crud_jugador;
+package Consultoria.pack.gui.crud.crud_jugador;
 
 import Consultoria.pack.Base_Datos.CRUD.Create;
 import Consultoria.pack.Base_Datos.CRUD.Update;
@@ -82,10 +82,6 @@ public class V_CrearJugador {
 
             Update.Update_Jugador(jugador);
 
-            /*textFieldId_jugador.setText(String.valueOf(jugador.getId_jugador()));
-            textFieldNombre.setText(jugador.getNombre());
-            textFieldNickname.setText(jugador.getNickname());
-            textFieldSueldo.setText(String.valueOf(jugador.getSueldo()));*/
         }
     }
 

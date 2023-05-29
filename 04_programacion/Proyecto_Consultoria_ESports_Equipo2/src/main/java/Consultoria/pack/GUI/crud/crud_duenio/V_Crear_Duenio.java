@@ -1,4 +1,4 @@
-package Consultoria.pack.GUI.crud.crud_duenio;
+package Consultoria.pack.gui.crud.crud_duenio;
 
 import Consultoria.pack.Base_Datos.CRUD.Create;
 import Consultoria.pack.Base_Datos.CRUD.Update;
@@ -19,7 +19,7 @@ public class V_Crear_Duenio {
     private JTextField textFieldNombre;
     private JTextField textFieldUsuario;
     private JButton buttonGuardar;
-    private JTextField passwordField1; //Puede cambiarse por un campo textfield normal.
+    private JTextField passwordField1;
     private JLabel labelID;
     private Duenio duenio;
     private boolean actualizar = false;
@@ -46,12 +46,10 @@ public class V_Crear_Duenio {
 
     private void gest_Duenio() {
         if (!actualizar) {
-            int id = Integer.parseInt(textFieldID.getText());
             String nombre = textFieldNombre.getText();
             String usuario = textFieldUsuario.getText();
             String contrasenya = passwordField1.getText();
             Duenio duenio = new Duenio(nombre, usuario, contrasenya);
-            //Main.getDuenios().add(duenio);
             Create.Crear_duenio(duenio);
             textFieldID.setText("");
             textFieldNombre.setText("");
@@ -63,11 +61,6 @@ public class V_Crear_Duenio {
             duenio.setContrasenya(passwordField1.getText());
 
             Update.Update_Duenio(duenio);
-
-            //textFieldID.setText(String.valueOf(duenio.getId_usuario()));
-            //textFieldNombre.setText(duenio.getNombre());
-            //textFieldUsuario.setText(duenio.getUsuario());
-            //passwordField1.setText(duenio.getContrasenya());
         }
     }
 

@@ -1,4 +1,4 @@
-package Consultoria.pack.GUI.crud.crud_usuario;
+package Consultoria.pack.gui.crud.crud_usuario;
 
 import Consultoria.pack.Clases_Base.Duenio;
 import Consultoria.pack.Clases_Base.Usuario;

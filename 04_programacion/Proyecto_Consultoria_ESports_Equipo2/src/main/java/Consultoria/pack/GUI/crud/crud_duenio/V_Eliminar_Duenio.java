@@ -1,4 +1,4 @@
-package Consultoria.pack.GUI.crud.crud_duenio;
+package Consultoria.pack.gui.crud.crud_duenio;
 
 import Consultoria.pack.Base_Datos.CRUD.Delete;
 import Consultoria.pack.Base_Datos.Carga;
@@ -27,8 +27,6 @@ public class V_Eliminar_Duenio {
             if (duenioselec!= null)  Delete.Delete_Duenio(duenioselec);
             else JOptionPane.showMessageDialog(null, "Error al seleccionar el dueño " +
                     "intente nuevamente", "Error BD", JOptionPane.ERROR_MESSAGE);
-
-            //Main.getDuenios().remove(duenioselec);
         });
     }
     public JPanel getPanelEliminar_Duenio() {

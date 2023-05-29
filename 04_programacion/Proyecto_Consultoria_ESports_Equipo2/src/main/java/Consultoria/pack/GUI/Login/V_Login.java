@@ -1,4 +1,4 @@
-package Consultoria.pack.GUI.Login;
+package Consultoria.pack.gui.Login;
 
 import Consultoria.pack.Base_Datos.Autenticacion;
 import Consultoria.pack.Base_Datos.Carga;
@@ -14,7 +14,7 @@ public class V_Login {
     private JButton enter_Button;
     private JPasswordField passwordField;
 
-    public V_Login(JFrame frame) {
+    public V_Login(JFrame frame1) {
 
 
         enter_Button.addActionListener(e -> {
@@ -33,22 +33,25 @@ public class V_Login {
                 case 10:
                     JOptionPane.showMessageDialog(null, "Se abre ventana inicio ADMIN",
                             "V_ADMIN", JOptionPane.INFORMATION_MESSAGE);
-                   frame.setVisible(false);
-                   Carga_base();
+                   frame1.setVisible(false);
+                    Carga_base();
+                    VentanaAdmin();
                     break;
 
                 case 20:
                     JOptionPane.showMessageDialog(null, "Se abre ventana inicio DUEÑO",
                             "V_DUENIO", JOptionPane.INFORMATION_MESSAGE);
-                    frame.setVisible(false);
+                    frame1.setVisible(false);
                     Carga_base();
+                    VentanaDuenio();
                     break;
 
                 case 30:
                     JOptionPane.showMessageDialog(null, "Se abre ventana inicio CLIENTE",
                             "V_CLIENTE", JOptionPane.INFORMATION_MESSAGE);
-                    frame.setVisible(false);
+                    frame1.setVisible(false);
                     Carga_base();
+                    VentanaUsuario();
                     break;
 
                 case 900:
@@ -66,13 +69,8 @@ public class V_Login {
                     break;
 
             }
-
-
         });
     }
-
-
-
     public JPanel getPanel() {
         return panel;
     }
@@ -82,5 +80,26 @@ public class V_Login {
         Carga.Cargar_Equipos();
         Carga.Cargar_Calendario();
         Carga.Cargar_Jugadores_Libres();
+    }
+    public static void VentanaAdmin(){
+        JFrame frame = new JFrame("V_Inicio_Admin");
+        frame.setContentPane(new Consultoria.pack.GUI.Login.V_Inicio_Admin().getPanelInicio_Admin());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+    public static void VentanaDuenio (){
+        JFrame frame = new JFrame("V_Inicio_Duenio");
+        frame.setContentPane(new Consultoria.pack.GUI.Login.V_Inicio_Duenio().getPanelDuenio());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+    public static void VentanaUsuario (){
+        JFrame frame = new JFrame("V_Inicio_Usuario");
+        frame.setContentPane(new Consultoria.pack.GUI.Login.V_Inicio_Usuario().getPanelUsuario());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
     }
 }

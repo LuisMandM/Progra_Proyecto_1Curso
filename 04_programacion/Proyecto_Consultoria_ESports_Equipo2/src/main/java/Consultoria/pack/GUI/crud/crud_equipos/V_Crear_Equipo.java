@@ -1,4 +1,4 @@
-package Consultoria.pack.GUI.crud.crud_equipos;
+package Consultoria.pack.gui.crud.crud_equipos;
 
 import Consultoria.pack.Base_Datos.CRUD.Create;
 import Consultoria.pack.Base_Datos.CRUD.Update;
@@ -74,9 +74,6 @@ public class V_Crear_Equipo {
             equipo.setNombre(textFieldNombreEquipo.getText());
             Update.Update_Equipo(equipo);
 
-            //textFieldID_Equipo.setText(String.valueOf(equipo.getId_equipo()));
-            //textFieldNombreEquipo.setText(equipo.getNombre());
-            //textFieldSalario_Total.setText(String.valueOf(equipo.getSalario_total()));
         }
     }
     public JPanel getPanelCrear_Equipo() {

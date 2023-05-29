@@ -1,4 +1,4 @@
-package Consultoria.pack.GUI.crud.crud_jugador;
+package Consultoria.pack.gui.crud.crud_jugador;
 
 import Consultoria.pack.Clases_Base.Equipo;
 import Consultoria.pack.Clases_Base.Jugador;
@@ -33,7 +33,6 @@ public class V_Eliminar_Jugador {
                 }
             }
         });
-
         buttonConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

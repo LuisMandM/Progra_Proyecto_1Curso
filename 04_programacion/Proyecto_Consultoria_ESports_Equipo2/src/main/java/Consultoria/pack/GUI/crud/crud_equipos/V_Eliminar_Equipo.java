@@ -1,4 +1,4 @@
-package Consultoria.pack.GUI.crud.crud_equipos;
+package Consultoria.pack.gui.crud.crud_equipos;
 
 import Consultoria.pack.Base_Datos.CRUD.Delete;
 import Consultoria.pack.Clases_Base.Duenio;
@@ -27,7 +27,6 @@ public class V_Eliminar_Equipo {
             if (equiposelec != null) Delete.Delete_Equipo(equiposelec);
             else JOptionPane.showMessageDialog(null, "Error al seleccionar el equipo " +
                     "intente nuevamente", "Error BD", JOptionPane.ERROR_MESSAGE);
-            //equipos.remove(equiposelec);
         });
     }
 

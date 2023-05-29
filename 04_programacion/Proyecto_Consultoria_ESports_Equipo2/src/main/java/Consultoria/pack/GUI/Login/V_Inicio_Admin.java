@@ -37,4 +37,8 @@ public class V_Inicio_Admin {
     public JPanel getPanelInicio_Admin() {
         return panelInicio_Admin;
     }
+
+    public static void main(String[] args) {
+
+    }
 }

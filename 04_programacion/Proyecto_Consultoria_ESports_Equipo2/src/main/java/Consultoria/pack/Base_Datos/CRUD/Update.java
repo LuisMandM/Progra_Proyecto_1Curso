@@ -35,7 +35,7 @@ public class Update {
 
                 pst_salario.setInt(1, player.getEquipo().getId_equipo());
 
-                ResultSet salario_Set = pst.executeQuery();
+                ResultSet salario_Set = pst_salario.executeQuery();
                 double salario_total = 0;
                 while (salario_Set.next()) {
                     salario_total = salario_Set.getDouble("SALARIO_TOTAL");
@@ -116,12 +116,14 @@ public class Update {
     public static void Update_Duenio(Duenio current_Duenio) {
         try {
             Connection connection = Gestor_BD.Conectar_BD();
-            String query = "UPDATE DUEÑO SET NOMBRE = ?,USUARIO =? WHERE ID_DUEÑO = ?";
+            String query = "UPDATE DUEÑO SET NOMBRE = ?,USUARIO = ?, CONTRASEÑA = ? WHERE ID_DUEÑO = ?";
             PreparedStatement pst = connection.prepareStatement(query);
 
             pst.setString(1, current_Duenio.getNombre());
             pst.setString(2, current_Duenio.getUsuario());
-            pst.setInt(3, current_Duenio.getId_usuario());
+            pst.setString(3, current_Duenio.getContrasenya());
+            pst.setInt(4, current_Duenio.getId_usuario());
+
 
             int filas_updated = pst.executeUpdate();
             if (filas_updated > 0) {
@@ -168,11 +170,12 @@ public class Update {
     public static void Update_User(Usuario user_Current) {
         try {
             Connection connection = Gestor_BD.Conectar_BD();
-            String query = "UPDATE CLIENTE SET USUARIO =? WHERE ID_USUARIO = ?";
+            String query = "UPDATE CLIENTE SET USUARIO = ?, CONTRASEÑA = ? WHERE ID_USUARIO = ?";
             PreparedStatement pst = connection.prepareStatement(query);
 
             pst.setString(1, user_Current.getUsuario());
-            pst.setInt(2, user_Current.getId_usuario());
+            pst.setString(2, user_Current.getContrasenya());
+            pst.setInt(3, user_Current.getId_usuario());
 
             int filas_updated = pst.executeUpdate();
             if (filas_updated > 0) {

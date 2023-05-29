@@ -33,18 +33,15 @@ public class V_Crear_Equipo {
     public V_Crear_Equipo(Equipo equipo) {
         this.equipo = equipo;
         this.actualizar = true;
-        //Se puede cambiar unicamente para cargar al combobox el dueño actual
 
-        for (Duenio duenio: Main.getDuenios()) {
-            comboBoxDuenio.addItem(duenio);
-        }
+        comboBoxDuenio.addItem(equipo.getDuenyo());
+
         textFieldID_Equipo.setText(String.valueOf(equipo.getId_equipo()));
         textFieldID_Equipo.setEditable(false);
 
         textFieldNombreEquipo.setText(equipo.getNombre());
         textFieldSalario_Total.setText(String.valueOf(equipo.getSalario_total()));
         textFieldSalario_Total.setEditable(false);
-        //comboBoxDuenio.getSelectedItem();
 
         buttonConfirmar.addActionListener(e -> gest_Equipo());
     }
@@ -75,8 +72,6 @@ public class V_Crear_Equipo {
         } else {
 
             equipo.setNombre(textFieldNombreEquipo.getText());
-            equipo.setDuenyo((Duenio) comboBoxDuenio.getSelectedItem());
-
             Update.Update_Equipo(equipo);
 
             //textFieldID_Equipo.setText(String.valueOf(equipo.getId_equipo()));

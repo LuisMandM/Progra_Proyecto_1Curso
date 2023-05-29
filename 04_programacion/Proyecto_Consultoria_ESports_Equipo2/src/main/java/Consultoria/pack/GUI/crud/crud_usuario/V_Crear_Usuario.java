@@ -20,7 +20,7 @@ public class V_Crear_Usuario {
     private JButton buttonGuardar;
     private JTextField textFieldID;
     private JTextField textFieldUsuario;
-    private JPasswordField passwordUsuario;
+    private JTextField passwordUsuario;
     private boolean actualizar;
     private Usuario usuario;
 
@@ -47,7 +47,7 @@ public class V_Crear_Usuario {
         if (!actualizar) {
             //int id_usuario = Integer.parseInt(textFieldID.getText());
             String nombreU = textFieldUsuario.getText();
-            String contrasenya = Arrays.toString(passwordUsuario.getPassword());
+            String contrasenya = passwordUsuario.getText();
             Usuario usuario = new Usuario(nombreU, contrasenya);
 
             Create.Crear_Usuario(usuario);
@@ -58,7 +58,7 @@ public class V_Crear_Usuario {
         } else {
 
             usuario.setUsuario(textFieldUsuario.getText());
-            usuario.setContrasenya(new String(passwordUsuario.getPassword())); //Se puede cambiar pot un texfield normal
+            usuario.setContrasenya(passwordUsuario.getText()); //Se puede cambiar pot un texfield normal
 
             Update.Update_User(usuario);
         }

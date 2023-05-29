@@ -19,7 +19,7 @@ public class V_Crear_Duenio {
     private JTextField textFieldNombre;
     private JTextField textFieldUsuario;
     private JButton buttonGuardar;
-    private JPasswordField passwordField1; //Puede cambiarse por un campo textfield normal.
+    private JTextField passwordField1; //Puede cambiarse por un campo textfield normal.
     private JLabel labelID;
     private Duenio duenio;
     private boolean actualizar = false;
@@ -43,12 +43,13 @@ public class V_Crear_Duenio {
 
         buttonGuardar.addActionListener(e -> gest_Duenio());
     }
+
     private void gest_Duenio() {
         if (!actualizar) {
             int id = Integer.parseInt(textFieldID.getText());
             String nombre = textFieldNombre.getText();
             String usuario = textFieldUsuario.getText();
-            String contrasenya = Arrays.toString(passwordField1.getPassword());
+            String contrasenya = passwordField1.getText();
             Duenio duenio = new Duenio(nombre, usuario, contrasenya);
             //Main.getDuenios().add(duenio);
             Create.Crear_duenio(duenio);
@@ -59,6 +60,7 @@ public class V_Crear_Duenio {
         } else {
             duenio.setNombre(textFieldNombre.getText());
             duenio.setUsuario(textFieldUsuario.getText());
+            duenio.setContrasenya(passwordField1.getText());
 
             Update.Update_Duenio(duenio);
 
@@ -68,6 +70,7 @@ public class V_Crear_Duenio {
             //passwordField1.setText(duenio.getContrasenya());
         }
     }
+
     public JPanel getPanelCrear_duenio() {
         return panelCrear_duenio;
     }

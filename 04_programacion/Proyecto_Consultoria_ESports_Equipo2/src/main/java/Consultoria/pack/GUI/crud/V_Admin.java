@@ -1,4 +1,5 @@
 package Consultoria.pack.GUI.crud;
+import Consultoria.pack.Base_Datos.Carga;
 import Consultoria.pack.GUI.crud.crud_duenio.Crud_Duenio;
 import Consultoria.pack.GUI.crud.crud_equipos.Crud_Equipos;
 import Consultoria.pack.GUI.crud.crud_jugador.Crud_Jugador;
@@ -48,13 +49,13 @@ public class V_Admin {
         });
     }
     public static void main(String[] args) {
+        Carga.Cargar_Equipos();
         JFrame frame = new JFrame("V_Admin");
         frame.setContentPane(new V_Admin().V_Admin);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
-
     public JPanel getV_Admin() {
         return V_Admin;
     }

@@ -38,7 +38,6 @@ public class V_Eliminar_Jugador {
             public void actionPerformed(ActionEvent e) {
                 Jugador jugadorselec = (Jugador) comboBoxJugador.getSelectedItem();
                 Main.getJugadores().remove(jugadorselec);
-
             }
         });
     }

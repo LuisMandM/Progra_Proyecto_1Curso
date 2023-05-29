@@ -11,6 +11,7 @@ public class Crud_Equipos {
     private JButton actualizarButton;
     private JButton eliminarButton;
     private JPanel panelCrudEquipos;
+
 public Crud_Equipos() {
     crearButton.addActionListener(new ActionListener() {
         @Override

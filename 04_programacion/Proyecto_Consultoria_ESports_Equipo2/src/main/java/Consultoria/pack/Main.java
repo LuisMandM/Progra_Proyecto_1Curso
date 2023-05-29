@@ -34,6 +34,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Carga.Cargar_Jugadores_Libres();
+
         JFrame frame = new JFrame("Login");
         frame.setContentPane(new V_Login(frame).getPanel());
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

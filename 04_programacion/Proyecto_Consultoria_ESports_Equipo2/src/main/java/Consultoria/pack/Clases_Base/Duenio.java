@@ -13,6 +13,9 @@ public class Duenio extends Usuario {
     public Duenio(String nombre, String usuario, String contrasenya) {
     }
 
+    public Duenio(int id_dueño, String nombre) {
+    }
+
     public String getNombre() {
         return nombre;
     }

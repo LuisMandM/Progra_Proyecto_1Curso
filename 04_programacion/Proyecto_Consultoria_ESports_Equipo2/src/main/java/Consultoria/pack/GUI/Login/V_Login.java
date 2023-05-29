@@ -32,7 +32,7 @@ public class V_Login {
                     JOptionPane.showMessageDialog(null, "Se abre ventana inicio ADMIN",
                             "V_ADMIN", JOptionPane.INFORMATION_MESSAGE);
                    frame1.setVisible(false);
-                    Carga_base();
+                    Carga_base(10);
                     VentanaAdmin();
                     break;
 
@@ -40,7 +40,7 @@ public class V_Login {
                     JOptionPane.showMessageDialog(null, "Se abre ventana inicio DUEÑO",
                             "V_DUENIO", JOptionPane.INFORMATION_MESSAGE);
                     frame1.setVisible(false);
-                    Carga_base();
+                    Carga_base(20);
                     VentanaDuenio();
                     break;
 
@@ -48,7 +48,7 @@ public class V_Login {
                     JOptionPane.showMessageDialog(null, "Se abre ventana inicio CLIENTE",
                             "V_CLIENTE", JOptionPane.INFORMATION_MESSAGE);
                     frame1.setVisible(false);
-                    Carga_base();
+                    Carga_base(30);
                     VentanaUsuario();
                     break;
 
@@ -73,11 +73,25 @@ public class V_Login {
         return panel;
     }
 
-    public static void Carga_base(){
-        Carga.Cargar_Clientes();
-        Carga.Cargar_Equipos();
-        Carga.Cargar_Calendario();
-        Carga.Cargar_Jugadores_Libres();
+    public static void Carga_base(int level){
+
+        switch (level){
+            case 10:
+                Carga.Cargar_Equipos();
+                Carga.Cargar_Calendario();
+                Carga.Cargar_Clientes();
+                Carga.Cargar_Jugadores_Libres();
+                break;
+            case 20:
+                Carga.Cargar_Equipos_View();
+                Carga.Cargar_Calendario();
+                Carga.Cargar_Jugadores_Libres();
+                break;
+            case 30:
+                Carga.Cargar_Equipos_View();
+                Carga.Cargar_Calendario();
+                break;
+        }
     }
     public static void VentanaAdmin(){
         JFrame frame = new JFrame("V_Inicio_Admin");

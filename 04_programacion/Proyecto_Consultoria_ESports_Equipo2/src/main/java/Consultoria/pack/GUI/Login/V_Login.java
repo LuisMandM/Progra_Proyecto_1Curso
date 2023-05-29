@@ -1,11 +1,9 @@
-package Consultoria.pack.gui.Login;
+package Consultoria.pack.GUI.Login;
 
 import Consultoria.pack.Base_Datos.Autenticacion;
 import Consultoria.pack.Base_Datos.Carga;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class V_Login {
     private JPanel panel;

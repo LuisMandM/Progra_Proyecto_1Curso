@@ -1,7 +1,7 @@
-package Consultoria.pack.gui.crud.crud_duenio;
+package Consultoria.pack.GUI.crud.crud_duenio;
 
 import Consultoria.pack.Base_Datos.Carga;
-import Consultoria.pack.gui.*;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -1,4 +1,4 @@
-package Consultoria.pack.gui.crud.crud_jugador;
+package Consultoria.pack.GUI.crud.crud_jugador;
 
 import Consultoria.pack.Clases_Base.Equipo;
 import Consultoria.pack.Clases_Base.Jugador;

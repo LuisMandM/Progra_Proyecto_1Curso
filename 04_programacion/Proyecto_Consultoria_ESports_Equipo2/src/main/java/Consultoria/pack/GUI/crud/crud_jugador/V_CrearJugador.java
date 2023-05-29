@@ -1,15 +1,11 @@
-package Consultoria.pack.gui.crud.crud_jugador;
+package Consultoria.pack.GUI.crud.crud_jugador;
 
 import Consultoria.pack.Base_Datos.CRUD.Create;
 import Consultoria.pack.Base_Datos.CRUD.Update;
-import Consultoria.pack.Clases_Base.Duenio;
 import Consultoria.pack.Clases_Base.Equipo;
 import Consultoria.pack.Clases_Base.Jugador;
-import Consultoria.pack.Main;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class V_CrearJugador {
     private JPanel Panel_CrearJugador;

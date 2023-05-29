@@ -1,4 +1,4 @@
-package Consultoria.pack.gui.crud.crud_duenio;
+package Consultoria.pack.GUI.crud.crud_duenio;
 
 import Consultoria.pack.Clases_Base.Duenio;
 import Consultoria.pack.Main;
@@ -6,7 +6,6 @@ import Consultoria.pack.Main;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 public class V_Actualizar_Duenio {
     private JPanel panelActualizarDuenio;

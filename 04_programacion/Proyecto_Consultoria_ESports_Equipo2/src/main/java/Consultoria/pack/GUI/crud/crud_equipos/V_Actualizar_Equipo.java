@@ -1,6 +1,5 @@
-package Consultoria.pack.gui.crud.crud_equipos;
+package Consultoria.pack.GUI.crud.crud_equipos;
 
-import Consultoria.pack.Base_Datos.Carga;
 import Consultoria.pack.Clases_Base.Equipo;
 import Consultoria.pack.Main;
 

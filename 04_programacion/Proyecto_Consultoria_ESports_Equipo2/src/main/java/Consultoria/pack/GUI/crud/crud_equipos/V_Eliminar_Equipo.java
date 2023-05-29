@@ -1,13 +1,10 @@
-package Consultoria.pack.gui.crud.crud_equipos;
+package Consultoria.pack.GUI.crud.crud_equipos;
 
 import Consultoria.pack.Base_Datos.CRUD.Delete;
-import Consultoria.pack.Clases_Base.Duenio;
 import Consultoria.pack.Clases_Base.Equipo;
 import Consultoria.pack.Main;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 public class V_Eliminar_Equipo {

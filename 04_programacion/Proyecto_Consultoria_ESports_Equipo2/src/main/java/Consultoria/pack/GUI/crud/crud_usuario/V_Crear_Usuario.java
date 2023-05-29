@@ -1,16 +1,10 @@
-package Consultoria.pack.gui.crud.crud_usuario;
+package Consultoria.pack.GUI.crud.crud_usuario;
 
 import Consultoria.pack.Base_Datos.CRUD.Create;
 import Consultoria.pack.Base_Datos.CRUD.Update;
-import Consultoria.pack.Clases_Base.Equipo;
-import Consultoria.pack.Clases_Base.Jugador;
 import Consultoria.pack.Clases_Base.Usuario;
-import Consultoria.pack.Main;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 public class V_Crear_Usuario {
     private JPanel panelCrearUsuario;

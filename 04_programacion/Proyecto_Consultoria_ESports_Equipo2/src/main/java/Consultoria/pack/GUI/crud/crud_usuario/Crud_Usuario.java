@@ -1,4 +1,4 @@
-package Consultoria.pack.gui.crud.crud_usuario;
+package Consultoria.pack.GUI.crud.crud_usuario;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

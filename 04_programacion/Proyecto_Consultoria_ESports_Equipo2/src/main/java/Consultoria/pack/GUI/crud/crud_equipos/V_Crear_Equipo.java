@@ -1,17 +1,12 @@
-package Consultoria.pack.gui.crud.crud_equipos;
+package Consultoria.pack.GUI.crud.crud_equipos;
 
 import Consultoria.pack.Base_Datos.CRUD.Create;
 import Consultoria.pack.Base_Datos.CRUD.Update;
-import Consultoria.pack.Base_Datos.Carga;
 import Consultoria.pack.Clases_Base.Duenio;
 import Consultoria.pack.Clases_Base.Equipo;
-import Consultoria.pack.Clases_Base.Jugador;
 import Consultoria.pack.Main;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Arrays;
 import java.util.List;
 
 public class V_Crear_Equipo {

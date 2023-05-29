@@ -1,8 +1,7 @@
-package Consultoria.pack.gui.crud;
-import Consultoria.pack.*;
-import Consultoria.pack.gui.crud.crud_duenio.Crud_Duenio;
-import Consultoria.pack.gui.crud.crud_equipos.Crud_Equipos;
-import Consultoria.pack.gui.crud.crud_jugador.Crud_Jugador;
+package Consultoria.pack.GUI.crud;
+import Consultoria.pack.GUI.crud.crud_duenio.Crud_Duenio;
+import Consultoria.pack.GUI.crud.crud_equipos.Crud_Equipos;
+import Consultoria.pack.GUI.crud.crud_jugador.Crud_Jugador;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

@@ -15,14 +15,29 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.List;
 
+
+/**
+ * Clase destinada a alojar los metodos relacionados con el administrador y las acciones que lleva acabo fuera del CRUD
+ * basico.
+ *
+ * Entre esas acciones esta el generar una temporada y el registrar el resultado de un partido.
+ */
 public class Admin_Pack {
+
+    /**
+     * Metodo encargado de crear los objetos necesarios para la creacion de una temporada, como son sus jornadas y emparejamientos
+     *, al finalizar da un aviso de informacion y despliega una ventana donde se puede ver la nueva temporada creada.
+     * @param fecha_inicio
+     * @throws SQLException
+     */
 
     public static void Generar_Temporada(LocalDate fecha_inicio) throws SQLException {
         Map<LocalDate, Partido[]> liga = Generacion_Calendario(fecha_inicio);
         Calendario temporada = Cargar_Calendario(Crear_Calendario(liga));
         Organizar_Temporada(temporada, liga);
+        Carga.Cargar_Calendario();
         JOptionPane.showMessageDialog(null, "Temporada Generada Correctamente",
-                "Temporada Creada", JOptionPane.ERROR_MESSAGE);
+                "Temporada Creada", JOptionPane.INFORMATION_MESSAGE);
         JFrame frame = new JFrame("Vista de Temporada Creada");
         frame.setContentPane(new verJornada(temporada).getPanel1());
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

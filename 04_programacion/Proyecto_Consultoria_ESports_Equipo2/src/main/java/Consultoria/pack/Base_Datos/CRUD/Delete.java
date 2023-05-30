@@ -14,6 +14,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+
+/**
+ * Clase destinada a alojar los metodo relacionados a la eliminacion de objetos del programa.
+ */
 public class Delete {
 
     public static void Delete_Usuario(Usuario usuario_Current) {

@@ -11,6 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * Clase destinada a alojar los metodo relacionados a la creacion de objetos del programa.
+ */
 public class Create {
 
 

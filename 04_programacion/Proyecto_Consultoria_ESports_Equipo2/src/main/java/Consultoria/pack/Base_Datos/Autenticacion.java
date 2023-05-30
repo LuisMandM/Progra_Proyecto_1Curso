@@ -6,6 +6,12 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Types;
 
+
+/**
+ * Clase destinada a alojar los metodos relacionados a la autorizacion y autenticacion de los usuarios que ingresen al sistema
+ * aloja metodos conectados a la base de datos encargados de resolver la existencia y congruencia de los datos necesarios para
+ * la autenticacion.
+ */
 public class Autenticacion {
 
 
@@ -54,7 +60,7 @@ public class Autenticacion {
                     case -404 -> view = -800;
                 }
             } else view = 900;
-        } else if (!found) {
+        } if (!found) {
             answer = Autenticar_User(usuario, passHex);
             if (answer != 0) {
                 switch (answer) {

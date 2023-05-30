@@ -31,7 +31,6 @@ public class V_Eliminar_Usuario {
                     "Error BD", JOptionPane.ERROR_MESSAGE);
         });
     }
-
     /**
      * Obtiene el panel de la interfaz gráfica de usuario para eliminar un usuario.
      *

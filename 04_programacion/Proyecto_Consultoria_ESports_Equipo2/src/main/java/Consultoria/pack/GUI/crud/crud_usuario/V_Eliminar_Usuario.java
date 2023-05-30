@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 public class V_Eliminar_Usuario {
     private JPanel V_Eliminr_Dueño;
     private JLabel laberlEscogeElimiUsu;
-    private JComboBox comboBoxUsuario;
+    private JComboBox<Usuario> comboBoxUsuario;
     private JButton buttonEliminarUsu;
 
     /**

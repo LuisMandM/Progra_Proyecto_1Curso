@@ -15,7 +15,7 @@ public Crud_Jugador() {
     crearButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Carga.Cargar_Equipos();
+            //Carga.Cargar_Equipos();
             JFrame frame = new JFrame("V_CrearJugador");
             frame.setContentPane(new V_CrearJugador().getPanel_CrearJugador());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -26,7 +26,7 @@ public Crud_Jugador() {
     actualizarButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Carga.Cargar_Equipos();
+            //Carga.Cargar_Equipos();
             JFrame frame = new JFrame("V_Actualizar_Jugador");
             frame.setContentPane(new V_Actualizar_Jugador().getPanelActualizar());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

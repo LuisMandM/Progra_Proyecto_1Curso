@@ -73,8 +73,8 @@ public class V_Admin {
      * @param args Los argumentos de la línea de comandos.
      */
     public static void main(String[] args) {
-        Carga.Cargar_Equipos();
-        Carga.Cargar_Clientes();
+        //Carga.Cargar_Equipos();
+        //Carga.Cargar_Clientes();
         JFrame frame = new JFrame("V_Admin");
         frame.setContentPane(new V_Admin().V_Admin);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

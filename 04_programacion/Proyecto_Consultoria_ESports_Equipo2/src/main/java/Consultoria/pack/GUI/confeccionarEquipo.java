@@ -47,8 +47,8 @@ public class confeccionarEquipo {
     }
 
     public confeccionarEquipo() {
-        Carga.Cargar_Equipos();
-        Carga.Cargar_Jugadores_Libres();
+        //Carga.Cargar_Equipos();
+        //Carga.Cargar_Jugadores_Libres();
         actualizarListaJugadores();
 
         list1.addListSelectionListener(new ListSelectionListener() {

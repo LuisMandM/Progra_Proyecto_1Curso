@@ -95,12 +95,12 @@ public class V_Login {
                 Carga.Cargar_Jugadores_Libres();
                 break;
             case 20:
-                Carga.Cargar_Equipos_View();
+                Carga.Cargar_Equipos();
                 Carga.Cargar_Calendario();
                 Carga.Cargar_Jugadores_Libres();
                 break;
             case 30:
-                Carga.Cargar_Equipos_View();
+                Carga.Cargar_Equipos();
                 Carga.Cargar_Calendario();
                 break;
         }

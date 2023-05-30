@@ -34,8 +34,8 @@ public class verJornada {
     public verJornada() {
 
         table1 = new JTable();
-        Carga.Cargar_Equipos();
-        Carga.Cargar_Calendario();
+        //Carga.Cargar_Equipos();
+        //Carga.Cargar_Calendario();
 
         for (Jornada jornada: Main.getJornadas()) {
             comboBox2.addItem(jornada.getFecha());

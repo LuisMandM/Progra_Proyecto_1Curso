@@ -45,8 +45,8 @@ public class verClasificacion {
     public verClasificacion() {
 
         table1 = new JTable();
-        Carga.Cargar_Equipos();
-        Carga.Cargar_Calendario();
+        //Carga.Cargar_Equipos();
+        //Carga.Cargar_Calendario();
 
         for (Calendario calendario: Main.getCalendarios()) {
             comboBox1.addItem(calendario.getFecha_inicio());

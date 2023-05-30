@@ -70,8 +70,8 @@ public class Result_Partido {
     }
 
     public static void main(String[] args) {
-        Carga.Cargar_Equipos();
-        Carga.Cargar_Calendario();
+        //Carga.Cargar_Equipos();
+        //Carga.Cargar_Calendario();
 
         JFrame frame = new JFrame("Resultado del partido");
         frame.setContentPane(new Result_Partido().panel1);

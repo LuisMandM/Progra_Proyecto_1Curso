@@ -18,10 +18,6 @@ public class V_Inicio_Usuario {
         return panelUsuario;
     }
 
-    public static void main(String[] args) {
-
-    }
-
     public V_Inicio_Usuario() {
     resultadoPartidoButton.addActionListener(new ActionListener() {
         @Override

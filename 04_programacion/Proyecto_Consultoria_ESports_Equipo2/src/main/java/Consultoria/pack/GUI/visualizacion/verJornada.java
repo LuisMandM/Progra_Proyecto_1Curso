@@ -43,11 +43,65 @@ public class verJornada {
      * Carga todos los datos de la clase Carga y los introduce al combox.
      */
 
+    public verJornada(Calendario temporada_new) {
+
+        table1 = new JTable();
+        comboBox1.addItem(temporada_new);
+
+        for (Jornada jornada: Main.getJornadas()) {
+            if (jornada.getCalendario() ==temporada_new) comboBox2.addItem(jornada.getFecha());
+        }
+
+
+        table1.setModel(new TablaJornadaModel());
+
+        /**
+         * Carga los datos de la jornada seleccionada.
+         */
+
+        comboBox2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LocalDate fecha = (LocalDate) comboBox2.getSelectedItem();
+                List<Partido> partidos = new ArrayList<>();
+
+                for (Partido partido1: Main.getPartidos()) {
+                    if (partido1.getJornada().getFecha() == fecha) {
+                        partidos.add(partido1);
+                    }
+                }
+                table1.setModel(new TablaJornadaModel(partidos));
+                scrollpane1.setViewportView(table1);
+            }
+        });
+
+        /**
+         * Carga los datos de la temporada seleccionada.
+         */
+
+        comboBox1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LocalDate fechaTemp = (LocalDate) comboBox1.getSelectedItem();
+                List<Calendario> calendarios = new ArrayList<>();
+
+                for (Calendario calendario: Main.getCalendarios()) {
+                    if (calendario.getFecha_inicio() == fechaTemp) {
+                        calendarios.add(calendario);
+                    }
+                }
+            }
+        });
+    }
+
+
+    /**
+     * Carga todos los datos de la clase Carga y los introduce al combox.
+     */
+
     public verJornada() {
 
         table1 = new JTable();
-        //Carga.Cargar_Equipos();
-        //Carga.Cargar_Calendario();
 
         for (Jornada jornada: Main.getJornadas()) {
             comboBox2.addItem(jornada.getFecha());

@@ -4,13 +4,16 @@ import Consultoria.pack.Clases_Base.Calendario;
 import Consultoria.pack.Clases_Base.Equipo;
 import Consultoria.pack.Clases_Base.Jornada;
 import Consultoria.pack.Clases_Base.Partido;
+import Consultoria.pack.GUI.visualizacion.verJornada;
 import Consultoria.pack.Main;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.*;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.List;
 
 public class Admin_Pack {
 
@@ -18,6 +21,14 @@ public class Admin_Pack {
         Map<LocalDate, Partido[]> liga = Generacion_Calendario(fecha_inicio);
         Calendario temporada = Cargar_Calendario(Crear_Calendario(liga));
         Organizar_Temporada(temporada, liga);
+        JOptionPane.showMessageDialog(null, "Temporada Generada Correctamente",
+                "Temporada Creada", JOptionPane.ERROR_MESSAGE);
+        JFrame frame = new JFrame("Vista de Temporada Creada");
+        frame.setContentPane(new verJornada(temporada).getPanel1());
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 
     public static void Registrar_Resultado(Partido partido_ref) {

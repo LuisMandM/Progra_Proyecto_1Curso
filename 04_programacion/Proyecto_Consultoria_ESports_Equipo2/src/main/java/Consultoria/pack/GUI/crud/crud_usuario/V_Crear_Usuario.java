@@ -55,7 +55,7 @@ public class V_Crear_Usuario {
         if (!actualizar) {
             String nombreU = textFieldUsuario.getText();
             String contrasenya = passwordUsuario.getText();
-            Usuario usuario = new Usuario(nombreU, contrasenya);
+            Usuario usuario = new Usuario(contrasenya, nombreU);
 
             Create.Crear_Usuario(usuario);
             textFieldID.setText("");

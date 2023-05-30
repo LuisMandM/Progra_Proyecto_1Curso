@@ -1,5 +1,6 @@
 package Consultoria.pack.GUI.crud.crud_jugador;
 
+import Consultoria.pack.Base_Datos.CRUD.Delete;
 import Consultoria.pack.Clases_Base.Equipo;
 import Consultoria.pack.Clases_Base.Jugador;
 import Consultoria.pack.Main;
@@ -43,7 +44,9 @@ public class V_Eliminar_Jugador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Jugador jugadorselec = (Jugador) comboBoxJugador.getSelectedItem();
-                Main.getJugadores().remove(jugadorselec);
+                if(jugadorselec != null) Delete.Delete_Jugador(jugadorselec);
+                else JOptionPane.showMessageDialog(null, "Error al seleccionar el jugador " +
+                        "intente nuevamente", "Error BD", JOptionPane.ERROR_MESSAGE);
             }
         });
     }

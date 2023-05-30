@@ -1,8 +1,10 @@
+------- Creates tables -------
+
 create table Administrador(
 id_admin NUMBER(10) GENERATED AS IDENTITY (START WITH 1 
     INCREMENT BY 1 MAXVALUE 9999999999 MINVALUE 0 NOCYCLE) 
     CONSTRAINT id_admin_pk PRIMARY KEY ,
-contraseña varchar2(20) not null,
+contrase a varchar2(20) not null,
 usuario varchar2(50) not null
 );
 
@@ -12,16 +14,16 @@ CREATE TABLE CLIENTE(
     ID_USUARIO NUMBER(10)GENERATED AS IDENTITY (START WITH 1 
     INCREMENT BY 1 MAXVALUE 9999999999 MINVALUE 0 NOCYCLE) 
     CONSTRAINT ID_USER_PK PRIMARY KEY,
-    CONTRASEÑA varchar2(20) not null,
+    CONTRASE A varchar2(20) not null,
     USUARIO varchar2(50) not null
 );
 
-create table Dueño(
-id_dueño NUMBER(10) GENERATED AS IDENTITY (START WITH 1 
+create table Due o(
+id_due o NUMBER(10) GENERATED AS IDENTITY (START WITH 1 
     INCREMENT BY 1 MAXVALUE 9999999999 MINVALUE 0 NOCYCLE) 
-    CONSTRAINT id_dueño_pk PRIMARY KEY,
+    CONSTRAINT id_due o_pk PRIMARY KEY,
 nombre varchar2(50) not null,
-contraseña varchar2(20) not null,
+contrase a varchar2(20) not null,
 usuario varchar2(50) not null
 );
 
@@ -66,7 +68,7 @@ CREATE TABLE EQUIPO(
     CONSTRAINT id_equipo_pk PRIMARY KEY,
 	NOMBRE VARCHAR2(100) NOT NULL CONSTRAINT EQUI_NOM_UK UNIQUE,
 	SALARIO_TOTAL NUMBER(10),
-	ID_DUENIO NUMBER(10) CONSTRAINT EQUI_DUENIO_FK REFERENCES DUEÑO ON DELETE SET NULL
+	ID_DUENIO NUMBER(10) CONSTRAINT EQUI_DUENIO_FK REFERENCES DUE O ON DELETE SET NULL
 );
 
 CREATE TABLE PARTIDO(
@@ -81,55 +83,5 @@ CREATE TABLE PARTIDO(
 	JORNADA NUMBER(10) CONSTRAINT PART_JOR_FK REFERENCES JORNADA	
 );
 
--- INSERTS
 
-INSERT INTO administrador(contraseña, usuario) VALUES('12345A', 'admin');
-INSERT INTO Dueño(nombre, contraseña, usuario) VALUES('PEDRO', '12345A', 'dueño2');
-INSERT INTO Jugador(nombre, nickname, sueldo) VALUES('ADRIAN', 'user1', 1000);
-INSERT INTO Jugador(nombre, nickname, sueldo) VALUES('DIEGO', 'user2', 1000);
-INSERT INTO Jugador(nombre, nickname, sueldo) VALUES('PABLO', 'user3', 1000);
-INSERT INTO Jugador(nombre, nickname, sueldo) VALUES('ALVARO', 'user5', 1000);
-COMMIT;
 
-INSERT INTO equipo(nombre, salario_total, ID_DUENIO) VALUES('equipo2', 20000, 2);
-
-INSERT INTO partido(GANADOR, MARCADOR_LOCAL, MARCADOR_VISITANTE, EQUIPO_LOCAL, EQUIPO_VISITANTE, JORNADA) VALUES()
-
-INSERT INTO jugador_equipo VALUES(4, 111, '10/1/22', '20/10/23');
-
-SELECT * FROM administrador;
-SELECT * FROM dueño;
-SELECT * FROM jugador;
-SELECT * FROM calendario;
-SELECT * FROM jornada;
-SELECT * FROM equipo;
-SELECT * FROM partido;
-SELECT * FROM jugador_equipo;
-
--- TRIGGERS
-
-CREATE OR REPLACE TRIGGER max_jugadores
-BEFORE INSERT ON jugador_equipo
-    FOR EACH ROW
-
-DECLARE
-    v_id_jugador    jugador.id_jugador%TYPE;
-    v_id_equipo     equipo.id_equipo%TYPE;
-    v_num_jugadores NUMBER;
-    
-BEGIN
-
-    SELECT COUNT(*) AS "NUM_JUGADORES" INTO v_num_jugadores FROM jugador_equipo
-    WHERE id_equipo = :new.id_equipo AND fecha_fin IS NULL;
-    
-    IF v_num_jugadores >= 6
-    THEN
-    RAISE_APPLICATION_ERROR(-202021, 'ERROR, Maximo de jugadores completado');
-    ELSE
-    DBMS_OUTPUT.PUT_LINE('Operacion valida');
-    END IF;
-    
-END;
-
-SELECT * FROM jugador_equipo;
-INSERT INTO jugador_equipo(id_jugador, id_equipo, fecha_inicio) VALUES(21, 1, '10/01/22');

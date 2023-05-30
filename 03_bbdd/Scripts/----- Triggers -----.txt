@@ -1,3 +1,29 @@
+----- Triggers -----
+
+CREATE OR REPLACE TRIGGER max_jugadores
+BEFORE INSERT ON jugador_equipo
+    FOR EACH ROW
+
+DECLARE
+    v_id_jugador    jugador.id_jugador%TYPE;
+    v_id_equipo     equipo.id_equipo%TYPE;
+    v_num_jugadores NUMBER;
+    
+BEGIN
+
+    SELECT COUNT(*) AS "NUM_JUGADORES" INTO v_num_jugadores FROM jugador_equipo
+    WHERE id_equipo = :new.id_equipo AND fecha_fin IS NULL;
+    
+    IF v_num_jugadores >= 6
+    THEN
+    RAISE_APPLICATION_ERROR(-202021, 'ERROR, Maximo de jugadores completado');
+    ELSE
+    DBMS_OUTPUT.PUT_LINE('Operacion valida');
+    END IF;
+    
+END;
+
+
 --Script de Registro de Triggers almacenados.
 CREATE OR REPLACE TRIGGER CONTROL_DUEÑOS_VIEW
 INSTEAD OF DELETE ON VISTA_DUEÑO
@@ -40,20 +66,3 @@ IF :NEW.SUELDO < 1080 THEN
     NO PUEDE SER MENOR A 1080€');
 END IF;
 END;
-
-
-
---NO FUNCIONA
-CREATE OR REPLACE TRIGGER CONTROL_DUEÑOS_COMP
-FOR DELETE ON DUEÑO COMPOUND TRIGGER
-V_USER DUEÑO.ID_DUEÑO%TYPE;
-
-    BEFORE EACH ROW IS BEGIN
-    V_USER := :OLD.ID_DUEÑO;
-    END BEFORE EACH ROW;
-    
-    AFTER EACH ROW IS BEGIN
-    UPDATE DUEÑO SET DISPONIBILIDAD = 'E' WHERE ID_DUEÑO = V_USER;
-    END AFTER EACH ROW;
-
-END CONTROL_DUEÑOS_COMP;

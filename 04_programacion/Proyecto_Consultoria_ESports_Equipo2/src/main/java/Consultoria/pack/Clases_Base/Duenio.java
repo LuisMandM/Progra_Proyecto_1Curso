@@ -21,7 +21,9 @@ public class Duenio extends Usuario {
         this.nombre = nombre;
     }
 
-    public Duenio(String nombre, String usuario, String contrasenya) {
+    public Duenio(String contrasenya, String usuario, String nombre) {
+        super(contrasenya, usuario);
+        this.nombre = nombre;
     }
 
     public Duenio(int id_dueño, String nombre) {

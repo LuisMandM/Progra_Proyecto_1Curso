@@ -30,7 +30,10 @@ public class Equipo {
         this.duenio = duenio;
     }
 
-    public Equipo(String nombre, double tope_salarial, Duenio duenioselec) {
+    public Equipo(String nombre, double salario_total, Duenio duenio) {
+        this.nombre = nombre;
+        this.salario_total = salario_total;
+        this.duenio = duenio;
     }
 
     public int getId_equipo() {

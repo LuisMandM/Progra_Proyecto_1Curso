@@ -41,7 +41,5 @@ public class V_Eliminar_Usuario {
         return V_Eliminr_Dueño;
     }
 
-    public static void main(String[] args) {
 
-    }
 }

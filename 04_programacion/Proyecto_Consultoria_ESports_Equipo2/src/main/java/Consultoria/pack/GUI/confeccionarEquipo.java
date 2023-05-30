@@ -48,13 +48,7 @@ public class confeccionarEquipo {
     private String password;
     private Equipo equipo_jugador;
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Confeccionar equipo");
-        frame.setContentPane(new confeccionarEquipo().panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
+
 
     /**
      * Cargamos todos los datos de la clase Carga.

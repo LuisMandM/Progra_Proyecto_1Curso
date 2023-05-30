@@ -52,7 +52,5 @@ public class V_Inicio_Duenio {
         return panelDuenio;
     }
 
-    public static void main(String[] args) {
 
-    }
 }

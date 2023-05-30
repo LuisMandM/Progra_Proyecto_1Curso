@@ -22,9 +22,7 @@ public class confeccionarEquipo {
      * Clase para cambiar los jugadores de cada equipo. Mediante un login verificamos al dueño y los jugadores correspondientes a su equipo. En el login debera introducirse
      * el nombre de usuario y su contraseña. A la izquierda hay una lista de los jugadores libres los cuales pueden añadirse al equipo y a la derecha los jugadores que ya
      * están en el equipo. Puedes añadir jugadores libres al equipo o quitar jugadores de tu equipo.
-     * @param nombre String con el usuario
-     * @param password String con el password
-     * @param equipo Equipo para el dueño
+     * @author David.R
      */
 
     JPanel panel1;
@@ -58,13 +56,17 @@ public class confeccionarEquipo {
         frame.setVisible(true);
     }
 
+    /**
+     * Cargamos todos los datos de la clase Carga.
+     */
+
     public confeccionarEquipo() {
         Carga.Cargar_Equipos();
         Carga.Cargar_Jugadores_Libres();
         actualizarListaJugadores();
 
         /**
-         *
+         * Este Listener hace que cuando selecciones un jugador de la lista de jugadores libres muestre sus datos en la pantalla.
          */
 
         jugadores_libres.addListSelectionListener(new ListSelectionListener() {
@@ -80,6 +82,14 @@ public class confeccionarEquipo {
                 textField4.setText(sueldo);
             }
         });
+
+        /**
+         * Este listener es el que se encarga del login del usuario.
+         * @param nombre String
+         * @param password String
+         * @param equipo_jugador Equipo
+         */
+
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -110,6 +120,11 @@ public class confeccionarEquipo {
             }
         });
 
+        /**
+         * Este Listener se encarga de añadir jugadores libres al equipo.
+         * @param actual Jugador
+         */
+
         añadirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -119,6 +134,11 @@ public class confeccionarEquipo {
                 Update.Add_PlayerTeam(actual);
             }
         });
+
+        /**
+         * Este Listener se encarga de quitar jugadores del equipo.
+         * @param jugador_eliminado Jugador
+         */
 
         quitarButton.addActionListener(new ActionListener() {
             @Override
@@ -130,6 +150,10 @@ public class confeccionarEquipo {
             }
         });
     }
+
+    /**
+     * Añadimos a la lista de los jugadores libres todos los jugadores que no están en ningún equipo los cuales están almacenados en la clase Carga.
+     */
 
     private void actualizarListaJugadores() {
         DefaultListModel<Jugador> modelo = new DefaultListModel<>();

@@ -15,6 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class verJornada {
+
+    /**
+     * Clase para ver los partidos y resultados de las jornadas.
+     * Para ello contaremos con un combox con todas las temporadas y otro con todas las jornadas de dicha temporada.
+     * @author David.R
+     */
+
     private JPanel panel1;
     private JLabel label1;
     private JTable table1;
@@ -39,6 +46,10 @@ public class verJornada {
         frame.setVisible(true);
     }
 
+    /**
+     * Carga todos los datos de la clase Carga y los introduce al combox.
+     */
+
     public verJornada() {
 
         table1 = new JTable();
@@ -55,13 +66,15 @@ public class verJornada {
 
         table1.setModel(new TablaJornadaModel());
 
+        /**
+         * Carga los datos de la jornada seleccionada.
+         */
+
         comboBox2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 LocalDate fecha = (LocalDate) comboBox2.getSelectedItem();
                 List<Partido> partidos = new ArrayList<>();
-
-
 
                 for (Partido partido1: Main.getPartidos()) {
                     if (partido1.getJornada().getFecha() == fecha) {
@@ -72,6 +85,11 @@ public class verJornada {
                 scrollpane1.setViewportView(table1);
             }
         });
+
+        /**
+         * Carga los datos de la temporada seleccionada.
+         */
+
         comboBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

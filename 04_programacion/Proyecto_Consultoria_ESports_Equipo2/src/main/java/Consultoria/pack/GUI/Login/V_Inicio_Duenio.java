@@ -22,17 +22,7 @@ public class V_Inicio_Duenio {
         public void actionPerformed(ActionEvent e) {
             JFrame frame = new JFrame("Confeccionar equipo");
             frame.setContentPane(new confeccionarEquipo().getPanel1());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.pack();
-            frame.setVisible(true);
-        }
-    });
-    resultadoPartidoButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JFrame frame = new JFrame("Resultado del partido");
-            frame.setContentPane(new Result_Partido().getPanel1());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
         }
@@ -42,7 +32,7 @@ public class V_Inicio_Duenio {
         public void actionPerformed(ActionEvent e) {
             JFrame frame = new JFrame("Jornadas");
             frame.setContentPane(new verJornada().getPanel1());
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
             frame.setVisible(true);
         }
@@ -52,7 +42,7 @@ public class V_Inicio_Duenio {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Clasificación");
                 frame.setContentPane(new verClasificacion().getPanel1());
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -62,7 +52,5 @@ public class V_Inicio_Duenio {
         return panelDuenio;
     }
 
-    public static void main(String[] args) {
 
-    }
 }

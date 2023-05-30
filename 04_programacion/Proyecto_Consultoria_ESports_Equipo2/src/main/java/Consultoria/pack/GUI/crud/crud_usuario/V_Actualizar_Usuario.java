@@ -1,6 +1,7 @@
 package Consultoria.pack.GUI.crud.crud_usuario;
 
 import Consultoria.pack.Clases_Base.Usuario;
+import Consultoria.pack.Main;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -12,7 +13,7 @@ import java.awt.event.ActionListener;
 public class V_Actualizar_Usuario {
     private JPanel panelActualizarUsuario;
     private JLabel labelescoge;
-    private JComboBox comboBoxUsuario;
+    private JComboBox<Usuario> comboBoxUsuario;
     private JButton buttonSelectUsu;
     private boolean actualizar;
     private Usuario usuarioselec;
@@ -21,6 +22,10 @@ public class V_Actualizar_Usuario {
      * Crea una nueva instancia de `V_Actualizar_Usuario`.
      */
     public V_Actualizar_Usuario() {
+
+        for (Usuario usuario : Main.getUsuarios()) {
+            comboBoxUsuario.addItem(usuario);
+        }
         buttonSelectUsu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,12 +48,4 @@ public class V_Actualizar_Usuario {
         return panelActualizarUsuario;
     }
 
-    /**
-     * Método principal para ejecutar la aplicación de actualización de usuario.
-     *
-     * @param args Los argumentos de línea de comandos (no se utilizan).
-     */
-    public static void main(String[] args) {
-
-    }
 }

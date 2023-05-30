@@ -25,7 +25,9 @@ public class Usuario {
 
     }
 
-    public Usuario(String nombreU, String contrasenya) {
+    public Usuario(String contrasenya, String usuario) {
+        this.contrasenya = contrasenya;
+        this.usuario = usuario;
     }
 
     public int getId_usuario() {
@@ -54,10 +56,6 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "\n********************Usuario********************\n" +
-                "-Id usuario: " + id_usuario + "\n" +
-                "-Contraseña: " + contrasenya + "\n" +
-                "-Usuario: " + usuario +
-                "\n*********************************************\n";
+        return id_usuario +"-"+usuario;
     }
 }

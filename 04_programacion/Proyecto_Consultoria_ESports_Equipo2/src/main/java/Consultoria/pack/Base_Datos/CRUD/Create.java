@@ -18,11 +18,11 @@ public class Create {
 
         try {
             Connection connection = Gestor_BD.Conectar_BD();
-            String query = "INSERT INTO CLIENTE(USUARIO,CONTRASEÑA)VALUES(?,?)";
+            String query = "insert into cliente(contraseña,usuario) values (?,?)";
             PreparedStatement pst = connection.prepareStatement(query);
 
-            pst.setString(1, usuario_current.getUsuario());
-            pst.setString(2, usuario_current.getContrasenya());
+            pst.setString(2, usuario_current.getUsuario());
+            pst.setString(1, usuario_current.getContrasenya());
 
             int filas_add = pst.executeUpdate();
             if (filas_add > 0) {
@@ -49,7 +49,7 @@ public class Create {
 
             pst.setString(1,jugador_current.getNombre());
             pst.setString(2,jugador_current.getNickname());
-            pst.setString(3, String.valueOf(jugador_current.getSueldo()));
+            pst.setInt(3, (int)jugador_current.getSueldo());
 
             int filas_add = pst.executeUpdate();
             if (filas_add > 0) {

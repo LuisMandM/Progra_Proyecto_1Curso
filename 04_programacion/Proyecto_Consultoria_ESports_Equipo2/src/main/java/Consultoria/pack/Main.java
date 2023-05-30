@@ -20,7 +20,6 @@ import static Consultoria.pack.Base_Datos.Visualizacion_Pack.OrdenarClasificacio
 public class Main {
 
     private static Connection connection ;
-
     private static  List<Equipo> equipos  = new ArrayList<>();
     private static  List<Jugador> jugadores  = new ArrayList<>();
     private static  List<Duenio> duenios  = new ArrayList<>();
@@ -28,14 +27,12 @@ public class Main {
     private static List<Jornada> jornadas = new ArrayList<>();
     private static List<Partido> partidos = new ArrayList<>();
     private static List<Usuario> usuarios = new ArrayList<>();
-
+    
     private static List<Jugador> free_players = new ArrayList<>();
-
 
     public static void main(String[] args) {
 
         Carga.Cargar_Jugadores_Libres();
-
         JFrame frame = new JFrame("Login");
         frame.setContentPane(new V_Login(frame).getPanel());
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -116,7 +113,4 @@ public class Main {
     public static void setFree_players(List<Jugador> free_players) {
         Main.free_players = free_players;
     }
-
-
-
 }

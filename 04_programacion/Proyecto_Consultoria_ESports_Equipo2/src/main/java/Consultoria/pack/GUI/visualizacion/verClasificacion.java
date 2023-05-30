@@ -37,13 +37,6 @@ public class verClasificacion {
     private int numJor = 1;
     private int numTemp = 1;
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Clasificación");
-        frame.setContentPane(new verClasificacion().panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 
     public JPanel getPanel1() {
         return panel1;
@@ -56,8 +49,8 @@ public class verClasificacion {
     public verClasificacion() {
 
         table1 = new JTable();
-        Carga.Cargar_Equipos();
-        Carga.Cargar_Calendario();
+        //Carga.Cargar_Equipos();
+        //Carga.Cargar_Calendario();
 
         for (Calendario calendario: Main.getCalendarios()) {
             comboBox1.addItem(calendario.getFecha_inicio());

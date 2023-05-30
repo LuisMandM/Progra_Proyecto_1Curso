@@ -61,7 +61,53 @@ public class Carga {
         Main.setJugadores(jugadores);
     }
 
-    public static Equipo buscarEquipo(int idEquipo) {
+    public static void Cargar_Equipos_View() {
+        Connection connection = Gestor_BD.Conectar_BD();
+        List<Jugador> jugadores = new ArrayList<>();
+        List<Duenio> duenios = new ArrayList<>();
+        List<Equipo> equipos = new ArrayList<>();
+        try {
+
+            Statement statement = connection.createStatement();
+            ResultSet resultDuenios = statement.executeQuery("SELECT * FROM VISTA_DUEÑO");
+
+            while (resultDuenios.next()) {
+
+                Duenio actual = new Duenio(resultDuenios.getInt("ID_DUEÑO"), resultDuenios.getString("NOMBRE"));
+
+                Statement statement_equi = connection.createStatement();
+                ResultSet result_Equi = statement_equi.executeQuery("SELECT * FROM VISTA_EQUIPO WHERE ID_DUENIO = "
+                        + actual.getId_usuario());
+
+                while (result_Equi.next()) {
+                    Equipo equipo = new Equipo(result_Equi.getInt("ID_EQUIPO"), result_Equi.getString("NOMBRE"),
+                            result_Equi.getInt("SALARIO_TOTAL"), actual);
+
+                    Statement statement_player = connection.createStatement();
+                    ResultSet result_Play = statement_player.executeQuery("SELECT * FROM JUGADOR NATURAL JOIN JUGADOR_EQUIPO T WHERE T.ID_EQUIPO = "
+                            + equipo.getId_equipo() + "AND T.FECHA_FIN IS NULL");
+                    int indice = 0;
+
+                    while (result_Play.next() && indice < 6) {
+                        Jugador player = new Jugador(result_Play.getInt("ID_JUGADOR"), result_Play.getString("NOMBRE"),
+                                result_Play.getString("NICKNAME"), result_Play.getInt("SUELDO"), equipo);
+                        equipo.addPlayer(player, indice);
+                        indice++;
+                        if (!Main.getJugadores().contains(player)) jugadores.add(player);
+                    }
+                    if (!Main.getEquipos().contains(equipo)) equipos.add(equipo);
+                }
+                if (!Main.getDuenios().contains(actual)) duenios.add(actual);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        Main.setDuenios(duenios);
+        Main.setEquipos(equipos);
+        Main.setJugadores(jugadores);
+    }
+
+    private static Equipo buscarEquipo(int idEquipo) {
         Equipo equipoBuscado = null;
         for (Equipo equipo : Main.getEquipos()) {
             if (equipo.getId_equipo() == idEquipo) {

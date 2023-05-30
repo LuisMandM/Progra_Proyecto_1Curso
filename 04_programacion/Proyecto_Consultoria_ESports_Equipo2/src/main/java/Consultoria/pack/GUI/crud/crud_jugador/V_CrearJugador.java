@@ -66,9 +66,8 @@ public class V_CrearJugador {
                 double sueldo = Double.parseDouble(textFieldSueldo.getText());
 
                 if (sueldo > 0) {
-                    Jugador jugador = new Jugador(nombre, nickname, sueldo);
 
-                    Create.Crear_jugador(jugador);
+                    Create.Crear_jugador(new Jugador(nombre, nickname, sueldo));
                     textFieldId_jugador.setText("");
                     textFieldNombre.setText("");
                     textFieldNickname.setText("");

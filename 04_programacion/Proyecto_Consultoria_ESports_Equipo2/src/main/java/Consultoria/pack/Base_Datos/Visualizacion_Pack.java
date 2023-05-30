@@ -137,14 +137,6 @@ public class Visualizacion_Pack {
                 }
             }
         }
-
-        /*System.out.println("********************CLASIFICACIÓN********************");
-        for (Equipo equipo : equipos) {
-            int puntaje = calcularPuntaje(equipo);
-            System.out.println("-Id del equipo: " + equipo.getId_equipo() + "\n-Puntaje: " + puntaje);
-        }
-        System.out.println("*****************************************************");*/
-
         return equipos;
 
 

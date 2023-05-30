@@ -74,16 +74,6 @@ public class Result_Partido {
         });
     }
 
-    public static void main(String[] args) {
-        Carga.Cargar_Equipos();
-        Carga.Cargar_Calendario();
-
-        JFrame frame = new JFrame("Resultado del partido");
-        frame.setContentPane(new Result_Partido().panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 
     public JPanel getPanel1() {
         return panel1;

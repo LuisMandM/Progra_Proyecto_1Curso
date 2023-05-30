@@ -13,9 +13,7 @@ public class Crud_Usuario {
     public JPanel getPanelCrudUsuario() {
         return panelCrudUsuario;
     }
-    public static void main(String[] args) {
 
-    }
 
     public Crud_Usuario() {
     crearButton.addActionListener(new ActionListener() {

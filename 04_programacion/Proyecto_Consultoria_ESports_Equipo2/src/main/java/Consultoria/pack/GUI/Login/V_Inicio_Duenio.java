@@ -27,16 +27,6 @@ public class V_Inicio_Duenio {
             frame.setVisible(true);
         }
     });
-    resultadoPartidoButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JFrame frame = new JFrame("Resultado del partido");
-            frame.setContentPane(new Result_Partido().getPanel1());
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.pack();
-            frame.setVisible(true);
-        }
-    });
     verJornadaButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {

@@ -31,6 +31,14 @@ public class verJornada {
         return panel1;
     }
 
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("verJornada");
+        frame.setContentPane(new verJornada().panel1);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
     public verJornada() {
 
         table1 = new JTable();

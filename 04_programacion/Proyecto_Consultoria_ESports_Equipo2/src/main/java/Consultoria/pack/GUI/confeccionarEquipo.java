@@ -17,6 +17,16 @@ import java.util.List;
 import java.util.Objects;
 
 public class confeccionarEquipo {
+
+    /**
+     * Clase para cambiar los jugadores de cada equipo. Mediante un login verificamos al dueño y los jugadores correspondientes a su equipo. En el login debera introducirse
+     * el nombre de usuario y su contraseña. A la izquierda hay una lista de los jugadores libres los cuales pueden añadirse al equipo y a la derecha los jugadores que ya
+     * están en el equipo. Puedes añadir jugadores libres al equipo o quitar jugadores de tu equipo.
+     * @param nombre String con el usuario
+     * @param password String con el password
+     * @param equipo Equipo para el dueño
+     */
+
     JPanel panel1;
     private JList<Jugador> jugadores_libres;
     private JButton añadirButton;
@@ -52,6 +62,10 @@ public class confeccionarEquipo {
         Carga.Cargar_Equipos();
         Carga.Cargar_Jugadores_Libres();
         actualizarListaJugadores();
+
+        /**
+         *
+         */
 
         jugadores_libres.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -99,7 +113,7 @@ public class confeccionarEquipo {
         añadirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Jugador actual =jugadores_libres.getSelectedValue();
+                Jugador actual = jugadores_libres.getSelectedValue();
                 System.out.println(actual.getEquipo());
                 actual.setEquipo(equipo_jugador);
                 Update.Add_PlayerTeam(actual);
@@ -109,7 +123,10 @@ public class confeccionarEquipo {
         quitarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Jugador jugador_eliminado = jugadores_equipo.getSelectedValue();
+                System.out.println(jugador_eliminado.getEquipo());
 
+                Update.Remove_Player(jugador_eliminado);
             }
         });
     }

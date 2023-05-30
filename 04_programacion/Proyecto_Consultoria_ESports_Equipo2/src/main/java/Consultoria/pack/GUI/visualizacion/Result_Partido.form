@@ -13,10 +13,10 @@
     <children>
       <component id="d0dcb" class="javax.swing.JLabel" binding="label1">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Fecha:"/>
+          <text value="   Fecha:"/>
         </properties>
       </component>
       <component id="94c7e" class="javax.swing.JLabel" binding="label2">
@@ -24,7 +24,7 @@
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Marcador local:"/>
+          <text value="   Marcador local:"/>
         </properties>
       </component>
       <component id="d91" class="javax.swing.JLabel" binding="label3">
@@ -32,12 +32,14 @@
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Marcador visitante:"/>
+          <text value="   Marcador visitante:"/>
         </properties>
       </component>
       <component id="39700" class="javax.swing.JButton" binding="button1">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="10" height="-1"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Guardar"/>
@@ -51,13 +53,17 @@
       </component>
       <component id="6005c" class="javax.swing.JSpinner" binding="spinner1" default-binding="true">
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="10" height="-1"/>
+          </grid>
         </constraints>
         <properties/>
       </component>
       <component id="4c478" class="javax.swing.JSpinner" binding="spinner2" default-binding="true">
         <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="10" height="-1"/>
+          </grid>
         </constraints>
         <properties/>
       </component>

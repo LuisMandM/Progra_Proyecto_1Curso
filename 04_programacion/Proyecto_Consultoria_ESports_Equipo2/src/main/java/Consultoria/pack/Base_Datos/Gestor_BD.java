@@ -8,6 +8,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Clase encargada de Gestionar las Conexiones, Confirmaciones y desconexiones a la base de datos.
+ */
 
 public class Gestor_BD {
 

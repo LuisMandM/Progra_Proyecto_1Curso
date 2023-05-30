@@ -214,7 +214,7 @@ public class Carga {
     }
 
     /**
-     * Metodo encargado .
+     * Metodo encargado de cargar los Usuarios tipo cliente con Opciones solo de lectura.
      */
     public static void Cargar_Clientes() {
         List<Usuario> users = new ArrayList<>();

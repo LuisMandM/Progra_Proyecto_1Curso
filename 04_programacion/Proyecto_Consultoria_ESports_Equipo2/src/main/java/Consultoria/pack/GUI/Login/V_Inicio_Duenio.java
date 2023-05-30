@@ -24,6 +24,7 @@ public class V_Inicio_Duenio {
             frame.setContentPane(new confeccionarEquipo().getPanel1());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });
@@ -34,6 +35,7 @@ public class V_Inicio_Duenio {
             frame.setContentPane(new verJornada().getPanel1());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });
@@ -44,6 +46,7 @@ public class V_Inicio_Duenio {
                 frame.setContentPane(new verClasificacion().getPanel1());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
+                frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
             }
         });

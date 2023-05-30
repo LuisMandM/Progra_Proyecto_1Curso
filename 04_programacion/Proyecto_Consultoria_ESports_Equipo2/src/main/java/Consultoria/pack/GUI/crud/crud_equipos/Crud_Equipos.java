@@ -21,6 +21,7 @@ public Crud_Equipos() {
             frame.setContentPane(new V_Crear_Equipo().getPanelCrear_Equipo());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });
@@ -32,6 +33,7 @@ public Crud_Equipos() {
             frame.setContentPane(new V_Actualizar_Equipo().getPanelActualizarEquipo());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });
@@ -43,6 +45,7 @@ public Crud_Equipos() {
             frame.setContentPane(new V_Eliminar_Equipo().getPanelEliminarEquipo());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });

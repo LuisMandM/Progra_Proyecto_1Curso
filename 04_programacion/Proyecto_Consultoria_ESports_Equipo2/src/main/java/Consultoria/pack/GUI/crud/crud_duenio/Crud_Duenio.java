@@ -22,6 +22,7 @@ public class Crud_Duenio {
                 frame.setContentPane(new V_Crear_Duenio().getPanelCrear_duenio());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
+                frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
             }
         });
@@ -33,6 +34,7 @@ public class Crud_Duenio {
                 frame.setContentPane(new V_Actualizar_Duenio().getPanelActualizarDuenio());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
+                frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
             }
         });
@@ -44,6 +46,7 @@ public class Crud_Duenio {
                 frame.setContentPane(new V_Eliminar_Duenio().getPanelEliminar_Duenio());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
+                frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
             }
         });

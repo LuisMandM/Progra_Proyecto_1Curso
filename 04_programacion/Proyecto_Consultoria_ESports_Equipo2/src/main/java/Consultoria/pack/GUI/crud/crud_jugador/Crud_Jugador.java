@@ -20,6 +20,7 @@ public Crud_Jugador() {
             frame.setContentPane(new V_CrearJugador().getPanel_CrearJugador());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });
@@ -31,6 +32,7 @@ public Crud_Jugador() {
             frame.setContentPane(new V_Actualizar_Jugador().getPanelActualizar());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });
@@ -41,6 +43,7 @@ public Crud_Jugador() {
             frame.setContentPane(new V_Eliminar_Jugador().getPanelEliminar_Jugador());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });

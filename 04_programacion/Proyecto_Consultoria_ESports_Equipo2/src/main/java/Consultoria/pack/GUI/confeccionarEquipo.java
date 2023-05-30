@@ -1,5 +1,6 @@
 package Consultoria.pack.GUI;
 
+import Consultoria.pack.Base_Datos.CRUD.Update;
 import Consultoria.pack.Base_Datos.Carga;
 import Consultoria.pack.Clases_Base.Duenio;
 import Consultoria.pack.Clases_Base.Equipo;
@@ -16,11 +17,19 @@ import java.util.List;
 import java.util.Objects;
 
 public class confeccionarEquipo {
+
+    /**
+     * Clase para cambiar los jugadores de cada equipo. Mediante un login verificamos al dueño y los jugadores correspondientes a su equipo. En el login debera introducirse
+     * el nombre de usuario y su contraseña. A la izquierda hay una lista de los jugadores libres los cuales pueden añadirse al equipo y a la derecha los jugadores que ya
+     * están en el equipo. Puedes añadir jugadores libres al equipo o quitar jugadores de tu equipo.
+     * @author David.R
+     */
+
     JPanel panel1;
-    private JList<Jugador> list1;
+    private JList<Jugador> jugadores_libres;
     private JButton añadirButton;
     private JButton quitarButton;
-    private JList<Jugador> list2;
+    private JList<Jugador> jugadores_equipo;
     private JLabel label1;
     private JLabel label2;
     private JTextArea textArea3;
@@ -37,6 +46,7 @@ public class confeccionarEquipo {
     List<Jugador> jugadores = new ArrayList<>();
     private String nombre;
     private String password;
+    private Equipo equipo_jugador;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Confeccionar equipo");
@@ -46,24 +56,40 @@ public class confeccionarEquipo {
         frame.setVisible(true);
     }
 
+    /**
+     * Cargamos todos los datos de la clase Carga.
+     */
+
     public confeccionarEquipo() {
         //Carga.Cargar_Equipos();
         //Carga.Cargar_Jugadores_Libres();
         actualizarListaJugadores();
 
-        list1.addListSelectionListener(new ListSelectionListener() {
+        /**
+         * Este Listener hace que cuando selecciones un jugador de la lista de jugadores libres muestre sus datos en la pantalla.
+         */
+
+        jugadores_libres.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                String id = String.valueOf(list1.getSelectedValue().getId_jugador());
-                String nombre = String.valueOf(list1.getSelectedValue().getNombre());
-                String nickname = String.valueOf(list1.getSelectedValue().getNickname());
-                String sueldo = String.valueOf(list1.getSelectedValue().getSueldo());
+                String id = String.valueOf(jugadores_libres.getSelectedValue().getId_jugador());
+                String nombre = String.valueOf(jugadores_libres.getSelectedValue().getNombre());
+                String nickname = String.valueOf(jugadores_libres.getSelectedValue().getNickname());
+                String sueldo = String.valueOf(jugadores_libres.getSelectedValue().getSueldo());
                 textField1.setText(id);
                 textField2.setText(nombre);
                 textField3.setText(nickname);
                 textField4.setText(sueldo);
             }
         });
+
+        /**
+         * Este listener es el que se encarga del login del usuario.
+         * @param nombre String
+         * @param password String
+         * @param equipo_jugador Equipo
+         */
+
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -77,8 +103,9 @@ public class confeccionarEquipo {
                         for (Equipo equipo: Main.getEquipos()) {
                             if (equipo.getDuenyo() == duenio) {
 
-                                for (int i = 1; i < equipo.getJugadores().length; i++) {
-                                    modeloEquipo.addElement(equipo.getJugadores()[i-1]);
+                                for (int i = 0; i < equipo.getJugadores().length; i++) {
+                                    modeloEquipo.addElement(equipo.getJugadores()[i]);
+                                    equipo_jugador = equipo;
                                 }
                                 /*for (Jugador jugador: Main.getJugadores()) {
                                     if (Objects.equals(jugador.getEquipo().getNombre(), duenio.getNombre())) {
@@ -88,25 +115,45 @@ public class confeccionarEquipo {
                             }
                         }
                     }
-                    list2.setModel(modeloEquipo);
+                    jugadores_equipo.setModel(modeloEquipo);
                 }
             }
         });
 
+        /**
+         * Este Listener se encarga de añadir jugadores libres al equipo.
+         * @param actual Jugador
+         */
+
         añadirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Jugador actual = jugadores_libres.getSelectedValue();
+                System.out.println(actual.getEquipo());
+                actual.setEquipo(equipo_jugador);
+                Update.Add_PlayerTeam(actual);
             }
         });
+
+        /**
+         * Este Listener se encarga de quitar jugadores del equipo.
+         * @param jugador_eliminado Jugador
+         */
 
         quitarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Jugador jugador_eliminado = jugadores_equipo.getSelectedValue();
+                System.out.println(jugador_eliminado.getEquipo());
 
+                Update.Remove_Player(jugador_eliminado);
             }
         });
     }
+
+    /**
+     * Añadimos a la lista de los jugadores libres todos los jugadores que no están en ningún equipo los cuales están almacenados en la clase Carga.
+     */
 
     private void actualizarListaJugadores() {
         DefaultListModel<Jugador> modelo = new DefaultListModel<>();
@@ -114,7 +161,7 @@ public class confeccionarEquipo {
         for (Jugador jugador: Main.getFree_players()) {
             modelo.addElement(jugador);
         }
-        list1.setModel(modelo);
+        jugadores_libres.setModel(modelo);
     }
 
     public JPanel getPanel1() {

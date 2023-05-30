@@ -11,6 +11,11 @@ import javax.swing.*;
 import java.util.List;
 
 public class Result_Partido {
+
+    /**
+     * Clase para modificar el resultado de un partido.
+     */
+
     private JPanel panel1;
     private JLabel label1;
     private JTextArea textArea1;

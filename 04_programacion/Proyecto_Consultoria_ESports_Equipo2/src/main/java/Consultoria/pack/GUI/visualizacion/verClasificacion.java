@@ -59,6 +59,10 @@ public class verClasificacion {
         table1.setModel(new TablaClasificacionModel(Main.getEquipos()));
         scrollpane1.setViewportView(table1);
 
+        /**
+         * Carga los datos de la temporada seleccionada.
+         */
+
         comboBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

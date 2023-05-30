@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * La clase `V_Actualizar_Equipo` representa la interfaz gráfica de usuario para actualizar un objeto `Equipo`.
+ */
 public class V_Actualizar_Equipo {
     private JButton botonSeleccionar;
     private JPanel panelActualizarEquipo;
@@ -14,6 +17,9 @@ public class V_Actualizar_Equipo {
     private JComboBox<Equipo> comboBox1;
     private Equipo equiposelec;
 
+    /**
+     * Crea una nueva instancia de `V_Actualizar_Equipo`.
+     */
     public V_Actualizar_Equipo() {
         for (Equipo equipo : Main.getEquipos()) {
             comboBox1.addItem(equipo);
@@ -30,8 +36,14 @@ public class V_Actualizar_Equipo {
             }
         });
     }
+
+    /**
+     * Obtiene el panel de la interfaz gráfica de usuario para actualizar un `Equipo`.
+     *
+     * @return El panel de la interfaz gráfica de usuario.
+     */
     public JPanel getPanelActualizarEquipo() {
         return panelActualizarEquipo;
     }
-
 }
+

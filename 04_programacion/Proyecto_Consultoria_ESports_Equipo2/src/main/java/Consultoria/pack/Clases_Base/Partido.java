@@ -2,8 +2,10 @@ package Consultoria.pack.Clases_Base;
 
 import java.util.Objects;
 
+/**
+ * La clase `Partido` representa un partido entre dos equipos en una jornada.
+ */
 public class Partido {
-
     private int id_partido;
     private int marcador_local;
     private int marcador_visitante;
@@ -12,6 +14,16 @@ public class Partido {
     private Equipo equipoGanador;
     private Jornada jornada;
 
+    /**
+     * Crea un nuevo objeto `Partido` con los siguientes parámetros:
+     *
+     * @param id_partido         El ID del partido.
+     * @param marcador_local     El marcador del equipo local.
+     * @param marcador_visitante El marcador del equipo visitante.
+     * @param equipoL            El objeto `Equipo` del equipo local.
+     * @param equipoV            El objeto `Equipo` del equipo visitante.
+     * @param jornada            El objeto `Jornada` asociado al partido.
+     */
     public Partido(int id_partido, int marcador_local, int marcador_visitante, Equipo equipoL, Equipo equipoV, Jornada jornada) {
         this.id_partido = id_partido;
         this.marcador_local = marcador_local;
@@ -90,7 +102,12 @@ public class Partido {
         return equipoL.getNombre() +
                 " vs  " + equipoV.getNombre() ;
     }
-
+    /**
+     * Compara esta instancia de `Partido` con otro objeto para verificar si son iguales.
+     *
+     * @param o El objeto a comparar.
+     * @return `true` si este objeto es igual al objeto proporcionado, `false` en caso contrario.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

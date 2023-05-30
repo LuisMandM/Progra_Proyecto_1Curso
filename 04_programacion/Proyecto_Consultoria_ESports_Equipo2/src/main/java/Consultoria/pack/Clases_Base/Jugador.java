@@ -2,14 +2,25 @@ package Consultoria.pack.Clases_Base;
 
 import java.util.Objects;
 
+/**
+ * La clase `Jugador` representa a un jugador en un equipo.
+ */
 public class Jugador {
-
     private int id_jugador;
     private String nombre;
     private String nickname;
     private double sueldo;
     private Equipo equipo;
 
+    /**
+     * Crea un nuevo objeto `Jugador` con los siguientes parámetros:
+     *
+     * @param id_jugador El ID del jugador.
+     * @param nombre     El nombre del jugador.
+     * @param nickname   El apodo o nombre corto del jugador.
+     * @param sueldo     El sueldo del jugador.
+     * @param equipo     El objeto `Equipo` al que pertenece el jugador.
+     */
     public Jugador(int id_jugador, String nombre, String nickname, double sueldo, Equipo equipo) {
         this.id_jugador = id_jugador;
         this.nombre = nombre;
@@ -78,7 +89,12 @@ public class Jugador {
     }
 
     //equals and HasCode
-
+    /**
+     * Compara esta instancia de `Jugador` con otro objeto para verificar si son iguales.
+     *
+     * @param o El objeto a comparar.
+     * @return `true` si este objeto es igual al objeto proporcionado, `false` en caso contrario.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

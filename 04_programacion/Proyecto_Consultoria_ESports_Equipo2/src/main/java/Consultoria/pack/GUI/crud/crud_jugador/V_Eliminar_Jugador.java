@@ -8,6 +8,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * La clase `V_Eliminar_Jugador` representa la interfaz gráfica de usuario para eliminar un objeto `Jugador`.
+ */
 public class V_Eliminar_Jugador {
     private JPanel panelEliminar_Jugador;
     private JLabel labelEscogerJugador;
@@ -16,6 +19,9 @@ public class V_Eliminar_Jugador {
     private JComboBox<Jugador> comboBoxJugador;
     private JButton buttonConfirmar;
 
+    /**
+     * Crea una nueva instancia de `V_Eliminar_Jugador`.
+     */
     public V_Eliminar_Jugador() {
 
         for (Equipo equipo : Main.getEquipos()) {
@@ -33,16 +39,20 @@ public class V_Eliminar_Jugador {
                 }
             }
         });
-
         buttonConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Jugador jugadorselec = (Jugador) comboBoxJugador.getSelectedItem();
                 Main.getJugadores().remove(jugadorselec);
-
             }
         });
     }
+
+    /**
+     * Obtiene el panel de la interfaz gráfica de usuario para eliminar un jugador.
+     *
+     * @return El panel de la interfaz gráfica de usuario.
+     */
     public JPanel getPanelEliminar_Jugador() {
         return panelEliminar_Jugador;
     }

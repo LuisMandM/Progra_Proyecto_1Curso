@@ -1,5 +1,6 @@
 package Consultoria.pack.GUI.crud.crud_usuario;
 
+import Consultoria.pack.Base_Datos.CRUD.Delete;
 import Consultoria.pack.Clases_Base.Usuario;
 import Consultoria.pack.Main;
 
@@ -27,11 +28,12 @@ public class V_Eliminar_Usuario {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Usuario usuarioselec = (Usuario) comboBoxUsuario.getSelectedItem();
-                Main.getUsuarios().remove(usuarioselec);
+                if(usuarioselec != null) Delete.Delete_Usuario(usuarioselec);
+                    else JOptionPane.showMessageDialog(null, "Error al seleccionar el usuario " +
+                        "intente nuevamente", "Error BD", JOptionPane.ERROR_MESSAGE);
             }
         });
     }
-
     /**
      * Obtiene el panel de la interfaz gráfica de usuario para eliminar un usuario.
      *
@@ -41,7 +43,4 @@ public class V_Eliminar_Usuario {
         return V_Eliminr_Dueño;
     }
 
-    public static void main(String[] args) {
-
-    }
 }

@@ -1,3 +1,5 @@
+------- Creacion de Procedimientos ---------
+
 
 ---PROCEDURES----
 
@@ -132,7 +134,6 @@ CREATE OR REPLACE PROCEDURE AUTENTICACION_DUENIO(
         WHEN NO_DATA_FOUND THEN
          STATUS := -404;
 END AUTENTICACION_DUENIO;
-
 
 
 

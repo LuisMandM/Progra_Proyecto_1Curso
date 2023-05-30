@@ -83,7 +83,7 @@ public class Update {
 
                 pst_salario.setInt(1, player.getEquipo().getId_equipo());
 
-                ResultSet salario_Set = pst.executeQuery();
+                ResultSet salario_Set = pst_salario.executeQuery();
                 double salario_total = 0;
                 while (salario_Set.next()) {
                     salario_total = salario_Set.getDouble("SALARIO_TOTAL");

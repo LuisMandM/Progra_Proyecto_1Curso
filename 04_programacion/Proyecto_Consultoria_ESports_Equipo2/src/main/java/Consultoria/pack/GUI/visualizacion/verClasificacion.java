@@ -13,6 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class verClasificacion {
+
+    /**
+     * Clase para ver la clasificación de los equipos de la temporada ordenados de mayor puntuación a menor.
+     * Para ello contaremos con un combox con todas las temporadas, al seleccionar una veremos la clasificación de dicha temporada.
+     * @author David.R
+     */
+
     private JPanel panel1;
     private JLabel label1;
     private JTable table1;
@@ -41,6 +48,10 @@ public class verClasificacion {
     public JPanel getPanel1() {
         return panel1;
     }
+
+    /**
+     * Cargamos todos los datos de la clase Carga.
+     */
 
     public verClasificacion() {
 

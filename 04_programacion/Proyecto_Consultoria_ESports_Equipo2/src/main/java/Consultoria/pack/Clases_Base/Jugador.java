@@ -40,6 +40,9 @@ public class Jugador {
     }
 
     public Jugador(String nombre, String nickname, double sueldo) {
+        this.nombre = nombre;
+        this.nickname = nickname;
+        this.sueldo = sueldo;
     }
 
     public int getId_jugador() {

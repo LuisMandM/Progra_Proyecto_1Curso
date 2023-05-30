@@ -1,11 +1,14 @@
 package Consultoria.pack.GUI;
 
+import Consultoria.pack.Base_Datos.Admin_Pack;
 import Consultoria.pack.Clases_Base.Equipo;
 import Consultoria.pack.Main;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 
 public class Generar_Calendario {
@@ -27,7 +30,24 @@ public class Generar_Calendario {
 
                 if (Main.getEquipos().size()%2 == 0) {
                     String fecha = textFieldFecha.getText();
-                    LocalDate date = LocalDate.parse(fecha);
+                    try {
+                        LocalDate date = LocalDate.parse(fecha);
+                        if (date.isAfter(Main.getCalendarios().get(Main.getCalendarios().size()-1).getFecha_fin())){
+                            Admin_Pack.Generar_Temporada(date);
+                        }else JOptionPane.showMessageDialog(null, "No se puede crear una temporada" +
+                                        " con fecha de inicio anterior\n a la fecha de fin de una temporada.", "Error",
+                                JOptionPane.ERROR_MESSAGE);
+
+                    } catch (DateTimeException ex) {
+                        JOptionPane.showMessageDialog(null, "Fecha mal introducida debe ingresar un valor logico,\n" +
+                                        "siguiendo el modelo yyyy-mm-dd", "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                    } catch (SQLException exe) {
+                        JOptionPane.showMessageDialog(null, exe.getCause().getMessage(),
+                                "Error BD", JOptionPane.ERROR_MESSAGE);
+                    }
+
+
                 } else
                     JOptionPane.showMessageDialog(null, "La fecha debe ser introducida " +
                             "siguiendo el modelo yyyy-mm-dd", "Error Cantidad Jugadores", JOptionPane.ERROR_MESSAGE);

@@ -13,6 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class verClasificacion {
+
+    /**
+     * Clase para ver la clasificación de los equipos de la temporada ordenados de mayor puntuación a menor.
+     * Para ello contaremos con un combox con todas las temporadas, al seleccionar una veremos la clasificación de dicha temporada.
+     * @author David.R
+     */
+
     private JPanel panel1;
     private JLabel label1;
     private JTable table1;
@@ -30,23 +37,20 @@ public class verClasificacion {
     private int numJor = 1;
     private int numTemp = 1;
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Clasificación");
-        frame.setContentPane(new verClasificacion().panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 
     public JPanel getPanel1() {
         return panel1;
     }
 
+    /**
+     * Cargamos todos los datos de la clase Carga.
+     */
+
     public verClasificacion() {
 
         table1 = new JTable();
-        Carga.Cargar_Equipos();
-        Carga.Cargar_Calendario();
+        //Carga.Cargar_Equipos();
+        //Carga.Cargar_Calendario();
 
         for (Calendario calendario: Main.getCalendarios()) {
             comboBox1.addItem(calendario.getFecha_inicio());
@@ -54,6 +58,10 @@ public class verClasificacion {
 
         table1.setModel(new TablaClasificacionModel(Main.getEquipos()));
         scrollpane1.setViewportView(table1);
+
+        /**
+         * Carga los datos de la temporada seleccionada.
+         */
 
         comboBox1.addActionListener(new ActionListener() {
             @Override

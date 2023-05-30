@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 public class V_Eliminar_Usuario {
     private JPanel V_Eliminr_Dueño;
     private JLabel laberlEscogeElimiUsu;
-    private JComboBox comboBoxUsuario;
+    private JComboBox<Usuario> comboBoxUsuario;
     private JButton buttonEliminarUsu;
 
     /**
@@ -24,14 +24,11 @@ public class V_Eliminar_Usuario {
         for (Usuario usuario : Main.getUsuarios()) {
             comboBoxUsuario.addItem(usuario);
         }
-        buttonEliminarUsu.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Usuario usuarioselec = (Usuario) comboBoxUsuario.getSelectedItem();
-                if(usuarioselec != null) Delete.Delete_Usuario(usuarioselec);
-                    else JOptionPane.showMessageDialog(null, "Error al seleccionar el usuario " +
-                        "intente nuevamente", "Error BD", JOptionPane.ERROR_MESSAGE);
-            }
+        buttonEliminarUsu.addActionListener(e -> {
+            Usuario usuarioselec = (Usuario) comboBoxUsuario.getSelectedItem();
+            if (usuarioselec != null) Delete.Delete_Usuario(usuarioselec);
+            else JOptionPane.showMessageDialog(null, "Error al seleccionar el usuario",
+                    "Error BD", JOptionPane.ERROR_MESSAGE);
         });
     }
     /**
@@ -42,5 +39,6 @@ public class V_Eliminar_Usuario {
     public JPanel getV_Eliminr_Dueño() {
         return V_Eliminr_Dueño;
     }
+
 
 }

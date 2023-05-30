@@ -22,6 +22,7 @@ public class V_Inicio_Admin {
             frame.setContentPane(new V_Admin().getV_Admin());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });
@@ -32,6 +33,7 @@ public class V_Inicio_Admin {
             frame.setContentPane(new Generar_Calendario().getPanelGenerar());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });
@@ -42,6 +44,7 @@ public class V_Inicio_Admin {
                 frame.setContentPane(new Result_Partido().getPanel1());
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
+                frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
             }
         });
@@ -49,7 +52,5 @@ public class V_Inicio_Admin {
     public JPanel getPanelInicio_Admin() {
         return panelInicio_Admin;
     }
-    public static void main(String[] args) {
 
-    }
 }

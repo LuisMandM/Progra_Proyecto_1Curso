@@ -1,6 +1,7 @@
 package Consultoria.pack.Base_Datos.CRUD;
 
 import Consultoria.pack.Base_Datos.Admin_Pack;
+import Consultoria.pack.Base_Datos.Carga;
 import Consultoria.pack.Base_Datos.Gestor_BD;
 import Consultoria.pack.Clases_Base.Duenio;
 import Consultoria.pack.Clases_Base.Equipo;
@@ -52,6 +53,8 @@ public class Update {
                     Gestor_BD.commit(connection);
                     JOptionPane.showMessageDialog(null, "Jugador añadido correctamente",
                             "Jugador Registrado", JOptionPane.INFORMATION_MESSAGE);
+                    Gestor_BD.desconectar(connection);
+                    Carga.Cargar_Equipos();
                 } else JOptionPane.showMessageDialog(null, "Actualizacion incorrecta,\n" +
                         "Intente nuevamente", "Error", JOptionPane.INFORMATION_MESSAGE);
             } else JOptionPane.showMessageDialog(null, "Jugador no añadido",
@@ -83,7 +86,7 @@ public class Update {
 
                 pst_salario.setInt(1, player.getEquipo().getId_equipo());
 
-                ResultSet salario_Set = pst.executeQuery();
+                ResultSet salario_Set = pst_salario.executeQuery();
                 double salario_total = 0;
                 while (salario_Set.next()) {
                     salario_total = salario_Set.getDouble("SALARIO_TOTAL");
@@ -100,6 +103,8 @@ public class Update {
                     Gestor_BD.commit(connection);
                     JOptionPane.showMessageDialog(null, "Jugador retirado correctamente",
                             "Retiro Jugador", JOptionPane.INFORMATION_MESSAGE);
+                    Gestor_BD.desconectar(connection);
+                    Carga.Cargar_Equipos();
                 } else JOptionPane.showMessageDialog(null, "Jugador no retirado del equipo",
                         "Error", JOptionPane.INFORMATION_MESSAGE);
 
@@ -134,6 +139,7 @@ public class Update {
                     "Intente nuevamente", "Error", JOptionPane.INFORMATION_MESSAGE);
 
             Gestor_BD.desconectar(connection);
+            Carga.Cargar_Equipos();
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getCause().getMessage(),
@@ -157,10 +163,12 @@ public class Update {
                 Gestor_BD.commit(connection);
                 JOptionPane.showMessageDialog(null, "Jugador actualizado correctamente",
                         "Actualizacion Jugador", JOptionPane.INFORMATION_MESSAGE);
+
             } else JOptionPane.showMessageDialog(null, "Actualizacion incorrecta,\n" +
                     "Intente nuevamente", "Error", JOptionPane.INFORMATION_MESSAGE);
             Gestor_BD.desconectar(connection);
-
+            Carga.Cargar_Equipos();
+            Carga.Cargar_Jugadores_Libres();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getCause().getMessage(),
                     "Error BD", JOptionPane.ERROR_MESSAGE);
@@ -186,6 +194,7 @@ public class Update {
                     "Intente nuevamente", "Error", JOptionPane.INFORMATION_MESSAGE);
 
             Gestor_BD.desconectar(connection);
+            Carga.Cargar_Clientes();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getCause().getMessage(),
                     "Error BD", JOptionPane.ERROR_MESSAGE);
@@ -211,6 +220,7 @@ public class Update {
                     "Intente nuevamente", "Error", JOptionPane.INFORMATION_MESSAGE);
 
             Gestor_BD.desconectar(connection);
+            Carga.Cargar_Equipos();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getCause().getMessage(),
                     "Error BD", JOptionPane.ERROR_MESSAGE);

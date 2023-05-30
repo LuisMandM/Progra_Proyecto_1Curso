@@ -18,10 +18,6 @@ public class V_Inicio_Usuario {
         return panelUsuario;
     }
 
-    public static void main(String[] args) {
-
-    }
-
     public V_Inicio_Usuario() {
     resultadoPartidoButton.addActionListener(new ActionListener() {
         @Override
@@ -30,6 +26,7 @@ public class V_Inicio_Usuario {
             frame.setContentPane(new Result_Partido().getPanel1());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });
@@ -40,6 +37,7 @@ public class V_Inicio_Usuario {
             frame.setContentPane(new verJornada().getPanel1());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });
@@ -50,6 +48,7 @@ public class V_Inicio_Usuario {
             frame.setContentPane(new verClasificacion().getPanel1());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });

@@ -13,9 +13,7 @@ public class Crud_Usuario {
     public JPanel getPanelCrudUsuario() {
         return panelCrudUsuario;
     }
-    public static void main(String[] args) {
 
-    }
 
     public Crud_Usuario() {
     crearButton.addActionListener(new ActionListener() {
@@ -25,6 +23,7 @@ public class Crud_Usuario {
             frame.setContentPane(new V_Crear_Usuario().getPanelCrearUsuario());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });
@@ -35,6 +34,7 @@ public class Crud_Usuario {
             frame.setContentPane(new V_Actualizar_Usuario().getPanelActualizarUsuario());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });
@@ -45,6 +45,7 @@ public class Crud_Usuario {
             frame.setContentPane(new V_Eliminar_Usuario().getV_Eliminr_Dueño());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });

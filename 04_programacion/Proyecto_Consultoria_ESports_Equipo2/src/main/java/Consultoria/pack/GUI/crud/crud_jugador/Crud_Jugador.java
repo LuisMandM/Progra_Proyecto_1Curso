@@ -15,22 +15,24 @@ public Crud_Jugador() {
     crearButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Carga.Cargar_Equipos();
+            //Carga.Cargar_Equipos();
             JFrame frame = new JFrame("V_CrearJugador");
             frame.setContentPane(new V_CrearJugador().getPanel_CrearJugador());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });
     actualizarButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Carga.Cargar_Equipos();
+            //Carga.Cargar_Equipos();
             JFrame frame = new JFrame("V_Actualizar_Jugador");
             frame.setContentPane(new V_Actualizar_Jugador().getPanelActualizar());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });
@@ -41,6 +43,7 @@ public Crud_Jugador() {
             frame.setContentPane(new V_Eliminar_Jugador().getPanelEliminar_Jugador());
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
     });

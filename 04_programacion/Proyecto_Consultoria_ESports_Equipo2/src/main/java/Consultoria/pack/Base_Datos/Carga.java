@@ -11,9 +11,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase destinada a alojar los metodos encargados de conectarse a la base de datos y traer a local los diferentes objetos
+ * alojados, dependiendo el llamado que se le haga.
+ */
 public class Carga {
 
 
+    /**
+     * Metodo encargado de cargar Datos de Dueños, Equipos y Jugadores inscritos en un equipo.
+     */
     public static void Cargar_Equipos() {
         Connection connection = Gestor_BD.Conectar_BD();
         List<Jugador> jugadores = new ArrayList<>();
@@ -107,6 +114,11 @@ public class Carga {
         Main.setJugadores(jugadores);
     }
 
+    /**
+     * Metodo encargado de buscar un Objeto Equipo Local basado en su ID
+     * @param idEquipo - Id de equipo a buscar
+     * @return Objeto Equipo.
+     */
     private static Equipo buscarEquipo(int idEquipo) {
         Equipo equipoBuscado = null;
         for (Equipo equipo : Main.getEquipos()) {
@@ -118,6 +130,9 @@ public class Carga {
         return equipoBuscado;
     }
 
+    /**
+     * Metodo encargado de cargar Datos de Calendario(Temporada), Jornadas y Partidos.
+     */
     public static void Cargar_Calendario() {
         Connection connection = Gestor_BD.Conectar_BD();
         List<Calendario> calendarios = new ArrayList<>();
@@ -170,6 +185,10 @@ public class Carga {
         Main.setPartidos(partidos);
     }
 
+
+    /**
+     * Metodo encargado de cargar Jugadores que no estan inscritos en un equipo.
+     */
     public static void Cargar_Jugadores_Libres() {
         List<Jugador> free_Players = new ArrayList<>();
 
@@ -194,6 +213,9 @@ public class Carga {
         }
     }
 
+    /**
+     * Metodo encargado de cargar los Usuarios tipo cliente con Opciones solo de lectura.
+     */
     public static void Cargar_Clientes() {
         List<Usuario> users = new ArrayList<>();
 

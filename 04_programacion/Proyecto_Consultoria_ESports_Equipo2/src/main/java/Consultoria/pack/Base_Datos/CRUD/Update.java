@@ -15,8 +15,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+
+/**
+ * Clase destinada a alojar los metodo relacionados a la actualizacion de objetos o relaciones del programa.
+ * Aloja metodos genericos de sobre escritura de objetos como Clientes, Equipos o Dueños. Y metodos mas especificos
+ * como la alta o baja de un jugador en un equipo.
+ */
 public class Update {
 
+
+    /**
+     * Metodo destinado a gestionar el alta de un jugador en un equipo, inscribiendo su relacion con la fecha de inicio
+     * del dia en que se ejecuta el comando, gestiona tambien la variacion en el sueldo total del equipo inscrito.
+     *
+     * Puede devolver errores relacionados a triggers por sobrepasar el tope de sueldo o el numero de jugadores.
+     * De igual manera errores relacionados a la conexion de la base de datos.
+     *
+     * Todos los retornos los hace mediante el uso de JOptionPane.
+     * @param player Objeto Jugador, destinado inscribir en un equipo..
+     */
     public static void Add_PlayerTeam(Jugador player) {
 
         try {
@@ -55,6 +72,7 @@ public class Update {
                             "Jugador Registrado", JOptionPane.INFORMATION_MESSAGE);
                     Gestor_BD.desconectar(connection);
                     Carga.Cargar_Equipos();
+                    Carga.Cargar_Jugadores_Libres();
                 } else JOptionPane.showMessageDialog(null, "Actualizacion incorrecta,\n" +
                         "Intente nuevamente", "Error", JOptionPane.INFORMATION_MESSAGE);
             } else JOptionPane.showMessageDialog(null, "Jugador no añadido",
@@ -67,6 +85,15 @@ public class Update {
         }
 
     }
+
+    /**
+     * Metodo destinado a gestionar la bada de un jugador en un equipo, cerrando su relacion con la fecha de fin
+     * del dia en que se ejecuta el comando, gestiona tambien la variacion en el sueldo total del equipo a finalizar la relacion.
+     *
+     * Puede devolver errores relacionados a la conexion de la base de datos.
+     * Todos los retornos los hace mediante el uso de JOptionPane.
+     * @param player - Objeto Jugador, destinado a cerrar la relacion.
+     */
 
     public static void Remove_Player(Jugador player) {
         try {
@@ -103,8 +130,8 @@ public class Update {
                     Gestor_BD.commit(connection);
                     JOptionPane.showMessageDialog(null, "Jugador retirado correctamente",
                             "Retiro Jugador", JOptionPane.INFORMATION_MESSAGE);
-                    Gestor_BD.desconectar(connection);
                     Carga.Cargar_Equipos();
+                    Carga.Cargar_Jugadores_Libres();
                 } else JOptionPane.showMessageDialog(null, "Jugador no retirado del equipo",
                         "Error", JOptionPane.INFORMATION_MESSAGE);
 

@@ -143,14 +143,6 @@ public class Visualizacion_Pack {
     }
 
 
-///**
-// * Método con llamada desde procedimiento "OrdenarClasificación" de paquete "Visualización_Resultados" de la base de datos,
-// * busca calcular la puntuación de cada equipo según el resultado.
-// * @param equipo Número de Identificador de todos los equipos.
-// * @return suma de los partidos ganados y empatados.
-// * @autor Maria.
-// */
-
     public static int calcularPuntaje(Equipo equipo, int idTemporada) {
         int idEquipo = equipo.getId_equipo();
         int[] resultados = equipo.Estadisticas_Temporada(idTemporada);

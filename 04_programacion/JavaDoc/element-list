@@ -1,0 +1,12 @@
+Consultoria.pack
+Consultoria.pack.Base_Datos
+Consultoria.pack.Base_Datos.CRUD
+Consultoria.pack.Clases_Base
+Consultoria.pack.GUI
+Consultoria.pack.GUI.crud
+Consultoria.pack.GUI.crud.crud_duenio
+Consultoria.pack.GUI.crud.crud_equipos
+Consultoria.pack.GUI.crud.crud_jugador
+Consultoria.pack.GUI.crud.crud_usuario
+Consultoria.pack.GUI.Login
+Consultoria.pack.GUI.visualizacion

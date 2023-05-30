@@ -6,6 +6,9 @@ import Consultoria.pack.Clases_Base.Duenio;
 
 import javax.swing.*;
 
+/**
+ * La clase `V_Crear_Duenio` representa la interfaz gráfica de usuario para la creación y actualización de un objeto `Duenio`.
+ */
 public class V_Crear_Duenio {
     private JPanel panelCrear_duenio;
     private JLabel labelNombre;
@@ -20,12 +23,20 @@ public class V_Crear_Duenio {
     private Duenio duenio;
     private boolean actualizar = false;
 
+    /**
+     * Crea una nueva instancia de `V_Crear_Duenio` para la creación de un nuevo `Duenio`.
+     */
     public V_Crear_Duenio() {
         textFieldID.setText("Campo asignado por el sistema.");
         textFieldID.setEditable(false);
         buttonGuardar.addActionListener(e -> gest_Duenio());
     }
 
+    /**
+     * Crea una nueva instancia de `V_Crear_Duenio` para la actualización de un `Duenio` existente.
+     *
+     * @param duenio El objeto `Duenio` a actualizar.
+     */
     public V_Crear_Duenio(Duenio duenio) {
         this.duenio = duenio;
         this.actualizar = true;
@@ -40,6 +51,9 @@ public class V_Crear_Duenio {
         buttonGuardar.addActionListener(e -> gest_Duenio());
     }
 
+    /**
+     * Gestiona la creación o actualización del objeto `Duenio` según los datos ingresados en la interfaz.
+     */
     private void gest_Duenio() {
         if (!actualizar) {
             String nombre = textFieldNombre.getText();
@@ -60,6 +74,11 @@ public class V_Crear_Duenio {
         }
     }
 
+    /**
+     * Obtiene el panel de la interfaz gráfica de usuario para la creación y actualización de `Duenio`.
+     *
+     * @return El panel de la interfaz gráfica de usuario.
+     */
     public JPanel getPanelCrear_duenio() {
         return panelCrear_duenio;
     }

@@ -5,6 +5,9 @@ import Consultoria.pack.Base_Datos.Carga;
 
 import javax.swing.*;
 
+/**
+ * La clase `V_Login` representa la interfaz gráfica de usuario para el inicio de sesión.
+ */
 public class V_Login {
     private JPanel panel;
     private JPanel panel_Inserts;
@@ -12,8 +15,12 @@ public class V_Login {
     private JButton enter_Button;
     private JPasswordField passwordField;
 
+    /**
+     * Crea una nueva instancia de `V_Login`.
+     *
+     * @param frame1 El marco principal de la aplicación.
+     */
     public V_Login(JFrame frame1) {
-
 
         enter_Button.addActionListener(e -> {
             String user = user_textField.getText();
@@ -22,9 +29,8 @@ public class V_Login {
             int autenticacion = Autenticacion.Autorizacion(user, password);
 
             switch (autenticacion) {
-
                 case 0:
-                    JOptionPane.showMessageDialog(null, "Error inesperado Intente nuevamente",
+                    JOptionPane.showMessageDialog(null, "Error inesperado. Intente nuevamente",
                             "Error", JOptionPane.ERROR_MESSAGE);
                     break;
 
@@ -53,22 +59,28 @@ public class V_Login {
                     break;
 
                 case 900:
-                    JOptionPane.showMessageDialog(null, "Error de Conexion a la base de datos, Intente más Tarde",
+                    JOptionPane.showMessageDialog(null, "Error de conexión a la base de datos. Intente más tarde",
                             "Error", JOptionPane.ERROR_MESSAGE);
                     break;
 
                 case -800:
-                    JOptionPane.showMessageDialog(null, "Usuario no encontrado, Intente nuevamente",
+                    JOptionPane.showMessageDialog(null, "Usuario no encontrado. Intente nuevamente",
                             "Error", JOptionPane.ERROR_MESSAGE);
                     break;
                 case -900:
-                    JOptionPane.showMessageDialog(null, "Clave Incorrecta, Intente nuevamente",
+                    JOptionPane.showMessageDialog(null, "Clave incorrecta. Intente nuevamente",
                             "Error", JOptionPane.ERROR_MESSAGE);
                     break;
 
             }
         });
     }
+
+    /**
+     * Obtiene el panel de la interfaz gráfica de usuario para el inicio de sesión.
+     *
+     * @return El panel de la interfaz gráfica de usuario.
+     */
     public JPanel getPanel() {
         return panel;
     }
@@ -93,6 +105,10 @@ public class V_Login {
                 break;
         }
     }
+
+    /**
+     * Abre la ventana de inicio de sesión para el administrador.
+     */
     public static void VentanaAdmin(){
         JFrame frame = new JFrame("V_Inicio_Admin");
         frame.setContentPane(new Consultoria.pack.GUI.Login.V_Inicio_Admin().getPanelInicio_Admin());
@@ -100,6 +116,10 @@ public class V_Login {
         frame.pack();
         frame.setVisible(true);
     }
+
+    /**
+     * Abre la ventana de inicio de sesión para el dueño.
+     */
     public static void VentanaDuenio (){
         JFrame frame = new JFrame("V_Inicio_Duenio");
         frame.setContentPane(new Consultoria.pack.GUI.Login.V_Inicio_Duenio().getPanelDuenio());
@@ -107,6 +127,10 @@ public class V_Login {
         frame.pack();
         frame.setVisible(true);
     }
+
+    /**
+     * Abre la ventana de inicio de sesión para el cliente.
+     */
     public static void VentanaUsuario (){
         JFrame frame = new JFrame("V_Inicio_Usuario");
         frame.setContentPane(new Consultoria.pack.GUI.Login.V_Inicio_Usuario().getPanelUsuario());

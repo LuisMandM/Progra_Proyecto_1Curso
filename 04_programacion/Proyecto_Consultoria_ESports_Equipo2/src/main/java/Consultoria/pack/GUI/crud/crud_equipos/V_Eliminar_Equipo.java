@@ -7,6 +7,9 @@ import Consultoria.pack.Main;
 import javax.swing.*;
 import java.util.List;
 
+/**
+ * La clase `V_Eliminar_Equipo` representa la interfaz gráfica de usuario para eliminar un objeto `Equipo`.
+ */
 public class V_Eliminar_Equipo {
     private JPanel panelEliminarEquipo;
     private JLabel labelEscogerEquipo;
@@ -14,6 +17,9 @@ public class V_Eliminar_Equipo {
     private JButton seleccionarButton;
     List<Equipo> equipos;
 
+    /**
+     * Crea una nueva instancia de `V_Eliminar_Equipo`.
+     */
     public V_Eliminar_Equipo() {
         for (Equipo equipo : Main.getEquipos()) {
             comboBoxEscogeEquipo.addItem(equipo);
@@ -27,8 +33,12 @@ public class V_Eliminar_Equipo {
         });
     }
 
+    /**
+     * Obtiene el panel de la interfaz gráfica de usuario para eliminar un `Equipo`.
+     *
+     * @return El panel de la interfaz gráfica de usuario.
+     */
     public JPanel getPanelEliminarEquipo() {
         return panelEliminarEquipo;
     }
-
 }

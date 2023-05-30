@@ -2,12 +2,25 @@ package Consultoria.pack.Clases_Base;
 
 import java.time.LocalDate;
 
+import java.time.LocalDate;
+
+/**
+ * La clase `HistorialJugador` representa el historial de un jugador en un equipo específico.
+ */
 public class HistorialJugador {
     private LocalDate id_jugador;
     private LocalDate id_equipo;
     private Equipo equipo;
     private Jugador jugador;
 
+    /**
+     * Crea un nuevo objeto `HistorialJugador` con los siguientes parámetros:
+     *
+     * @param id_jugador El ID del jugador en el historial.
+     * @param id_equipo  El ID del equipo en el historial.
+     * @param equipo     El objeto `Equipo` asociado al historial.
+     * @param jugador    El objeto `Jugador` asociado al historial.
+     */
     public HistorialJugador(LocalDate id_jugador, LocalDate id_equipo, Equipo equipo, Jugador jugador) {
         this.id_jugador = id_jugador;
         this.id_equipo = id_equipo;

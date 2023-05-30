@@ -1,10 +1,20 @@
 package Consultoria.pack.Clases_Base;
 
+/**
+ * La clase `Usuario` representa un usuario en el sistema.
+ */
 public class Usuario {
     private int id_usuario;
     private String contrasenya;
     private String usuario;
 
+    /**
+     * Crea un nuevo objeto `Usuario` con los siguientes parámetros:
+     *
+     * @param id_usuario   El ID del usuario.
+     * @param contrasenya  La contraseña del usuario.
+     * @param usuario      El nombre de usuario.
+     */
     public Usuario(int id_usuario, String contrasenya, String usuario) {
         this.id_usuario = id_usuario;
         this.contrasenya = contrasenya;

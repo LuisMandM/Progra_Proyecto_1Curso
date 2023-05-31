@@ -4,7 +4,7 @@ create table Administrador(
 id_admin NUMBER(10) GENERATED AS IDENTITY (START WITH 1 
     INCREMENT BY 1 MAXVALUE 9999999999 MINVALUE 0 NOCYCLE) 
     CONSTRAINT id_admin_pk PRIMARY KEY ,
-contrase a varchar2(20) not null,
+contraseña varchar2(20) not null,
 usuario varchar2(50) not null
 );
 
@@ -14,16 +14,16 @@ CREATE TABLE CLIENTE(
     ID_USUARIO NUMBER(10)GENERATED AS IDENTITY (START WITH 1 
     INCREMENT BY 1 MAXVALUE 9999999999 MINVALUE 0 NOCYCLE) 
     CONSTRAINT ID_USER_PK PRIMARY KEY,
-    CONTRASE A varchar2(20) not null,
+    CONTRASEÑA varchar2(20) not null,
     USUARIO varchar2(50) not null
 );
 
-create table Due o(
+create table Dueño(
 id_due o NUMBER(10) GENERATED AS IDENTITY (START WITH 1 
     INCREMENT BY 1 MAXVALUE 9999999999 MINVALUE 0 NOCYCLE) 
     CONSTRAINT id_due o_pk PRIMARY KEY,
 nombre varchar2(50) not null,
-contrase a varchar2(20) not null,
+contraseña varchar2(20) not null,
 usuario varchar2(50) not null
 );
 
